@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
         &app,
         []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
+
     engine.loadFromModule("Carboxyl", "Main");
 
     return app.exec();

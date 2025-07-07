@@ -20,6 +20,9 @@ QtObject {
     required property color text
     required property color subText
 
+    // Disabled text
+    required property color disabledText
+
     // Buttons and highlighted
     required property color button
     required property color buttonLight

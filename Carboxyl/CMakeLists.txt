@@ -1,2 +1,6 @@
 add_subdirectory(Base)
+add_subdirectory(Components)
 add_subdirectory(Helios)
+add_subdirectory(Trioxide)
+add_subdirectory(Hydrogen)
+add_subdirectory(Graphide)

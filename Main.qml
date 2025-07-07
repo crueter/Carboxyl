@@ -3,7 +3,7 @@ import QtQuick.Controls.Fusion
 import QtQuick.Shapes
 import QtQuick.Layouts
 
-import Carboxyl.Helios
+import Carboxyl.Components
 import Carboxyl.Base
 
 ApplicationWindow {
@@ -12,11 +12,8 @@ ApplicationWindow {
     visible: true
     title: qsTr("Hello World")
 
-    property BasePalette currentTheme: Palettes.themes[theme.currentIndex]
-    property Accent currentAccent: Palettes.accents[palette.currentIndex]
-
     background: Rectangle {
-        color: currentTheme.background
+        color: Palettes.theme.background
     }
 
     ColumnLayout {
@@ -33,10 +30,20 @@ ApplicationWindow {
         height: 80
 
         ComboBox {
+            id: style
+
+            model: Palettes.styles
+
+            onCurrentIndexChanged: Palettes.style = Palettes.styles[currentIndex]
+        }
+
+        ComboBox {
             id: palette
 
             model: Palettes.accents
             textRole: "name"
+
+            onCurrentIndexChanged: Palettes.accent = Palettes.accents[currentIndex]
         }
 
         RowLayout {
@@ -46,14 +53,14 @@ ApplicationWindow {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
 
-                color: Palettes.accents[palette.currentIndex].accent
+                color: Palettes.accent.accent
             }
 
             Rectangle {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
 
-                color: Palettes.accents[palette.currentIndex].subAccent
+                color: Palettes.accent.subAccent
             }
         }
     }
@@ -78,75 +85,54 @@ ApplicationWindow {
 
                 model: Palettes.themes
                 textRole: "name"
+
+                Component.onCompleted: {
+                    console.log(Palettes.theme === Palettes.light,
+                                Palettes.themes.indexOf(Palettes.theme))
+                }
+                currentIndex: Palettes.themes.indexOf(Palettes.theme)
+
+                onCurrentIndexChanged: Palettes.theme = Palettes.themes[currentIndex]
             }
 
             Rectangle {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                color: currentTheme.subBackground
+                color: Palettes.theme.subBackground
 
                 Text {
-                    text: "Hello"
-                    color: currentTheme.text
+                    text: "Text on SubBackground"
+                    color: Palettes.theme.text
                 }
             }
 
             Rectangle {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                color: currentTheme.dialog
+                color: Palettes.theme.dialog
 
                 Text {
-                    text: "Woah"
-                    color: currentTheme.subText
+                    text: "SubText on Dialog"
+                    color: Palettes.theme.subText
                 }
             }
 
-            Item {
+            RowLayout {
+                CheckBox {
+                    checked: true
+                    onCheckedChanged: btn.enabled = checked
+                }
+
                 Button {
-                    palette {
-                        buttonText: currentTheme.buttonText
-                    }
+                    id: btn
+                    text: "Button"
 
-                    id: control
-                    hoverEnabled: true
-
-                    property bool needsHighlight: highlighted || hovered
-                    property bool cave: down || pressed
-
-                    background: Rectangle {
-                        anchors.fill: parent
-                        color: currentTheme.button
-
-                        gradient: LinearGradient {
-                            y2: height
-                            x2: width
-                            GradientStop {
-                                position: 0.0
-                                color: currentTheme.button
-                            }
-                            GradientStop {
-                                position: 1.0
-                                color: currentTheme.buttonLight
-                            }
-                        }
-
-                        radius: 5
-
-                        border {
-                            color: control.needsHighlight ? (control.cave ? "transparent" : currentAccent.subAccent) : currentTheme.buttonText
-                            Behavior on color {
-
-                                ColorAnimation {
-                                    duration: 150
-                                }
-                            }
-
-                            width: 1
+                    Connections {
+                        target: btn.item
+                        function onClicked() {
+                            btn.item.text = "Clicked!"
                         }
                     }
-
-                    text: "YOOOOOOOOOOOOOOOOOOOOOOoo"
                 }
             }
         }
