@@ -2,20 +2,22 @@
 #define CARBOXYLAPPLICATION_H
 
 #include <QObject>
-#include <QQmlEngine>
+#include <QQmlApplicationEngine>
 
 class CarboxylApplication : public QObject
 {
     Q_OBJECT
-    QML_ELEMENT
-    QML_SINGLETON
 public:
-    explicit CarboxylApplication(QObject *parent = nullptr);
+    explicit CarboxylApplication(QQmlApplicationEngine *engine, QObject *parent = nullptr);
 
     Q_INVOKABLE void setDarkMode(bool dark);
     Q_INVOKABLE bool systemIsDarkMode();
 
+private:
+    QQmlApplicationEngine *m_engine;
+
 signals:
+    void styleChanged();
 };
 
 #endif // CARBOXYLAPPLICATION_H

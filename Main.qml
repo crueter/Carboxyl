@@ -1,10 +1,11 @@
 import QtQuick
-import QtQuick.Controls.Fusion
+import QtQuick.Controls
 import QtQuick.Shapes
 import QtQuick.Layouts
 
-import Carboxyl.Components
 import Carboxyl.Base
+
+import Carboxyl.Styles.Helios as H
 
 ApplicationWindow {
     width: 640
@@ -27,15 +28,7 @@ ApplicationWindow {
             margins: 10
         }
 
-        height: 80
-
-        ComboBox {
-            id: style
-
-            model: Palettes.styles
-
-            onCurrentIndexChanged: Palettes.style = Palettes.styles[currentIndex]
-        }
+        height: 120
 
         ComboBox {
             id: palette
@@ -43,7 +36,11 @@ ApplicationWindow {
             model: Palettes.accents
             textRole: "name"
 
-            onCurrentIndexChanged: Palettes.accent = Palettes.accents[currentIndex]
+            Component.onCompleted: console.log(Palettes.accents)
+
+            Layout.fillWidth: true
+
+            onCurrentIndexChanged: Palettes.accent = Palettes.accents[palette.currentIndex]
         }
 
         RowLayout {
@@ -86,13 +83,15 @@ ApplicationWindow {
                 model: Palettes.themes
                 textRole: "name"
 
-                Component.onCompleted: {
-                    console.log(Palettes.theme === Palettes.light,
-                                Palettes.themes.indexOf(Palettes.theme))
-                }
-                currentIndex: Palettes.themes.indexOf(Palettes.theme)
+                Component.onCompleted: currentIndex = Palettes.themes.indexOf(
+                                           Palettes.theme)
 
-                onCurrentIndexChanged: Palettes.theme = Palettes.themes[currentIndex]
+                onCurrentIndexChanged: Palettes.theme = Palettes.themes[theme.currentIndex]
+            }
+
+            TextField {
+                Layout.fillWidth: true
+                height: 40
             }
 
             Rectangle {
@@ -126,13 +125,6 @@ ApplicationWindow {
                 Button {
                     id: btn
                     text: "Button"
-
-                    Connections {
-                        target: btn.item
-                        function onClicked() {
-                            btn.item.text = "Clicked!"
-                        }
-                    }
                 }
             }
         }

@@ -75,19 +75,15 @@ Item {
 
     readonly property list<Accent> accents: [red, blue, orange, gold, forest, violet, pink, steel]
     readonly property list<BasePalette> themes: [light, dark, oled]
-    readonly property list<string> styles: ["Helios", "Trioxide", "Hydrogen", "Graphide"]
 
     property Accent accent: red
     property BasePalette theme
-    property string style: "Helios"
 
     Component.onCompleted: {
         theme = CarboxylApplication.systemIsDarkMode() ? dark : light
-        console.log(CarboxylApplication.systemIsDarkMode(), theme, light, dark)
     }
 
     onThemeChanged: {
-        console.log("Theme changed", theme === light)
         CarboxylApplication.setDarkMode(theme !== light)
     }
 
@@ -147,7 +143,7 @@ Item {
         disabledText: "gray"
 
         button: background
-        buttonLight: "#343434"
+        buttonLight: "#191919"
         buttonText: text
         buttonHighlighted: "#A8A8A8"
 

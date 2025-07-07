@@ -43,11 +43,7 @@ target_link_libraries(Carboxyl
     Qt6::QuickControls2
     Qt6::Gui
     CarboxylBaseplugin
-    CarboxylComponentsplugin
-    CarboxylHeliosplugin
-    CarboxylTrioxideplugin
-    CarboxylHydrogenplugin
-    CarboxylGraphideplugin
+    CarboxylStylesplugin
 )
 
 include(GNUInstallDirs)

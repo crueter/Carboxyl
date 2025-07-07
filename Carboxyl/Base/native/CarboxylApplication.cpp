@@ -2,9 +2,13 @@
 #include <QGuiApplication>
 #include <QStyleHints>
 
-CarboxylApplication::CarboxylApplication(QObject *parent)
+#include <QQuickStyle>
+
+CarboxylApplication::CarboxylApplication(QQmlApplicationEngine *engine, QObject *parent)
     : QObject{parent}
-{}
+    , m_engine(engine)
+{
+}
 
 void CarboxylApplication::setDarkMode(bool dark)
 {
@@ -17,4 +21,3 @@ bool CarboxylApplication::systemIsDarkMode()
     QStyleHints *hints = QGuiApplication::styleHints();
     return hints->colorScheme() == Qt::ColorScheme::Dark;
 }
-
