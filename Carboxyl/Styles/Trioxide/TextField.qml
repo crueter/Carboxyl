@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls.Fusion
+import QtQuick.Controls.impl
 
 import Carboxyl.Base
 
@@ -19,9 +20,15 @@ TextField {
         radius: 2
         color: control.palette.base
         border {
-            color: control.activeFocus ? Palettes.accent.accent : Fusion.outline(
+            color: control.activeFocus ? Palettes.accent.main : Fusion.outline(
                                              control.palette)
             width: 1 + control.activeFocus
+
+            Behavior on color {
+                ColorAnimation {
+                    duration: 150
+                }
+            }
         }
 
         Rectangle {

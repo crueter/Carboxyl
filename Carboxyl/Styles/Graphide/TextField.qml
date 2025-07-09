@@ -3,30 +3,44 @@ import QtQuick.Controls.Fusion
 
 import Carboxyl.Base
 
-// TODO: finish this
 TextField {
-    id: control
-
     palette {
-        buttonText: control.enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
-        button: Palettes.theme.buttonLight
+        text: enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
+        base: Palettes.theme.buttonLight
+        window: Palettes.theme.text
+        accent: Palettes.accent.aux
     }
 
+    id: control
+
     background: Rectangle {
-        color: Palettes.theme.button
+        implicitWidth: 120
+        implicitHeight: 24
 
-        border {
-            color: control.activeFocus ? Palettes.accent.subAccent : Palettes.theme.buttonText
-            width: 1 + control.hovered
+        radius: 5
 
-            Behavior on color {
-                ColorAnimation {
-                    duration: 150
-                }
+        color: control.palette.base
+    }
+
+    Rectangle {
+        color: control.activeFocus ? palette.accent : palette.text
+        Behavior on color {
+            ColorAnimation {
+                duration: 150
             }
         }
 
-        width: control.width
-        height: control.height
+        height: (control.hovered || control.activeFocus) ? 2 : 1
+
+        anchors {
+            left: parent.left
+            right: parent.right
+
+            bottom: parent.bottom
+
+            leftMargin: 5
+            rightMargin: 5
+            bottomMargin: 2
+        }
     }
 }

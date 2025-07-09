@@ -13,64 +13,64 @@ Item {
         id: red
 
         name: "Red"
-        accent: "FireBrick"
-        subAccent: "Crimson"
+        main: "FireBrick"
+        aux: "Crimson"
     }
 
     Accent {
         id: blue
 
         name: "Blue"
-        accent: "DodgerBlue"
-        subAccent: "DeepSkyBlue"
+        main: "DodgerBlue"
+        aux: "DeepSkyBlue"
     }
 
     Accent {
         id: orange
 
         name: "Orange"
-        accent: "DarkGoldenRod"
-        subAccent: "Coral"
+        main: "DarkGoldenRod"
+        aux: "Coral"
     }
 
     Accent {
         id: gold
 
         name: "Gold"
-        accent: "GoldenRod"
-        subAccent: "Gold"
+        main: "GoldenRod"
+        aux: "Gold"
     }
 
     Accent {
         id: forest
 
         name: "Forest"
-        accent: "DarkGreen"
-        subAccent: "ForestGreen"
+        main: "DarkGreen"
+        aux: "ForestGreen"
     }
 
     Accent {
         id: violet
 
         name: "Violet"
-        accent: "DarkViolet"
-        subAccent: "Violet"
+        main: "DarkViolet"
+        aux: "Violet"
     }
 
     Accent {
         id: pink
 
         name: "Pink"
-        accent: "MediumOrchid"
-        subAccent: "Magenta"
+        main: "MediumOrchid"
+        aux: "Magenta"
     }
 
     Accent {
         id: steel
 
         name: "Steel"
-        accent: "LightSlateGray"
-        subAccent: "LightSteelBlue"
+        main: "LightSlateGray"
+        aux: "LightSteelBlue"
     }
 
     readonly property list<Accent> accents: [red, blue, orange, gold, forest, violet, pink, steel]
@@ -101,7 +101,7 @@ Item {
         disabledText: "gray"
 
         button: background
-        buttonLight: Qt.darker(background, 1.2)
+        buttonLight: Qt.darker(button, 1.1)
         buttonText: text
         buttonHighlighted: "Gray"
 

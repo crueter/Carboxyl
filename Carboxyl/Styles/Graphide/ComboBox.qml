@@ -9,7 +9,7 @@ ComboBox {
 
     palette {
         text: control.enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
-        accent: Palettes.accent.accent
+        accent: Palettes.accent.main
     }
 
     // FluentWinUI3's indicator and background don't use palettes for some reason
@@ -52,7 +52,7 @@ ComboBox {
         color: Palettes.theme.button
 
         border {
-            color: control.hovered ? Palettes.accent.subAccent : Palettes.theme.buttonText
+            color: control.hovered ? Palettes.accent.aux : Palettes.theme.buttonText
             width: 1 + control.hovered
 
             Behavior on color {

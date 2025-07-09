@@ -6,4 +6,5 @@ qt_add_qml_module(CarboxylHelios
         Button.qml
         TextField.qml
         ComboBox.qml
+        CheckBox.qml
 )

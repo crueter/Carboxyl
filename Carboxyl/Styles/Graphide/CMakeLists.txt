@@ -6,4 +6,5 @@ qt_add_qml_module(CarboxylGraphide
         Button.qml
         TextField.qml
         ComboBox.qml
+        CheckBox.qml
 )

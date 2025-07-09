@@ -3,11 +3,11 @@ import QtQuick.Controls.Universal
 
 import Carboxyl.Base
 
-ComboBox {
+CheckBox {
     id: control
 
     Universal.foreground: Palettes.theme.buttonText
-    Universal.background: Palettes.theme.buttonLight
+    Universal.background: Palettes.theme.button
     Universal.accent: Palettes.accent.main
     Universal.theme: Palettes.theme === Palettes.light ? Universal.Light : Universal.Dark
 }

@@ -50,14 +50,14 @@ ApplicationWindow {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
 
-                color: Palettes.accent.accent
+                color: Palettes.accent.main
             }
 
             Rectangle {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
 
-                color: Palettes.accent.subAccent
+                color: Palettes.accent.aux
             }
         }
     }
@@ -73,8 +73,6 @@ ApplicationWindow {
 
         ColumnLayout {
             anchors.fill: parent
-            uniformCellSizes: true
-
             height: 400
 
             ComboBox {
@@ -96,7 +94,8 @@ ApplicationWindow {
 
             Rectangle {
                 Layout.fillWidth: true
-                Layout.fillHeight: true
+
+                Layout.preferredHeight: 40
                 color: Palettes.theme.subBackground
 
                 Text {
@@ -107,7 +106,8 @@ ApplicationWindow {
 
             Rectangle {
                 Layout.fillWidth: true
-                Layout.fillHeight: true
+
+                Layout.preferredHeight: 40
                 color: Palettes.theme.dialog
 
                 Text {
@@ -117,7 +117,11 @@ ApplicationWindow {
             }
 
             RowLayout {
+                Layout.preferredHeight: 30
+
                 CheckBox {
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
                     checked: true
                     onCheckedChanged: btn.enabled = checked
                 }

@@ -3,7 +3,7 @@ import QtQuick.Controls.Material
 
 import Carboxyl.Base
 
-Button {
+CheckBox {
     id: control
 
     Material.foreground: Palettes.theme.buttonText

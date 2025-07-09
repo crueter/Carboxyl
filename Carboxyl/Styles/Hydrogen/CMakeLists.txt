@@ -6,5 +6,5 @@ qt_add_qml_module(CarboxylHydrogen
         Button.qml
         TextField.qml
         ComboBox.qml
-
+        CheckBox.qml
 )

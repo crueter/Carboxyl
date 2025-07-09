@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
     std::string style;
 
     if (!cstyle) {
-        style = std::string{"Graphide"};
+        style = std::string{"Trioxide"};
     } else {
         style = std::string{cstyle};
     }
