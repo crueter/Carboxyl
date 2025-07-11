@@ -1,3 +1,4 @@
+#include <QDirIterator>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
@@ -17,7 +18,7 @@ int main(int argc, char *argv[])
     std::string style;
 
     if (!cstyle) {
-        style = std::string{"Trioxide"};
+        style = std::string{"Helios"};
     } else {
         style = std::string{cstyle};
     }
@@ -29,6 +30,13 @@ int main(int argc, char *argv[])
         &app,
         []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
+
+    QDirIterator it(":", QDirIterator::Subdirectories);
+    while (it.hasNext()) {
+        auto n = it.next();
+        if (!n.contains("breeze"))
+        qDebug() << n;
+    }
 
     engine.loadFromModule("Carboxyl", "Main");
 

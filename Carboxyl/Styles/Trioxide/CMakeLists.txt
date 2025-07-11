@@ -1,3 +1,5 @@
+set(CMAKE_AUTORCC ON)
+
 qt_add_library(CarboxylTrioxide STATIC)
 qt_add_qml_module(CarboxylTrioxide
     URI Carboxyl.Styles.Trioxide
@@ -7,4 +9,7 @@ qt_add_qml_module(CarboxylTrioxide
         TextField.qml
         ComboBox.qml
         CheckBox.qml
+
+    RESOURCES
+        images/check.svg
 )
