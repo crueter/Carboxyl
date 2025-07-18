@@ -5,13 +5,11 @@ import QtQuick.Layouts
 
 import Carboxyl.Base
 
-import Carboxyl.Styles.Helios as H
-
 ApplicationWindow {
     width: 640
     height: 480
     visible: true
-    title: qsTr("Hello World")
+    title: qsTr("Qt if it was good")
 
     background: Rectangle {
         color: Palettes.theme.background
@@ -21,14 +19,20 @@ ApplicationWindow {
         uniformCellSizes: true
 
         anchors {
-            verticalCenter: parent.verticalCenter
+            top: parent.top
             left: parent.left
             right: parent.horizontalCenter
 
             margins: 10
         }
 
-        height: 120
+        height: 160
+
+        Text {
+            text: CarboxylApplication.styleName
+            color: Palettes.theme.text
+            font.pixelSize: 20
+        }
 
         ComboBox {
             id: palette
@@ -36,9 +40,8 @@ ApplicationWindow {
             model: Palettes.accents
             textRole: "name"
 
-            Component.onCompleted: console.log(Palettes.accents)
-
             Layout.fillWidth: true
+            enabled: swt.checked
 
             onCurrentIndexChanged: Palettes.accent = Palettes.accents[palette.currentIndex]
         }
@@ -60,11 +63,28 @@ ApplicationWindow {
                 color: Palettes.accent.aux
             }
         }
+
+        Switch {
+            id: swt
+            checked: true
+            text: "Switch"
+        }
+
+        RadioButton {
+            checked: true
+            enabled: swt.checked
+            text: "Option 1"
+        }
+
+        RadioButton {
+            enabled: swt.checked
+            text: "Option 2"
+        }
     }
 
     Rectangle {
         anchors {
-            verticalCenter: parent.verticalCenter
+            top: parent.top
             right: parent.right
             left: parent.horizontalCenter
 
@@ -80,6 +100,7 @@ ApplicationWindow {
 
                 model: Palettes.themes
                 textRole: "name"
+                enabled: swt.checked
 
                 Component.onCompleted: currentIndex = Palettes.themes.indexOf(
                                            Palettes.theme)
@@ -90,6 +111,8 @@ ApplicationWindow {
             TextField {
                 Layout.fillWidth: true
                 height: 40
+                enabled: swt.checked
+                placeholderText: "Placeholder"
             }
 
             Rectangle {
@@ -120,10 +143,9 @@ ApplicationWindow {
                 Layout.preferredHeight: 30
 
                 CheckBox {
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
                     checked: true
                     onCheckedChanged: btn.enabled = checked
+                    text: "Enabled"
                 }
 
                 Button {

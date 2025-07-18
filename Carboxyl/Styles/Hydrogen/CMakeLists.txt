@@ -7,4 +7,6 @@ qt_add_qml_module(CarboxylHydrogen
         TextField.qml
         ComboBox.qml
         CheckBox.qml
+        Switch.qml
+        RadioButton.qml
 )

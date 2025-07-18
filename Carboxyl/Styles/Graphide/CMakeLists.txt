@@ -3,8 +3,10 @@ qt_add_qml_module(CarboxylGraphide
     URI Carboxyl.Styles.Graphide
     VERSION 0.1
     QML_FILES
+        Switch.qml
         Button.qml
         TextField.qml
         ComboBox.qml
         CheckBox.qml
+        RadioButton.qml
 )

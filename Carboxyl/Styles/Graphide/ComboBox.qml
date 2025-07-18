@@ -32,7 +32,6 @@ ComboBox {
             target: control.palette
 
             function onTextChanged() {
-                console.log("RIP")
                 canvas.requestPaint()
             }
         }
