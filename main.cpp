@@ -3,6 +3,8 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QQuickStyle>
+#include <QSettings>
+#include "settingsmanager.h"
 
 #include <Carboxyl/Base/native/CarboxylApplication.h>
 
@@ -11,20 +13,21 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
 
+    app.setApplicationName("Demo");
+    app.setOrganizationName("Carboxyl");
+
     CarboxylApplication *carboxyl = new CarboxylApplication(&engine, &app);
     engine.rootContext()->setContextProperty("CarboxylApplication", carboxyl);
 
-    char *cstyle = getenv("QT_QUICK_CONTROLS_STYLE");
-    std::string style;
+    SettingsManager *manager = new SettingsManager(&app);
+    engine.rootContext()->setContextProperty("Settings", manager);
 
-    if (!cstyle) {
-        style = std::string{"Trioxide"};
-    } else {
-        style = std::string{cstyle};
-    }
-    QQuickStyle::setStyle(QString("Carboxyl.Styles.%1").arg(QString::fromStdString(style)));
+    QString style = manager->get("style", "Trioxide").toString();
+    if (style == "")
+        style = "Trioxide";
+    QQuickStyle::setStyle(QString("Carboxyl.Styles.%1").arg(style));
 
-    carboxyl->setStyleName(QString::fromStdString(style));
+    carboxyl->setStyleName(style);
 
     QObject::connect(
         &engine,

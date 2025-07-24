@@ -51,8 +51,9 @@ ComboBox {
         color: Palettes.theme.button
 
         border {
-            color: control.hovered ? Palettes.accent.aux : Palettes.theme.buttonText
-            width: 1 + control.hovered
+            color: control.hovered
+                   && control.enabled ? Palettes.accent.aux : Palettes.theme.buttonText
+            width: 1 + (control.enabled && control.hovered)
 
             Behavior on color {
                 ColorAnimation {

@@ -5,6 +5,7 @@ project(carboxyl VERSION 0.1 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Quick QuickControls2 Gui)
+find_package(Qt6 REQUIRED COMPONENTS Core)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -24,6 +25,7 @@ qt_add_qml_module(Carboxyl
     VERSION 1.0
     QML_FILES
         Main.qml
+        SOURCES settingsmanager.h settingsmanager.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
@@ -45,6 +47,7 @@ target_link_libraries(Carboxyl
     CarboxylBaseplugin
     CarboxylStylesplugin
 )
+target_link_libraries(Carboxyl PRIVATE Qt6::Core)
 
 include(GNUInstallDirs)
 install(TARGETS Carboxyl

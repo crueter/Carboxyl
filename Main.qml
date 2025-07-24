@@ -16,8 +16,6 @@ ApplicationWindow {
     }
 
     ColumnLayout {
-        uniformCellSizes: true
-
         anchors {
             top: parent.top
             left: parent.left
@@ -32,6 +30,21 @@ ApplicationWindow {
             text: CarboxylApplication.styleName
             color: Palettes.theme.text
             font.pixelSize: 20
+        }
+
+        ComboBox {
+            id: style
+
+            model: ["Trioxide", "Graphide", "Helios", "Hydrogen"]
+
+            Layout.fillWidth: true
+            enabled: swt.checked
+
+            Component.onCompleted: {
+                currentIndex = model.indexOf(CarboxylApplication.styleName)
+            }
+
+            onCurrentIndexChanged: Settings.set("style", model[currentIndex])
         }
 
         ComboBox {
@@ -80,6 +93,16 @@ ApplicationWindow {
             enabled: swt.checked
             text: "Option 2"
         }
+
+        RoundButton {
+            text: "hi"
+            enabled: swt.checked
+        }
+
+        ToolButton {
+            text: "ToolButton"
+            enabled: swt.checked
+        }
     }
 
     Rectangle {
@@ -102,10 +125,12 @@ ApplicationWindow {
                 textRole: "name"
                 enabled: swt.checked
 
-                Component.onCompleted: currentIndex = Palettes.themes.indexOf(
-                                           Palettes.theme)
-
-                onCurrentIndexChanged: Palettes.theme = Palettes.themes[theme.currentIndex]
+                // TODO settings for accent and theme
+                Component.onCompleted: {
+                    currentIndex = Palettes.themes.indexOf(Palettes.theme)
+                    currentIndexChanged.connect(
+                                () => Palettes.theme = Palettes.themes[theme.currentIndex])
+                }
             }
 
             TextField {
@@ -152,6 +177,23 @@ ApplicationWindow {
                     id: btn
                     text: "Button"
                 }
+            }
+
+            Dial {
+                enabled: swt.checked
+            }
+
+            Slider {
+                enabled: swt.checked
+            }
+
+            RangeSlider {
+                enabled: swt.checked
+
+                from: 0
+                to: 100
+                first.value: 25
+                second.value: 75
             }
         }
     }
