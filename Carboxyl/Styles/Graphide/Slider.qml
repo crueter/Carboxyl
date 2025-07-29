@@ -14,7 +14,7 @@ Slider {
 
     verticalPadding: 5
 
-    // TODO: use fluent handle
+    // TODO: make it grow when highlighted/pressed
     background: Item {
         x: control.leftPadding + (control.horizontal ? 0 : (control.availableWidth - width) / 2)
         y: control.topPadding + (control.horizontal ? (control.availableHeight - height) / 2 : 0)

@@ -5,10 +5,10 @@ qt_add_qml_module(CarboxylTrioxide
     QML_FILES
     Button.qml
     RoundButton.qml
-Slider.qml
-RangeSlider.qml
-Dial.qml
-ToolButton.qml
+    Slider.qml
+    RangeSlider.qml
+    Dial.qml
+    ToolButton.qml
     TextField.qml
     ComboBox.qml
     CheckBox.qml

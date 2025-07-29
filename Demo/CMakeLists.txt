@@ -15,7 +15,7 @@ qt_add_executable(Carboxyl
 
 set_target_properties(Carboxyl
     PROPERTIES
-    OUTPUT_NAME carboxyl)
+    OUTPUT_NAME carboxyl_demo)
 
 add_subdirectory(Carboxyl)
 

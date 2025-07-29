@@ -18,12 +18,6 @@ TextField {
         border {
             width: 2
             color: !control.enabled ? control.Universal.baseLowColor : control.activeFocus ? Palettes.accent.main : control.hovered ? control.Universal.baseMediumColor : control.Universal.chromeDisabledLowColor
-
-            Behavior on color {
-                ColorAnimation {
-                    duration: 150
-                }
-            }
         }
 
         color: control.enabled ? Palettes.theme.button : control.Universal.baseLowColor
