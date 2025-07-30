@@ -16,8 +16,11 @@ qt_add_qml_module(CarboxylBase
         Accent.qml
         BasePalette.qml
         Palettes.qml
-        LabeledTextField.qml
+
         SOURCES native/CarboxylApplication.h native/CarboxylApplication.cpp
+        QML_FILES
+        QML_FILES
+        QML_FILES TabButtonContent.qml
 )
 
 target_include_directories(CarboxylBase PRIVATE "native")

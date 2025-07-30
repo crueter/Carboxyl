@@ -7,7 +7,7 @@ import Carboxyl.Base
 
 ApplicationWindow {
     width: 640
-    height: 480
+    height: 640
     visible: true
     title: qsTr("Qt if it was good")
 
@@ -114,6 +114,8 @@ ApplicationWindow {
             margins: 10
         }
 
+        id: left
+
         ColumnLayout {
             anchors.fill: parent
             height: 400
@@ -195,6 +197,100 @@ ApplicationWindow {
                 first.value: 25
                 second.value: 75
             }
+        }
+    }
+
+    TabBar {
+        id: vertTab
+        vertical: true
+
+        anchors {
+            left: parent.left
+            bottom: parent.bottom
+            leftMargin: 5
+        }
+
+        position: TabBar.Footer
+
+        contentHeight: 60
+        contentWidth: 100
+
+        height: contentHeight * count + 20
+        width: 100
+
+        TabButton {
+            text: "V - Errors"
+            icon.height: 20
+            icon.width: 20
+            icon.source: "qrc:/Demo/icons/crit.svg"
+            inlineIcon: false
+        }
+        TabButton {
+            text: "V - Settings"
+            icon.source: "qrc:/Demo/icons/Miscellaneous.svg"
+            icon.height: 20
+            icon.width: 20
+            coloredIcon: true
+            inlineIcon: false
+        }
+        TabButton {
+            text: "V - Verification"
+            icon.source: "qrc:/Demo/icons/valid.svg"
+            icon.height: 20
+            icon.width: 20
+            coloredIcon: true
+            inlineIcon: false
+        }
+        TabButton {
+            text: "V - Information"
+            icon.height: 20
+            icon.width: 20
+            icon.source: "qrc:/Demo/icons/info.svg"
+            inlineIcon: false
+        }
+    }
+
+    TabBar {
+        id: tab
+        anchors {
+            left: vertTab.right
+            right: parent.right
+            bottom: parent.bottom
+
+            leftMargin: 15
+        }
+
+        position: TabBar.Footer
+
+        TabButton {
+            text: "Errors"
+            icon.source: "qrc:/Demo/icons/crit.svg"
+            icon.height: 20
+            icon.width: 20
+            inlineIcon: true
+        }
+        TabButton {
+            text: "Settings"
+            icon.source: "qrc:/Demo/icons/Miscellaneous.svg"
+            icon.height: 20
+            icon.width: 20
+            coloredIcon: true
+            inlineIcon: true
+        }
+        TabButton {
+            text: "Verification"
+            icon.source: "qrc:/Demo/icons/valid.svg"
+            icon.height: 20
+            icon.width: 20
+            coloredIcon: true
+            inlineIcon: true
+        }
+        TabButton {
+            text: "Information"
+            icon.source: "qrc:/Demo/icons/info.svg"
+            icon.height: 20
+            icon.width: 20
+            inlineIcon: true
         }
     }
 }

@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.16)
 
 project(carboxyl VERSION 0.1 LANGUAGES CXX)
 
+set(CMAKE_AUTORCC ON)
+
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Quick QuickControls2 Gui)
@@ -11,13 +13,15 @@ qt_standard_project_setup(REQUIRES 6.8)
 
 qt_add_executable(Carboxyl
     main.cpp
+    icons.qrc
 )
 
 set_target_properties(Carboxyl
     PROPERTIES
     OUTPUT_NAME carboxyl_demo)
 
-add_subdirectory(Carboxyl)
+add_subdirectory(../Carboxyl ${CMAKE_BINARY_DIR}/Carboxyl)
+target_include_directories(Carboxyl PRIVATE ..)
 
 qt_add_qml_module(Carboxyl
     URI Carboxyl

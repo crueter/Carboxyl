@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/Demo">
+        <file>icons/Window.svg</file>
+        <file>icons/warn.svg</file>
+        <file>icons/valid.svg</file>
+        <file>icons/Unmaximize.svg</file>
+        <file>icons/Network.svg</file>
+        <file>icons/Miscellaneous.svg</file>
+        <file>icons/Minimize.svg</file>
+        <file>icons/invalid.svg</file>
+        <file>icons/info.svg</file>
+        <file>icons/forward.svg</file>
+        <file>icons/crit.svg</file>
+        <file>icons/Color.svg</file>
+        <file>icons/Close.svg</file>
+        <file>icons/back.svg</file>
+    </qresource>
+</RCC>

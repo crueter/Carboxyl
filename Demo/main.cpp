@@ -36,6 +36,11 @@ int main(int argc, char *argv[])
         []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
 
+    // QDirIterator iter(":/Demo/icons");
+    // while (iter.hasNext()) {
+    //     qDebug() << iter.next();
+    // }
+
     engine.loadFromModule("Carboxyl", "Main");
 
     return app.exec();
