@@ -5,8 +5,6 @@ import Carboxyl.Base
 
 TabButton {
     id: control
-    property bool coloredIcon: false
-    property bool inlineIcon: true
 
     palette {
         buttonText: control.enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText

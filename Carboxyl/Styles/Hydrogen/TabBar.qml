@@ -11,8 +11,6 @@ TabBar {
     Universal.accent: Palettes.accent.main
     Universal.theme: Palettes.theme === Palettes.light ? Universal.Light : Universal.Dark
 
-    property bool vertical: false
-
     contentItem: ListView {
         model: control.contentModel
         currentIndex: control.currentIndex

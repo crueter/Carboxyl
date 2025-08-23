@@ -14,8 +14,6 @@ TabBar {
 
     verticalPadding: 5
 
-    property bool vertical: false
-
     contentItem: ListView {
         id: list
 

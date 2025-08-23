@@ -8,9 +8,6 @@ import Carboxyl.Base
 TabButton {
     id: control
 
-    property bool coloredIcon: false
-    property bool inlineIcon: true
-
     Universal.foreground: enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
     Universal.background: Palettes.theme.buttonLight
     Universal.accent: Palettes.accent.main

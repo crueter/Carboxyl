@@ -13,8 +13,6 @@ TabBar {
 
     id: control
 
-    property bool vertical: false
-
     contentItem: ListView {
         id: list
         model: control.contentModel

@@ -6,7 +6,7 @@
 #include <QSettings>
 #include "settingsmanager.h"
 
-#include <Carboxyl/Base/native/CarboxylApplication.h>
+#include <CarboxylApplication.h>
 
 int main(int argc, char *argv[])
 {
@@ -23,9 +23,12 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("Settings", manager);
 
     QString style = manager->get("style", "Trioxide").toString();
-    if (style == "")
-        style = "Trioxide";
-    QQuickStyle::setStyle(QString("Carboxyl.Styles.%1").arg(style));
+    // QString style = "native";
+    if (style != "native") {
+        if (style == "")
+            style = "Trioxide";
+        QQuickStyle::setStyle(QString("Carboxyl.Styles.%1").arg(style));
+    }
 
     carboxyl->setStyleName(style);
 
@@ -36,12 +39,14 @@ int main(int argc, char *argv[])
         []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
 
-    // QDirIterator iter(":/Demo/icons");
+    // QDirIterator iter(":/qt/qml");
     // while (iter.hasNext()) {
     //     qDebug() << iter.next();
     // }
 
-    engine.loadFromModule("Carboxyl", "Main");
+    qDebug() << engine.importPathList();
+
+    engine.loadFromModule("Demo", "Main");
 
     return app.exec();
 }

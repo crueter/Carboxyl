@@ -12,8 +12,6 @@ TabButton {
     }
 
     id: control
-    property bool coloredIcon: false
-    property bool inlineIcon: true
 
     background: Rectangle {
         implicitHeight: 40

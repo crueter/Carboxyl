@@ -13,8 +13,6 @@ TabBar {
         accent: Palettes.accent.main
     }
 
-    property bool vertical: false
-
     contentItem: ListView {
         id: list
         model: control.contentModel

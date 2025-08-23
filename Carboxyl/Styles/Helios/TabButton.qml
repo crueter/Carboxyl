@@ -6,9 +6,6 @@ import Carboxyl.Base
 TabButton {
     id: control
 
-    property bool coloredIcon: false
-    property bool inlineIcon: true
-
     Material.foreground: Palettes.theme.buttonText
     Material.background: Palettes.theme.buttonLight
     Material.accent: Palettes.accent.main
