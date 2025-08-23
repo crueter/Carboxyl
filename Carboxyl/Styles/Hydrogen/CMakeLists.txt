@@ -24,5 +24,7 @@ qt_add_qml_module(CarboxylHydrogen
     RadioButton.qml
 )
 
+target_link_libraries(CarboxylHydrogen  PUBLIC Carboxyl::Base)
+
 add_library(Carboxyl::Hydrogen ALIAS CarboxylHydrogen)
 set_target_properties(CarboxylHydrogen PROPERTIES EXPORT_NAME "Hydrogen")

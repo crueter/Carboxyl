@@ -24,5 +24,7 @@ qt_add_qml_module(CarboxylHelios
     RadioButton.qml
 )
 
+target_link_libraries(CarboxylHelios PUBLIC Carboxyl::Base)
+
 add_library(Carboxyl::Helios ALIAS CarboxylHelios)
 set_target_properties(CarboxylHelios PROPERTIES EXPORT_NAME "Helios")

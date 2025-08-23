@@ -24,5 +24,7 @@ qt_add_qml_module(CarboxylGraphide
     RadioButton.qml
 )
 
+target_link_libraries(CarboxylGraphide PUBLIC Carboxyl::Base)
+
 add_library(Carboxyl::Graphide ALIAS CarboxylGraphide)
 set_target_properties(CarboxylGraphide PROPERTIES EXPORT_NAME "Graphide")
