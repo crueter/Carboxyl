@@ -25,3 +25,4 @@ qt_add_qml_module(CarboxylGraphide
 )
 
 add_library(Carboxyl::Graphide ALIAS CarboxylGraphide)
+set_target_properties(CarboxylGraphide PROPERTIES EXPORT_NAME "Graphide")

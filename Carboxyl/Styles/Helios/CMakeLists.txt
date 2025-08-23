@@ -25,3 +25,4 @@ qt_add_qml_module(CarboxylHelios
 )
 
 add_library(Carboxyl::Helios ALIAS CarboxylHelios)
+set_target_properties(CarboxylHelios PROPERTIES EXPORT_NAME "Helios")

@@ -28,3 +28,4 @@ qt_add_qml_module(CarboxylTrioxide
 )
 
 add_library(Carboxyl::Trioxide ALIAS CarboxylTrioxide)
+set_target_properties(CarboxylTrioxide PROPERTIES EXPORT_NAME "Trioxide")

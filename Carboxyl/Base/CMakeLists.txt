@@ -13,7 +13,7 @@ endif()
 
 add_library(CarboxylBase ${LIB_TYPE})
 
-target_sources(CarboxylBase PUBLIC
+target_sources(CarboxylBase PRIVATE
     native/CarboxylApplication.cpp
 )
 
@@ -21,6 +21,7 @@ set_target_properties(CarboxylBase PROPERTIES
     PUBLIC_HEADER
         ${CMAKE_CURRENT_SOURCE_DIR}/native/CarboxylApplication.h
 )
+set_target_properties(CarboxylBase PROPERTIES EXPORT_NAME "Base")
 
 target_link_libraries(CarboxylBase PRIVATE Qt6::Gui Qt6::QuickControls2)
 
@@ -40,8 +41,5 @@ qt_add_qml_module(CarboxylBase
         QML_FILES CarboxylTabButton.qml
         QML_FILES CarboxylTabBar.qml
 )
-
-# TODO
-target_include_directories(CarboxylBase PUBLIC "native")
 
 add_library(Carboxyl::Base ALIAS CarboxylBase)

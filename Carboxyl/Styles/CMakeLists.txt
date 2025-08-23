@@ -25,5 +25,6 @@ target_link_libraries(CarboxylStyles PRIVATE
     Carboxyl::Hydrogen
     Carboxyl::Graphide
 )
+set_target_properties(CarboxylStyles PROPERTIES EXPORT_NAME "Styles")
 
 add_library(Carboxyl::Styles ALIAS CarboxylStyles)
