@@ -6,10 +6,21 @@ set_source_files_properties(Palettes.qml
 find_package(Qt6 REQUIRED COMPONENTS Gui QuickControls2)
 
 if (BUILD_SHARED_LIBS)
-    add_library(CarboxylBase SHARED)
+    set(LIB_TYPE SHARED)
 else()
-    add_library(CarboxylBase STATIC)
+    set(LIB_TYPE STATIC)
 endif()
+
+add_library(CarboxylBase ${LIB_TYPE})
+
+target_sources(CarboxylBase PUBLIC
+    native/CarboxylApplication.cpp
+)
+
+set_target_properties(CarboxylBase PROPERTIES
+    PUBLIC_HEADER
+        ${CMAKE_CURRENT_SOURCE_DIR}/native/CarboxylApplication.h
+)
 
 target_link_libraries(CarboxylBase PRIVATE Qt6::Gui Qt6::QuickControls2)
 
@@ -26,7 +37,6 @@ qt_add_qml_module(CarboxylBase
         Dialog.qml
         DialogButtonBox.qml
 
-        SOURCES native/CarboxylApplication.h native/CarboxylApplication.cpp
         QML_FILES CarboxylTabButton.qml
         QML_FILES CarboxylTabBar.qml
 )
