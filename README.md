@@ -51,9 +51,20 @@ Cysteine is a unique style created by crueter, based off of the Helios style. It
 Tropic is a style based off of Apple's Aqua Design guidelines. It is designed to create a colorful, rounded, and translucent look & feel.
 
 TODO:
-- Container types
-- finish inputs
-- indicators
-- menus
-- popups
-- dialogs
+- {Scroll,Split,Stack,Swipe}View
+- GroupBox?
+- ApplicationWindow
+- Frame
+- Page
+- HeaderViews
+- ToolBar
+- Delegate types
+- Indicator types
+- TextArea
+- Tumbler
+- Menus
+- Drawer
+- Popups
+- Dialogs (real)
+- ToolTip
+- Separators

@@ -1,6 +1,5 @@
 // SPDX-FileCopyrightText: Copyright 2025 crueter
 // SPDX-License-Identifier: GPL-3.0-or-later
-
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Shapes
@@ -214,6 +213,16 @@ ApplicationWindow {
                 to: 100
                 first.value: 25
                 second.value: 75
+            }
+
+            SpinBox {
+                enabled: swt.checked
+
+                from: -100
+                to: 100000000
+
+                Layout.preferredWidth: 300
+                editable: true
             }
         }
     }

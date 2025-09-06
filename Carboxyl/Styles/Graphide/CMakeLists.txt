@@ -9,6 +9,7 @@ CarboxylModule(
         Switch.qml
         Button.qml
         RoundButton.qml
+        SpinBox.qml
         TabBar.qml
         TabButton.qml
         Slider.qml

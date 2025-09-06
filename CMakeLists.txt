@@ -26,6 +26,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(Qt6 REQUIRED COMPONENTS Quick QuickControls2 Gui)
 find_package(Qt6 REQUIRED COMPONENTS Core)
 
+# TODO(crueter): This can technically run on <6.8 w/o graphide--or, maybe, just delete FluentWinUI3 out of existence and make my own. :)
 qt_standard_project_setup(REQUIRES 6.8)
 
 option(CARBOXYL_DEMO "Build the Carboxyl demo" ${subproject})

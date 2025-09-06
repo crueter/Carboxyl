@@ -1,6 +1,5 @@
 // SPDX-FileCopyrightText: Copyright 2025 crueter
 // SPDX-License-Identifier: GPL-3.0-or-later
-
 import QtQuick
 import QtQuick.Controls.Fusion
 import QtQuick.Templates as T
@@ -40,7 +39,7 @@ TabBar {
             Item {
                 z: 2
                 Rectangle {
-                    height: 2
+                    height: 3
                     width: parent.width / 2
 
                     anchors {
@@ -61,7 +60,7 @@ TabBar {
                 z: 2
                 Rectangle {
                     height: parent.height / 2
-                    width: 2
+                    width: 3
                     color: control.palette.accent
 
                     anchors {

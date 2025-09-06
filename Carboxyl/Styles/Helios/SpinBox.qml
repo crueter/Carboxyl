@@ -6,7 +6,7 @@ import QtQuick.Controls.Material.impl
 
 import Carboxyl.Base
 
-TextField {
+SpinBox {
     id: control
 
     Material.foreground: Palettes.theme.buttonText
@@ -14,5 +14,9 @@ TextField {
     Material.accent: Palettes.accent.main
     Material.theme: Palettes.theme === Palettes.light ? Material.Light : Material.Dark
 
+    verticalPadding: 5
+
+    down.indicator.implicitHeight: 40
+    up.indicator.implicitHeight: 40
     background.implicitHeight: 40
 }

@@ -1,6 +1,5 @@
 // SPDX-FileCopyrightText: Copyright 2025 crueter
 // SPDX-License-Identifier: GPL-3.0-or-later
-
 import QtQuick
 import QtQuick.Controls.Material
 import QtQuick.Controls.Material.impl
@@ -20,6 +19,8 @@ ComboBox {
     spacing: 0
     topInset: 0
 
+    background.implicitHeight: 40
+
     contentItem: H.TextField {
         text: control.editable ? control.editText : control.displayText
 
@@ -37,17 +38,5 @@ ComboBox {
 
         cursorDelegate: CursorDelegate {}
         background: Item {}
-    }
-
-    background: MaterialTextContainer {
-        implicitWidth: 60
-        implicitHeight: 40
-
-        outlineColor: (enabled
-                       && control.hovered) ? control.Material.primaryTextColor : control.Material.hintTextColor
-        focusedOutlineColor: control.Material.accentColor
-        controlHasActiveFocus: control.activeFocus
-        controlHasText: true
-        horizontalPadding: control.Material.textFieldHorizontalPadding
     }
 }
