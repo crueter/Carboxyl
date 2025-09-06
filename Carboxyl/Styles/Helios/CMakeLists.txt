@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Copyright 2025 crueter
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 if (BUILD_SHARED_LIBS)
     add_library(CarboxylHelios SHARED)
 else()

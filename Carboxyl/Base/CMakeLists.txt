@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Copyright 2025 crueter
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 set_source_files_properties(Palettes.qml
     PROPERTIES
     QT_QML_SINGLETON_TYPE true

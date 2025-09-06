@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Copyright 2025 crueter
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 add_subdirectory(Helios)
 add_subdirectory(Trioxide)
 add_subdirectory(Hydrogen)

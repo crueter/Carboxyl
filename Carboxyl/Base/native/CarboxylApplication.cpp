@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: Copyright 2025 crueter
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 #include "CarboxylApplication.h"
 #include <QGuiApplication>
 #include <QStyleHints>
