@@ -13,7 +13,8 @@ if (CARBOXYL_INSTALL)
 
     # Install targets
     foreach(LIB Helios Graphide Hydrogen Trioxide Base Styles)
-        install(TARGETS Carboxyl${LIB}
+        get_property(TARGETS TARGET Carboxyl${LIB} PROPERTY RESOURCE_TARGETS)
+        install(TARGETS Carboxyl${LIB} ${TARGETS}
             EXPORT ${LIB}Targets
             BUNDLE DESTINATION .
             LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
@@ -31,7 +32,7 @@ if (CARBOXYL_INSTALL)
     # you don't need to install the qml files because qrc is AWESOME
     include(CMakePackageConfigHelpers)
     configure_package_config_file(
-        "${CMAKE_SOURCE_DIR}/cmake/CarboxylConfig.cmake.in"
+        "${CMAKE_SOURCE_DIR}/CMakeModules/CarboxylConfig.cmake.in"
         "${CMAKE_BINARY_DIR}/CarboxylConfig.cmake"
         INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Carboxyl
     )

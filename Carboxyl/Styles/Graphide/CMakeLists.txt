@@ -1,33 +1,22 @@
 # SPDX-FileCopyrightText: Copyright 2025 crueter
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-if (BUILD_SHARED_LIBS)
-    add_library(CarboxylGraphide SHARED)
-else()
-    add_library(CarboxylGraphide STATIC)
-endif()
-
-qt_add_qml_module(CarboxylGraphide
+CarboxylModule(
+    NAME Graphide
     URI Carboxyl.Styles.Graphide
-    NO_PLUGIN
-    VERSION 0.1
+
     QML_FILES
-    Switch.qml
-    Button.qml
-    RoundButton.qml
-    TabBar.qml
-    TabButton.qml
-    Slider.qml
-    RangeSlider.qml
-    Dial.qml
-    ToolButton.qml
-    TextField.qml
-    ComboBox.qml
-    CheckBox.qml
-    RadioButton.qml
+        Switch.qml
+        Button.qml
+        RoundButton.qml
+        TabBar.qml
+        TabButton.qml
+        Slider.qml
+        RangeSlider.qml
+        Dial.qml
+        ToolButton.qml
+        TextField.qml
+        ComboBox.qml
+        CheckBox.qml
+        RadioButton.qml
 )
-
-target_link_libraries(CarboxylGraphide PUBLIC Carboxyl::Base)
-
-add_library(Carboxyl::Graphide ALIAS CarboxylGraphide)
-set_target_properties(CarboxylGraphide PROPERTIES EXPORT_NAME "Graphide")

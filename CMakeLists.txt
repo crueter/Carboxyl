@@ -3,6 +3,8 @@
 
 cmake_minimum_required(VERSION 3.16)
 
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules")
+
 if(DEFINED PROJECT_NAME)
     set(subproject ON)
     set(CARBOXYL_INSTALL_DEFAULT OFF)
@@ -12,7 +14,9 @@ else()
     set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 endif()
 
-project(carboxyl VERSION 0.1 LANGUAGES CXX)
+set(CARBOXYL_QML_VERSION "0.1" CACHE STRING "Exported QML version for Carboxyl to reference")
+
+project(carboxyl VERSION ${CARBOXYL_QML_VERSION} LANGUAGES CXX)
 
 set(CMAKE_AUTORCC ON)
 
@@ -26,6 +30,7 @@ qt_standard_project_setup(REQUIRES 6.8)
 
 option(CARBOXYL_DEMO "Build the Carboxyl demo" ${subproject})
 option(CARBOXYL_INSTALL "Install Carboxyl QML and libraries" ${CARBOXYL_INSTALL_DEFAULT})
-set(CARBOXYL_QML_SUFFIX "qt6/qml" CACHE STRING "Where to install the QML files (subdirectory of the default libdir)")
+
+include(CarboxylModule)
 
 add_subdirectory(Carboxyl)
