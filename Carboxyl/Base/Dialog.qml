@@ -1,6 +1,5 @@
 // SPDX-FileCopyrightText: Copyright 2025 crueter
 // SPDX-License-Identifier: GPL-3.0-or-later
-
 import QtQuick
 
 // all the other dialogs are broken
@@ -23,7 +22,6 @@ F.Dialog {
         border.color: palette.button
         border.width: 1
     }
-    Component.onCompleted: console.log("HI")
 
     // TODO(crueter): buttons seem to disappear on close
     footer: DialogButtonBox {

@@ -11,10 +11,79 @@ ApplicationWindow {
     width: 640
     height: 640
     visible: true
-    title: qsTr("Qt if it was good")
+    title: qsTr("Carboxyl Demo")
 
     background: Rectangle {
         color: Palettes.theme.background
+    }
+
+    menuBar: MenuBar {
+        Menu {
+            title: qsTr("&File")
+            contentWidth: 225
+
+            Action {
+                text: qsTr("&Install files...")
+            }
+            MenuSeparator {}
+
+            Action {
+                text: qsTr("L&oad File...")
+                shortcut: "Ctrl+O"
+            }
+
+            Action {
+                text: qsTr("Load &Folder...")
+            }
+
+            MenuSeparator {}
+
+            Menu {
+                title: "&Other Operations"
+
+                Action {
+                    text: qsTr("&Save...")
+                    shortcut: "Ctrl+S"
+                }
+
+                Action {
+                    text: qsTr("Save &As...")
+                    shortcut: "Ctrl+Shift+S"
+                }
+            }
+
+            MenuSeparator {}
+
+            Action {
+                text: qsTr("Open &Application Directory")
+            }
+
+            MenuSeparator {}
+
+            Action {
+                text: qsTr("E&xit")
+                shortcut: "Ctrl+Q"
+            }
+        }
+
+        Menu {
+            title: qsTr("&View")
+            contentWidth: 260
+
+            Action {
+                text: qsTr("F&ullscreen")
+                shortcut: "F11"
+                checkable: true
+            }
+
+            MenuSeparator {}
+
+            Action {
+                text: qsTr("Show &Status Bar")
+                shortcut: "Ctrl+S"
+                checkable: true
+            }
+        }
     }
 
     ColumnLayout {
@@ -37,7 +106,7 @@ ApplicationWindow {
         ComboBox {
             id: style
 
-            model: ["Trioxide", "Graphide", "Helios", "Hydrogen"]
+            model: ["Trioxide", "Helios", "Hydrogen"]
 
             Layout.fillWidth: true
             enabled: swt.checked

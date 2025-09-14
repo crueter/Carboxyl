@@ -1,6 +1,5 @@
 // SPDX-FileCopyrightText: Copyright 2025 crueter
 // SPDX-License-Identifier: GPL-3.0-or-later
-
 pragma Singleton
 
 import QtQuick
@@ -103,7 +102,7 @@ Item {
 
         disabledText: "gray"
 
-        button: background
+        button: Qt.darker("white", 1.1)
         buttonLight: Qt.darker(button, 1.1)
         buttonText: text
         buttonHighlighted: "Gray"

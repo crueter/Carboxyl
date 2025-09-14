@@ -1,6 +1,6 @@
+
 // SPDX-FileCopyrightText: Copyright 2025 crueter
 // SPDX-License-Identifier: GPL-3.0-or-later
-
 import QtQuick
 import QtQuick.Controls.Universal
 import QtQuick.Controls.Universal.impl
@@ -39,7 +39,7 @@ CheckBox {
             y: (parent.height - height) / 2
 
             visible: indicator.control.checkState === Qt.Checked
-            color: control.enabled ? Palettes.theme.button : Palettes.theme.disabledText
+            color: control.enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
             source: "qrc:/qt-project.org/imports/QtQuick/Controls/Universal/images/checkmark.png"
         }
     }

@@ -12,7 +12,7 @@ if (CARBOXYL_INSTALL)
     include(GNUInstallDirs)
 
     # Install targets
-    foreach(LIB Helios Graphide Hydrogen Trioxide Base Styles)
+    foreach(LIB Helios Hydrogen Trioxide Base Styles)
         get_property(TARGETS TARGET Carboxyl${LIB} PROPERTY RESOURCE_TARGETS)
         install(TARGETS Carboxyl${LIB} ${TARGETS}
             EXPORT ${LIB}Targets

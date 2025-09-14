@@ -14,7 +14,7 @@ Carboxyl comes with 4 styles, with more to come soon.
 
 TODO add screenshots and elaborate?
 
-### Graphide
+### Graphide (WIP)
 
 Graphide is a style based off of Qt's FluentWinUI3 platform. It is designed to create a bubbly, rounded feel with proper accenting, *without* taking up lots of space or creating unusable touch targets.
 

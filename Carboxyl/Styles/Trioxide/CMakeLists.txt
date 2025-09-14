@@ -8,6 +8,12 @@ CarboxylModule(
     QML_FILES
         Button.qml
         RoundButton.qml
+        MenuBarItem.qml
+        MenuSeparator.qml
+        MenuItem.qml
+        Menu.qml
+        MenuBar.qml
+        CheckIndicator.qml
         SpinBox.qml
         TabBar.qml
         TabButton.qml

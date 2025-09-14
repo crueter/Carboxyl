@@ -25,7 +25,5 @@ F.DialogButtonBox {
     padding: 6
     alignment: Qt.AlignRight
 
-    Component.onCompleted: console.log("HI")
-
     delegate: Button {}
 }
