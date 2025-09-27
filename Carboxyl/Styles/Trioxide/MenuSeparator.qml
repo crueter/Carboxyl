@@ -9,7 +9,7 @@ import Carboxyl.Base
 MenuSeparator {
     palette {
         buttonText: enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
-        button: Palettes.theme.buttonLight
+        button: Palettes.theme.button
     }
 
     id: control

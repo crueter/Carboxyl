@@ -8,11 +8,6 @@ import Carboxyl.Base
 import Carboxyl.Styles.Trioxide as T
 
 MenuBar {
-    palette {
-        text: enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
-        window: Palettes.theme.buttonLight
-    }
-
     id: control
 
     delegate: T.MenuBarItem {}

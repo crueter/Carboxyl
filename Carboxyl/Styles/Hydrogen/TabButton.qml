@@ -11,13 +11,13 @@ import Carboxyl.Base
 TabButton {
     id: control
 
-    Universal.foreground: enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
-    Universal.background: Palettes.theme.buttonLight
-    Universal.accent: Palettes.accent.main
+    Universal.foreground: enabled ? palette.buttonText : Palettes.theme.disabledText
+    Universal.background: palette.button
+    Universal.accent: palette.accent
     Universal.theme: Palettes.theme === Palettes.light ? Universal.Light : Universal.Dark
 
     background: Rectangle {
-        color: Palettes.theme.buttonLight
+        color: palette.button
     }
 
     property color textColor: Color.transparent(

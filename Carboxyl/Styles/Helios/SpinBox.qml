@@ -9,9 +9,9 @@ import Carboxyl.Base
 SpinBox {
     id: control
 
-    Material.foreground: Palettes.theme.buttonText
-    Material.background: Palettes.theme.buttonLight
-    Material.accent: Palettes.accent.main
+    Material.foreground: palette.buttonText
+    Material.background: palette.button
+    Material.accent: palette.accent
     Material.theme: Palettes.theme === Palettes.light ? Material.Light : Material.Dark
 
     verticalPadding: 5

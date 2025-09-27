@@ -7,12 +7,6 @@ import QtQuick.Templates as T
 import Carboxyl.Base
 
 TabBar {
-    palette {
-        buttonText: enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
-        button: Palettes.theme.buttonLight
-        accent: Palettes.accent.main
-    }
-
     id: control
 
     contentItem: ListView {

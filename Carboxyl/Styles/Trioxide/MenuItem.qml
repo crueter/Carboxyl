@@ -3,24 +3,58 @@
 import QtQuick
 import QtQuick.Controls.Fusion
 import QtQuick.Shapes
+import QtQuick.Controls.impl
 
 import Carboxyl.Base
 import Carboxyl.Styles.Trioxide as T
 
 MenuItem {
-    palette {
-        text: enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
-        windowText: enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
-        buttonText: enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
-        button: Palettes.theme.buttonLight
-        base: Palettes.theme.button
-        window: Palettes.theme.button
-        highlight: Palettes.theme.buttonLight
-        highlightedText: Palettes.theme.buttonText
-    }
-
     id: control
-    onCheckedChanged: console.log(checked)
+
+    contentItem: Item {
+        IconLabel {
+            readonly property real arrowPadding: control.subMenu
+                                                 && control.arrow ? control.arrow.width
+                                                                    + control.spacing : 0
+            readonly property real indicatorPadding: control.checkable
+                                                     && control.indicator ? control.indicator.width + control.spacing : 0
+            leftPadding: !control.mirrored ? indicatorPadding : arrowPadding
+            rightPadding: control.mirrored ? indicatorPadding : arrowPadding
+
+            spacing: control.spacing
+            mirrored: control.mirrored
+            display: control.display
+            alignment: Qt.AlignLeft
+
+            icon: control.icon
+            text: control.text
+            font: control.font
+            color: control.down
+                   || control.highlighted ? Fusion.highlightedText(
+                                                control.palette) : control.palette.text
+            anchors {
+                left: parent.left
+                verticalCenter: parent.verticalCenter
+            }
+        }
+
+        Text {
+            anchors {
+                right: parent.right
+                rightMargin: 5
+                verticalCenter: parent.verticalCenter
+            }
+
+            Component.onCompleted: if (control.action != null
+                                           && typeof control.action.shortcut !== 'undefined')
+                                       text = control.action.shortcut
+
+            color: control.down
+                   || control.highlighted ? Fusion.highlightedText(
+                                                control.palette) : control.palette.text
+            font: control.font
+        }
+    }
 
     indicator: T.CheckIndicator {
         x: control.mirrored ? control.width - width - control.rightPadding : control.leftPadding

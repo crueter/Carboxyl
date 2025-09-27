@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: Copyright 2025 crueter
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 import QtQuick
 import QtQuick.Controls.Fusion
 import QtQuick.Controls.Fusion.impl
@@ -12,7 +15,7 @@ Rectangle {
                                               control.palette.base,
                                               control.palette.windowText, 85)
     readonly property color checkMarkColor: Qt.darker(control.palette.text, 1.2)
-    property real baseLightness: 1.6
+    property real baseLightness: 1.2
 
     property Item control
     x: control.text ? (control.mirrored ? control.width - width - control.rightPadding : control.leftPadding) : control.leftPadding
@@ -22,7 +25,7 @@ Rectangle {
     implicitHeight: 20
 
     color: control.down ? indicator.pressedColor : Qt.lighter(
-                              control.palette.base, baseLightness)
+                              control.palette.button, baseLightness)
     border.color: control.visualFocus ? Fusion.highlightedOutline(
                                             control.palette) : Qt.lighter(
                                             Fusion.outline(control.palette),
@@ -35,7 +38,7 @@ Rectangle {
         y: (parent.height - height) / 2
 
         visible: indicator.control.checked
-        color: control.enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
+        color: control.enabled ? palette.buttonText : Palettes.theme.disabledText
         source: "qrc:/qt/qml/Carboxyl/Styles/Trioxide/images/check.svg"
     }
 }

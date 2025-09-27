@@ -9,9 +9,9 @@ import Carboxyl.Base
 MenuItem {
     id: control
 
-    Material.foreground: Palettes.theme.buttonText
-    Material.background: Palettes.theme.buttonLight
-    Material.accent: Palettes.accent.main
+    Material.foreground: palette.buttonText
+    Material.background: palette.button
+    Material.accent: palette.accent
     Material.theme: Palettes.theme === Palettes.light ? Material.Light : Material.Dark
 
     verticalPadding: 5
@@ -54,7 +54,7 @@ MenuItem {
                                            && typeof control.action.shortcut !== 'undefined')
                                        text = control.action.shortcut
 
-            color: !control.enabled ? Palettes.theme.disabledText : Palettes.theme.buttonText
+            color: !control.enabled ? Palettes.theme.disabledText : palette.buttonText
             font: control.font
         }
     }

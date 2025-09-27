@@ -5,14 +5,12 @@ import QtQuick.Controls.Fusion
 import QtQuick.Shapes
 
 import Carboxyl.Base
+import Carboxyl.Styles.Trioxide as T
 
 SpinBox {
-    palette {
-        text: enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
-        buttonText: enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
-        button: Palettes.theme.button
-        base: Palettes.theme.buttonLight
-    }
-
     id: control
+
+    palette {
+        base: Palettes.theme.button
+    }
 }

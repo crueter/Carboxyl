@@ -5,30 +5,25 @@
 #include <QGuiApplication>
 #include <QStyleHints>
 
+#include <QPalette>
 #include <QQuickStyle>
+#include <qguiapplication.h>
 
 CarboxylApplication::CarboxylApplication(QQmlApplicationEngine *engine, QObject *parent)
     : QObject{parent}
     , m_engine(engine)
 {
-}
-
-void CarboxylApplication::setDarkMode(bool dark)
-{
-    QStyleHints *hints = QGuiApplication::styleHints();
-    hints->setColorScheme(dark ? Qt::ColorScheme::Dark : Qt::ColorScheme::Light);
-    m_darkMode = dark;
-}
-
-bool CarboxylApplication::systemIsDarkMode()
-{
-    QStyleHints *hints = QGuiApplication::styleHints();
-    return hints->colorScheme() == Qt::ColorScheme::Dark;
-}
-
-bool CarboxylApplication::localDarkMode()
-{
-    return m_darkMode;
+    m_systemDarkMode = []() -> bool {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+        const auto scheme = QGuiApplication::styleHints()->colorScheme();
+        return scheme == Qt::ColorScheme::Dark;
+#else
+        const QPalette defaultPalette;
+        const auto text = defaultPalette.color(QPalette::WindowText);
+        const auto window = defaultPalette.color(QPalette::Window);
+        return text.lightness() > window.lightness();
+#endif // QT_VERSION
+    }();
 }
 
 QString CarboxylApplication::styleName()

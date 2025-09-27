@@ -1,6 +1,5 @@
 // SPDX-FileCopyrightText: Copyright 2025 crueter
 // SPDX-License-Identifier: GPL-3.0-or-later
-
 import QtQuick
 import QtQuick.Controls.Fusion
 import QtQuick.Shapes
@@ -8,13 +7,6 @@ import QtQuick.Shapes
 import Carboxyl.Base
 
 Dial {
-    palette {
-        buttonText: enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
-        button: Palettes.theme.buttonLight
-        base: Palettes.theme.button
-        window: Palettes.theme.background
-    }
-
     id: control
 
     background: Rectangle {
@@ -103,7 +95,7 @@ Dial {
 
                     GradientStop {
                         position: 0.91
-                        color: control.palette.base
+                        color: control.palette.window
                     }
 
                     GradientStop {

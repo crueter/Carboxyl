@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Copyright 2025 crueter
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 cmake_minimum_required(VERSION 3.16)
 
 function(CarboxylModule)
@@ -28,10 +31,26 @@ function(CarboxylModule)
         ${MODULE_UNPARSED_ARGUMENTS}
     )
 
-    set_target_properties(${LIB_NAME} PROPERTIES
-        EXPORT_NAME "${MODULE_NAME}")
-
-    set_property(TARGET ${LIB_NAME} PROPERTY RESOURCE_TARGETS "${TARGETS}")
-
     add_library(Carboxyl::${MODULE_NAME} ALIAS ${LIB_NAME})
+
+    if (CARBOXYL_INSTALL)
+        set_target_properties(${LIB_NAME} PROPERTIES
+            EXPORT_NAME "${MODULE_NAME}")
+
+        include(GNUInstallDirs)
+
+        install(TARGETS ${LIB_NAME} ${TARGETS}
+            EXPORT ${MODULE_NAME}Targets
+            BUNDLE DESTINATION .
+            LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+            RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+            PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+        )
+
+        install(EXPORT ${MODULE_NAME}Targets
+            FILE Carboxyl${MODULE_NAME}Targets.cmake
+            NAMESPACE Carboxyl::
+            DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Carboxyl
+        )
+    endif()
 endfunction()

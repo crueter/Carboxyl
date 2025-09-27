@@ -13,9 +13,7 @@ ApplicationWindow {
     visible: true
     title: qsTr("Carboxyl Demo")
 
-    background: Rectangle {
-        color: Palettes.theme.background
-    }
+    palette: Palettes.theme
 
     menuBar: MenuBar {
         Menu {
@@ -106,7 +104,7 @@ ApplicationWindow {
         ComboBox {
             id: style
 
-            model: ["Trioxide", "Helios", "Hydrogen"]
+            model: ["Trioxide", "Helios", "Hydrogen", "Basalt"]
 
             Layout.fillWidth: true
             enabled: swt.checked
@@ -119,7 +117,7 @@ ApplicationWindow {
         }
 
         ComboBox {
-            id: palette
+            id: paletteBox
 
             model: Palettes.accents
             textRole: "name"
@@ -127,25 +125,7 @@ ApplicationWindow {
             Layout.fillWidth: true
             enabled: swt.checked
 
-            onCurrentIndexChanged: Palettes.accent = Palettes.accents[palette.currentIndex]
-        }
-
-        RowLayout {
-            uniformCellSizes: true
-
-            Rectangle {
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-
-                color: Palettes.accent.main
-            }
-
-            Rectangle {
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-
-                color: Palettes.accent.aux
-            }
+            onCurrentIndexChanged: Palettes.accent = Palettes.accents[currentIndex]
         }
 
         Switch {
@@ -154,6 +134,20 @@ ApplicationWindow {
             text: "Switch"
         }
 
+        //     background: "#202020"
+        //     subBackground: "#404040"
+
+        //     text: "#E9E9E9"
+        //     subText: "#D2D2D2"
+
+        //     disabledText: "gray"
+
+        //     button: background
+        //     buttonLight: Qt.lighter(background, 1.6)
+        //     buttonText: text
+        //     buttonHighlighted: "#A8A8A8"
+
+        //     dialog: "#272727"
         RadioButton {
             checked: true
             enabled: swt.checked
@@ -226,30 +220,6 @@ ApplicationWindow {
                 height: 40
                 enabled: swt.checked
                 placeholderText: "Placeholder"
-            }
-
-            Rectangle {
-                Layout.fillWidth: true
-
-                Layout.preferredHeight: 40
-                color: Palettes.theme.subBackground
-
-                Text {
-                    text: "Text on SubBackground"
-                    color: Palettes.theme.text
-                }
-            }
-
-            Rectangle {
-                Layout.fillWidth: true
-
-                Layout.preferredHeight: 40
-                color: Palettes.theme.dialog
-
-                Text {
-                    text: "SubText on Dialog"
-                    color: Palettes.theme.subText
-                }
             }
 
             RowLayout {

@@ -9,9 +9,9 @@ import Carboxyl.Base
 TextField {
     id: control
 
-    Universal.foreground: Palettes.theme.buttonText
-    Universal.background: Palettes.theme.button
-    Universal.accent: Palettes.accent.main
+    Universal.foreground: palette.buttonText
+    Universal.background: palette.button
+    Universal.accent: palette.accent
     Universal.theme: Palettes.theme === Palettes.light ? Universal.Light : Universal.Dark
 
     background: Rectangle {
@@ -20,9 +20,9 @@ TextField {
 
         border {
             width: 2
-            color: !control.enabled ? control.Universal.baseLowColor : control.activeFocus ? Palettes.accent.main : control.hovered ? control.Universal.baseMediumColor : control.Universal.chromeDisabledLowColor
+            color: !control.enabled ? control.Universal.baseLowColor : control.activeFocus ? palette.accent : control.hovered ? control.Universal.baseMediumColor : control.Universal.chromeDisabledLowColor
         }
 
-        color: control.enabled ? Palettes.theme.button : control.Universal.baseLowColor
+        color: control.enabled ? palette.button : control.Universal.baseLowColor
     }
 }

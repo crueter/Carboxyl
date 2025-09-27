@@ -9,13 +9,6 @@ import Carboxyl.Styles.Trioxide as T
 
 CheckBox {
     id: control
-    palette {
-        windowText: enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
-        buttonText: enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
-        base: Palettes.theme.button
-        highlight: Palettes.theme.buttonLight
-        highlightedText: Palettes.theme.buttonText
-    }
 
     indicator: T.CheckIndicator {
         control: control

@@ -9,11 +9,6 @@ import QtQuick.Templates as T
 import Carboxyl.Base
 
 TabButton {
-    palette {
-        buttonText: enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
-        button: Palettes.theme.buttonLight
-    }
-
     id: control
 
     background: Rectangle {

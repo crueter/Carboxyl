@@ -8,10 +8,5 @@ import QtQuick.Shapes
 import Carboxyl.Base
 
 MenuBarItem {
-    palette {
-        buttonText: enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
-        button: Palettes.theme.buttonLight
-    }
-
     id: control
 }

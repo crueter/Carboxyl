@@ -1,6 +1,5 @@
 // SPDX-FileCopyrightText: Copyright 2025 crueter
 // SPDX-License-Identifier: GPL-3.0-or-later
-
 import QtQuick
 import QtQuick.Controls.Fusion
 import QtQuick.Controls.Fusion.impl
@@ -10,13 +9,6 @@ import Carboxyl.Base
 
 RadioButton {
     id: control
-
-    palette {
-        windowText: enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
-        window: Qt.lighter(Palettes.theme.dialog, 1.75)
-        base: Palettes.theme.button
-        highlight: Palettes.accent.main
-    }
 
     indicator: Rectangle {
         id: indicator
@@ -36,10 +28,10 @@ RadioButton {
 
         radius: width / 2
         color: control.down ? indicator.pressedColor : Qt.lighter(
-                                  control.palette.base, 1.75)
+                                  control.palette.button, 1.4)
         border.color: control.visualFocus ? Fusion.highlightedOutline(
                                                 control.palette) : Qt.darker(
-                                                control.palette.window, 1.2)
+                                                control.palette.button, 1.2)
         border.width: 2
         border.pixelAligned: false
 

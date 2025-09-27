@@ -1,6 +1,5 @@
 // SPDX-FileCopyrightText: Copyright 2025 crueter
 // SPDX-License-Identifier: GPL-3.0-or-later
-
 import QtQuick
 import QtQuick.Controls.Fusion
 import QtQuick.Controls.impl
@@ -8,24 +7,20 @@ import QtQuick.Controls.impl
 import Carboxyl.Base
 
 TextField {
-    palette {
-        text: enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
-        base: Palettes.theme.button
-        window: Palettes.theme.text
-    }
-
     id: control
+
+    property bool borderless: false
 
     background: Rectangle {
         implicitWidth: 120
         implicitHeight: 24
 
         radius: 2
-        color: control.palette.base
+        color: control.palette.button
         border {
-            color: control.activeFocus ? Palettes.accent.main : Fusion.outline(
+            color: control.activeFocus ? palette.accent : Fusion.outline(
                                              control.palette)
-            width: 1 + control.activeFocus
+            width: !borderless + control.activeFocus
 
             Behavior on color {
                 ColorAnimation {
@@ -42,11 +37,12 @@ TextField {
             color: "transparent"
             border.color: Color.transparent(Fusion.highlightedOutline(
                                                 control.palette), 40 / 255)
-            visible: control.activeFocus
+            visible: !borderless && control.activeFocus
             radius: 1.7
         }
 
         Rectangle {
+            visible: !borderless
             x: 2
             y: 1
             width: parent.width - 4
