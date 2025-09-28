@@ -104,7 +104,7 @@ ApplicationWindow {
         ComboBox {
             id: style
 
-            model: ["Trioxide", "Helios", "Hydrogen", "Basalt"]
+            model: CarboxylConfig.styles
 
             Layout.fillWidth: true
             enabled: swt.checked
@@ -134,20 +134,6 @@ ApplicationWindow {
             text: "Switch"
         }
 
-        //     background: "#202020"
-        //     subBackground: "#404040"
-
-        //     text: "#E9E9E9"
-        //     subText: "#D2D2D2"
-
-        //     disabledText: "gray"
-
-        //     button: background
-        //     buttonLight: Qt.lighter(background, 1.6)
-        //     buttonText: text
-        //     buttonHighlighted: "#A8A8A8"
-
-        //     dialog: "#272727"
         RadioButton {
             checked: true
             enabled: swt.checked

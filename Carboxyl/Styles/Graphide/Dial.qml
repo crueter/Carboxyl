@@ -1,6 +1,5 @@
 // SPDX-FileCopyrightText: Copyright 2025 crueter
 // SPDX-License-Identifier: GPL-3.0-or-later
-
 import QtQuick
 import QtQuick.Controls.Fusion
 import QtQuick.Shapes
@@ -8,14 +7,6 @@ import QtQuick.Shapes
 import Carboxyl.Base
 
 Dial {
-    palette {
-        buttonText: enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
-        button: Palettes.theme.buttonLight
-        base: Palettes.theme.button
-        window: Palettes.theme.background
-        accent: Palettes.accent.main
-    }
-
     id: control
 
     background: Rectangle {
@@ -151,5 +142,10 @@ Dial {
                 origin.y: control.handle ? control.handle.height / 2 : 0
             }
         ]
+
+        Ripple {
+            id: ripple
+            control: control
+        }
     }
 }

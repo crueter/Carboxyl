@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 import QtQuick
-import QtQuick.Controls.Fusion
+import QtQuick.Controls.Fusion 6.4
 
 import Carboxyl.Base
 

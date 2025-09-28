@@ -1,46 +1,47 @@
-
 // SPDX-FileCopyrightText: Copyright 2025 crueter
 // SPDX-License-Identifier: GPL-3.0-or-later
 import QtQuick
-import QtQuick.Controls.Universal
-import QtQuick.Controls.Universal.impl
-import QtQuick.Controls.impl
+import QtQuick.Controls.Basic 6.4
+import QtQuick.Controls.impl 6.4
 
 import Carboxyl.Base
 
 CheckBox {
     id: control
 
-    Universal.foreground: Palettes.theme.buttonText
-    Universal.background: Palettes.theme.buttonLight
-    Universal.accent: Palettes.accent.aux
-    Universal.theme: Palettes.theme === Palettes.light ? Universal.Light : Universal.Dark
-
     indicator: Rectangle {
-        x: control.text ? (control.mirrored ? control.width - width - control.rightPadding : control.leftPadding) : control.leftPadding
-                          + (control.availableWidth - width) / 2
-        y: control.topPadding + (control.availableHeight - height) / 2
-        control: control
-
-        radius: 4
-
         implicitWidth: 20
         implicitHeight: 20
 
-        color: !control.enabled ? "transparent" : control.down
-                                  && !partiallyChecked ? control.Universal.baseMediumColor : control.checkState === Qt.Checked ? control.Universal.accent : "transparent"
-        border.color: !control.enabled ? control.Universal.baseLowColor : control.down ? control.Universal.baseMediumColor : control.checked ? control.Universal.accent : control.Universal.baseMediumHighColor
+        x: control.text ? (control.mirrored ? control.width - width - control.rightPadding : control.leftPadding) : control.leftPadding
+                          + (control.availableWidth - width) / 2
+        y: control.topPadding + (control.availableHeight - height) / 2
 
-        property Item control
-        readonly property bool partiallyChecked: control.checkState === Qt.PartiallyChecked
+        color: control.down ? control.palette.mid : (control.checked ? control.palette.accent : control.palette.mid)
+        border.width: control.visualFocus ? 2 : 1
+        border.color: control.down ? control.palette.accent : control.palette.dark
+
+        radius: 2
 
         ColorImage {
+            width: parent.width - 1
+            height: parent.height - 1
+
             x: (parent.width - width) / 2
             y: (parent.height - height) / 2
+            defaultColor: "#353637"
+            color: control.palette.text
+            source: "qrc:/qt-project.org/imports/QtQuick/Controls/Basic/images/check.png"
+            visible: control.checkState === Qt.Checked
+        }
 
-            visible: indicator.control.checkState === Qt.Checked
-            color: control.enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
-            source: "qrc:/qt-project.org/imports/QtQuick/Controls/Universal/images/checkmark.png"
+        Rectangle {
+            x: (parent.width - width) / 2
+            y: (parent.height - height) / 2
+            width: 16
+            height: 3
+            color: control.palette.text
+            visible: control.checkState === Qt.PartiallyChecked
         }
     }
 }

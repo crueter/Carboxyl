@@ -1,27 +1,39 @@
 // SPDX-FileCopyrightText: Copyright 2025 crueter
 // SPDX-License-Identifier: GPL-3.0-or-later
-
 import QtQuick
-import QtQuick.Controls.FluentWinUI3
+import QtQuick.Effects
+import QtQuick.Controls.Universal 6.4
+import QtQuick.Controls.impl 6.4
 
 import Carboxyl.Base
 
 TabButton {
     id: control
 
-    palette {
-        buttonText: control.enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
-        button: Palettes.theme.buttonLight
-        accent: Palettes.accent.main
-    }
+    Universal.foreground: enabled ? palette.buttonText : Palettes.theme.disabledText
+    Universal.background: palette.button
+    Universal.accent: palette.accent
+    Universal.theme: Palettes.theme === Palettes.light ? Universal.Light : Universal.Dark
 
-    property color textColor: control.down ? __pressedText : control.hovered ? __hoveredText : control.palette.buttonText
+    background: Item {}
+
+    property color textColor: Color.transparent(
+                                  enabled
+                                  && hovered ? Universal.baseMediumHighColor : Universal.foreground,
+                                  checked || down || (enabled
+                                                      && hovered) ? 1.0 : 0.2)
 
     implicitWidth: content.implicitWidth + 10
 
     Component.onCompleted: {
         if (!inlineIcon) {
             width = TabBar.tabBar.contentWidth
+        }
+    }
+
+    Behavior on textColor {
+        ColorAnimation {
+            duration: 150
         }
     }
 
@@ -34,6 +46,4 @@ TabButton {
     }
 
     contentItem: content
-
-    background: Item {}
 }

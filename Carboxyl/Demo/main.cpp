@@ -9,47 +9,44 @@
 #include <QSettings>
 #include "settingsmanager.h"
 
-#include <CarboxylApplication.h>
+#include "CarboxylApplication.h"
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-    QQmlApplicationEngine engine;
+    QQmlApplicationEngine *engine = new QQmlApplicationEngine(&app);
 
     app.setApplicationName("Demo");
     app.setOrganizationName("Carboxyl");
 
-    CarboxylApplication *carboxyl = new CarboxylApplication(&engine, &app);
-    engine.rootContext()->setContextProperty("CarboxylApplication", carboxyl);
-
     SettingsManager *manager = new SettingsManager(&app);
-    engine.rootContext()->setContextProperty("Settings", manager);
+    engine->rootContext()->setContextProperty("Settings", manager);
 
-    QString style = manager->get("style", "Trioxide").toString();
-    // QString style = "native";
-    if (style != "native") {
-        if (style == "")
-            style = "Trioxide";
-        QQuickStyle::setStyle(QString("Carboxyl.Styles.%1").arg(style));
+    QString style = manager->get("style", "").toString();
+
+    // CarboxylApplication sets up the engine and a few other things
+    CarboxylApplication *carboxylApp = new CarboxylApplication(app, engine, style, "Trioxide");
+
+    // this is unnecessary, but gets clazy to shut up
+    carboxylApp->setParent(&app);
+    QDirIterator iter(QDir(":/"), QDirIterator::Subdirectories);
+
+    while (iter.hasNext()) {
+        QString next = iter.next();
+        if (!next.contains("k") && !next.contains("breeze")) {
+            qDebug() << next;
+        }
     }
 
-    carboxyl->setStyleName(style);
-
     QObject::connect(
-        &engine,
+        engine,
         &QQmlApplicationEngine::objectCreationFailed,
         &app,
         []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
 
-    // QDirIterator iter(":/qt/qml");
-    // while (iter.hasNext()) {
-    //     qDebug() << iter.next();
-    // }
+    engine->loadFromModule("Demo", "Main");
 
-    qDebug() << engine.importPathList();
-
-    engine.loadFromModule("Demo", "Main");
 
     return app.exec();
 }

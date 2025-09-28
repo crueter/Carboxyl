@@ -1,8 +1,7 @@
 // SPDX-FileCopyrightText: Copyright 2025 crueter
 // SPDX-License-Identifier: GPL-3.0-or-later
-
 import QtQuick
-import QtQuick.Controls.FluentWinUI3
+import QtQuick.Controls.Material 6.4
 import QtQuick.Templates as T
 
 import Carboxyl.Base
@@ -10,24 +9,27 @@ import Carboxyl.Base
 TabBar {
     id: control
 
-    palette {
-        buttonText: control.enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
-        button: Palettes.theme.buttonLight
-        accent: Palettes.accent.main
-    }
+    Material.foreground: palette.text
+    Material.background: "transparent"
+    Material.accent: palette.accent
+    Material.theme: Palettes.theme === Palettes.light ? Material.Light : Material.Dark
+
+    verticalPadding: 5
 
     contentItem: ListView {
         id: list
+
         model: control.contentModel
         currentIndex: control.currentIndex
 
-        spacing: control.__config.spacing
+        spacing: control.spacing
         orientation: vertical ? ListView.Vertical : ListView.Horizontal
         boundsBehavior: Flickable.StopAtBounds
         flickableDirection: Flickable.AutoFlickIfNeeded
         snapMode: ListView.SnapToItem
 
-        highlightMoveDuration: 0
+        highlightMoveDuration: 250
+        highlightResizeDuration: 0
         highlightFollowsCurrentItem: true
         highlightRangeMode: ListView.ApplyRange
         preferredHighlightBegin: 48
@@ -42,7 +44,7 @@ TabBar {
                 z: 2
                 Rectangle {
                     height: 2
-                    width: parent.width / 2
+                    width: parent.width
 
                     anchors {
                         horizontalCenter: parent.horizontalCenter
@@ -50,7 +52,7 @@ TabBar {
                         bottomMargin: list.isFooter ? -height : height * 2
                     }
 
-                    color: control.palette.accent
+                    color: control.Material.accent
                 }
             }
         }
@@ -61,9 +63,9 @@ TabBar {
             Item {
                 z: 2
                 Rectangle {
-                    height: parent.height / 2
+                    height: parent.height
                     width: 2
-                    color: control.palette.accent
+                    color: control.Material.accent
 
                     anchors {
                         verticalCenter: parent.verticalCenter

@@ -1,33 +1,37 @@
 // SPDX-FileCopyrightText: Copyright 2025 crueter
 // SPDX-License-Identifier: GPL-3.0-or-later
 import QtQuick
-import QtQuick.Controls.FluentWinUI3
+import QtQuick.Controls.Basic 6.4
+import QtQuick.Shapes
 
 import Carboxyl.Base
-import Carboxyl.Styles.Graphide as G
+import Carboxyl.Styles.Graphide as T
 
 Menu {
-    id: control
 
     palette {
-        text: enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
-        windowText: enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
-        buttonText: enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
-        button: Palettes.theme.buttonLight
-        base: Palettes.theme.button
-        window: Palettes.theme.button
-        highlight: Palettes.theme.buttonLight
-        highlightedText: Palettes.theme.buttonText
+        window: Palettes.theme.midlight
     }
 
-    delegate: G.MenuItem {}
+    id: control
+    delegate: T.MenuItem {}
+
+    enter: Transition {
+        NumberAnimation {
+            property: "height"
+            from: control.implicitHeight * 0.33
+            to: control.implicitHeight
+            easing.type: Easing.OutCubic
+            duration: 250
+        }
+    }
 
     background: Rectangle {
         implicitWidth: 200
-        implicitHeight: 30
+        implicitHeight: 40
+        color: control.palette.alternateBase
+        border.color: control.palette.dark
 
-        color: Palettes.theme.button
-
-        radius: 20
+        radius: width / 20
     }
 }

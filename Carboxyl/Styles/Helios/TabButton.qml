@@ -1,8 +1,7 @@
 // SPDX-FileCopyrightText: Copyright 2025 crueter
 // SPDX-License-Identifier: GPL-3.0-or-later
-
 import QtQuick
-import QtQuick.Controls.Material
+import QtQuick.Controls.Material 6.4
 
 import Carboxyl.Base
 
@@ -33,6 +32,17 @@ TabButton {
         textColor: control.textColor
         coloredIcon: control.coloredIcon
         inlineIcon: control.inlineIcon
+    }
+
+    background: Rectangle {
+        color: hovered ? Material.rippleColor : "transparent"
+
+        Behavior on color {
+            ColorAnimation {
+                easing.type: Easing.InOutQuad
+                duration: 150
+            }
+        }
     }
 
     contentItem: content

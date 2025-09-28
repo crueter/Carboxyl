@@ -1,6 +1,5 @@
 // SPDX-FileCopyrightText: Copyright 2025 crueter
 // SPDX-License-Identifier: GPL-3.0-or-later
-
 import QtQuick
 import QtQuick.Controls.Material
 import QtQuick.Controls.impl
@@ -12,12 +11,11 @@ Slider {
 
     Material.foreground: Palettes.theme.buttonText
     Material.background: Palettes.theme.buttonLight
-    Material.accent: Palettes.accent.main
+    Material.accent: Palettes.theme.accent
     Material.theme: Palettes.theme === Palettes.light ? Material.Light : Material.Dark
 
     verticalPadding: 5
 
-    // TODO: make it grow when highlighted/pressed
     background: Item {
         x: control.leftPadding + (control.horizontal ? 0 : (control.availableWidth - width) / 2)
         y: control.topPadding + (control.horizontal ? (control.availableHeight - height) / 2 : 0)
@@ -75,6 +73,25 @@ Slider {
                     readonly property real currentPosition: index / (parent.repeater.count - 1)
                 }
             }
+        }
+    }
+
+    handle: Rectangle {
+        implicitWidth: 14
+        implicitHeight: 14
+
+        color: control.palette.accent
+
+        radius: width / 2
+
+        x: control.leftPadding + (control.horizontal ? control.visualPosition * (control.availableWidth - width) : (control.availableWidth - width) / 2)
+        y: control.topPadding
+           + (control.horizontal ? (control.availableHeight - height) / 2 : control.visualPosition
+                                   * (control.availableHeight - height))
+
+        Ripple {
+            id: ripple
+            control: control
         }
     }
 }

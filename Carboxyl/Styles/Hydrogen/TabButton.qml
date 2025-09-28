@@ -3,8 +3,8 @@
 
 import QtQuick
 import QtQuick.Effects
-import QtQuick.Controls.Universal
-import QtQuick.Controls.impl
+import QtQuick.Controls.Universal 6.4
+import QtQuick.Controls.impl 6.4
 
 import Carboxyl.Base
 

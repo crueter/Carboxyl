@@ -2,20 +2,20 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #include "CarboxylApplication.h"
-#include <QGuiApplication>
-#include <QStyleHints>
 
-#include <QPalette>
-#include <QQuickStyle>
-#include <qguiapplication.h>
-
-CarboxylApplication::CarboxylApplication(QQmlApplicationEngine *engine, QObject *parent)
-    : QObject{parent}
+CarboxylApplication::CarboxylApplication(QGuiApplication &app,
+                                         QQmlApplicationEngine *engine,
+                                         const QString &style,
+                                         const QString &defaultStyle)
+    : QObject(&app)
     , m_engine(engine)
+    , m_config(new CarboxylConfig(this))
+    , m_defaultStyle(defaultStyle)
 {
-    m_systemDarkMode = []() -> bool {
+    // system dark mode check
+    m_systemDarkMode = [&app]() -> bool {
 #if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
-        const auto scheme = QGuiApplication::styleHints()->colorScheme();
+        const auto scheme = app.styleHints()->colorScheme();
         return scheme == Qt::ColorScheme::Dark;
 #else
         const QPalette defaultPalette;
@@ -24,6 +24,20 @@ CarboxylApplication::CarboxylApplication(QQmlApplicationEngine *engine, QObject 
         return text.lightness() > window.lightness();
 #endif // QT_VERSION
     }();
+
+    //  style
+    QString use_style = style;
+    if (use_style == "")
+        use_style = m_defaultStyle;
+    QQuickStyle::setStyle(QString("Carboxyl.Styles.%1").arg(use_style));
+    setStyleName(style);
+
+    // init dependents
+    CarboxylConfig *config = new CarboxylConfig(this);
+
+    // ctx setup
+    engine->rootContext()->setContextProperty("CarboxylApplication", this);
+    engine->rootContext()->setContextProperty("CarboxylConfig", config);
 }
 
 QString CarboxylApplication::styleName()
@@ -31,7 +45,7 @@ QString CarboxylApplication::styleName()
     return m_styleName;
 }
 
-void CarboxylApplication::setStyleName(const QString &name)
+void CarboxylApplication::setStyleName(const QString &style)
 {
-    m_styleName = name;
+    m_styleName = style;
 }

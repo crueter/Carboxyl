@@ -1,9 +1,9 @@
 // SPDX-FileCopyrightText: Copyright 2025 crueter
 // SPDX-License-Identifier: GPL-3.0-or-later
 import QtQuick
-import QtQuick.Controls.Basic
+import QtQuick.Controls.Basic 6.4
 import QtQuick.Controls.Basic.impl
-import QtQuick.Controls.impl
+import QtQuick.Controls.impl 6.4
 
 import Carboxyl.Base
 
@@ -26,8 +26,8 @@ RadioButton {
         Rectangle {
             x: (parent.width - width) / 2
             y: (parent.height - height) / 2
-            width: 10
-            height: 10
+            width: 9
+            height: 9
             radius: width / 2
             color: control.palette.text
             visible: control.checked

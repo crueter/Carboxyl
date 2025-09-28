@@ -1,71 +1,85 @@
 // SPDX-FileCopyrightText: Copyright 2025 crueter
 // SPDX-License-Identifier: GPL-3.0-or-later
-
 import QtQuick
-import QtQuick.Controls as T
-import QtQuick.Controls.FluentWinUI3
+
+// for downarrow.png
+import QtQuick.Controls.Universal 6.4
+
+import QtQuick.Controls.Basic 6.4
+import QtQuick.Controls.impl 6.4
+import QtQuick.Templates as T
 
 import Carboxyl.Base
 
 ComboBox {
     id: control
 
-    palette {
-        text: control.enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
-        accent: Palettes.accent.main
-    }
-
-    // FluentWinUI3's indicator and background don't use palettes for some reason
-    indicator: Canvas {
-        id: canvas
-        x: control.width - width - control.__config.rightPadding
+    indicator: ColorImage {
+        x: control.mirrored ? control.padding : control.width - width - control.padding
         y: control.topPadding + (control.availableHeight - height) / 2
-        width: control.font.pixelSize * 0.8
-        height: width * 2 / 3
-        contextType: "2d"
+        color: control.palette.text
+        defaultColor: "#353637"
+        source: "qrc:/qt-project.org/imports/QtQuick/Controls/Universal/images/downarrow.png"
+        opacity: enabled ? 1 : 0.3
+    }
 
-        Connections {
-            target: control
-            function onPressedChanged() {
-                canvas.requestPaint()
+    delegate: ItemDelegate {
+        required property var model
+        required property int index
+
+        width: ListView.view.width
+        text: model[control.textRole]
+        palette.text: control.palette.text
+        palette.highlightedText: control.palette.accent
+        font.weight: control.currentIndex === index ? Font.DemiBold : Font.Normal
+        highlighted: control.highlightedIndex === index
+        hoverEnabled: control.hoverEnabled
+    }
+
+    popup: T.Popup {
+        y: control.height
+        width: control.width
+        height: Math.min(contentItem.implicitHeight,
+                         control.Window.height - topMargin - bottomMargin)
+        topMargin: 6
+        bottomMargin: 6
+        palette: control.palette
+
+        contentItem: ListView {
+            clip: true
+            implicitHeight: contentHeight
+            model: control.delegateModel
+            currentIndex: control.highlightedIndex
+            highlightMoveDuration: 0
+
+            Rectangle {
+                z: 10
+                width: parent.width
+                height: parent.height
+                color: "transparent"
+                border.color: control.palette.mid
+            }
+
+            T.ScrollIndicator.vertical: ScrollIndicator {}
+        }
+
+        enter: Transition {
+            NumberAnimation {
+                property: "height"
+                from: control.popup.height / 3
+                to: control.popup.height
+                easing.type: Easing.OutCubic
+                duration: 250
             }
         }
 
-        Connections {
-            target: control.palette
-
-            function onTextChanged() {
-                canvas.requestPaint()
-            }
-        }
-
-        onPaint: {
-            context.reset()
-            context.moveTo(0, 0)
-            context.lineTo(width, 0)
-            context.lineTo(width / 2, height)
-            context.closePath()
-            context.fillStyle = control.palette.text
-            context.fill()
+        background: Rectangle {
+            color: control.palette.window
         }
     }
 
-    background: Rectangle {
-        color: Palettes.theme.button
-
-        border {
-            color: control.hovered
-                   && control.enabled ? Palettes.accent.aux : Palettes.theme.buttonText
-            width: 1 + (control.enabled && control.hovered)
-
-            Behavior on color {
-                ColorAnimation {
-                    duration: 150
-                }
-            }
-        }
-
-        width: control.width
-        height: control.height
+    background {
+        implicitWidth: 140
+        implicitHeight: 35
     }
 }

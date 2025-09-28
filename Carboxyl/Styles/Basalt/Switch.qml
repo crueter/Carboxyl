@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 import QtQuick
 import QtQuick.Templates as T
-import QtQuick.Controls.impl
+import QtQuick.Controls.impl 6.4
 
 import Carboxyl.Base
 

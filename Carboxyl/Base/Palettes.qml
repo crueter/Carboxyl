@@ -175,7 +175,7 @@ Item {
             dark: "#707070"
 
             // slightly lighter than button
-            light: "#f2f2f2"
+            light: "#e7e7e7"
 
             // between button and dark
             mid: "#ababab"
@@ -329,7 +329,7 @@ Item {
             light: "#484848"
 
             // between button and dark
-            mid: "#202020"
+            mid: "#282828"
 
             // between button and light
             midlight: "#323232"

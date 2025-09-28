@@ -1,8 +1,8 @@
 // SPDX-FileCopyrightText: Copyright 2025 crueter
 // SPDX-License-Identifier: GPL-3.0-or-later
 import QtQuick
-import QtQuick.Controls.Material
-import QtQuick.Controls.impl
+import QtQuick.Controls.Material 6.4
+import QtQuick.Controls.impl 6.4
 
 import Carboxyl.Base
 
@@ -56,6 +56,19 @@ MenuItem {
 
             color: !control.enabled ? Palettes.theme.disabledText : palette.buttonText
             font: control.font
+        }
+    }
+
+    background: Rectangle {
+        implicitWidth: 200
+        implicitHeight: control.Material.menuItemHeight
+        color: control.highlighted ? control.Material.listHighlightColor : "transparent"
+
+        Behavior on color {
+            ColorAnimation {
+                easing.type: Easing.InOutQuad
+                duration: 150
+            }
         }
     }
 }

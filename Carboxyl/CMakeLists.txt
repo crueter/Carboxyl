@@ -1,6 +1,11 @@
 # SPDX-FileCopyrightText: Copyright 2025 crueter
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+# compile defs
+list(JOIN CARBOXYL_STYLES "\",\n\t\"" STYLES_DIRTY)
+set(CARBOXYL_STYLES_LIST "\t\"${STYLES_DIRTY}\"")
+list(LENGTH CARBOXYL_STYLES CARBOXYL_STYLES_LENGTH)
+
 add_subdirectory(Base)
 add_subdirectory(Styles)
 

@@ -17,6 +17,7 @@ qt_standard_project_setup(REQUIRES 6.8)
 
 qt_add_executable(Demo
     main.cpp
+    settingsmanager.h settingsmanager.cpp
     icons.qrc
 )
 
@@ -26,11 +27,12 @@ set_target_properties(Demo
 
 qt_add_qml_module(Demo
     URI Demo
-    OUTPUT_DIRECTORY Carboxyl_QML
+    OUTPUT_DIRECTORY Demo
+    RESOURCE_PREFIX "/qt/qml"
+    NO_PLUGIN
     VERSION 1.0
     QML_FILES
         Main.qml
-        SOURCES settingsmanager.h settingsmanager.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

@@ -1,16 +1,18 @@
 // SPDX-FileCopyrightText: Copyright 2025 crueter
 // SPDX-License-Identifier: GPL-3.0-or-later
-
 import QtQuick
-import QtQuick.Controls.FluentWinUI3
+import QtQuick.Controls.Basic 6.4
+import QtQuick.Shapes
 
 import Carboxyl.Base
 
 RoundButton {
     id: control
 
-    palette {
-        buttonText: control.enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
-        button: Palettes.theme.buttonLight
+    padding: 8
+
+    background {
+        implicitWidth: 40
+        implicitHeight: 30
     }
 }
