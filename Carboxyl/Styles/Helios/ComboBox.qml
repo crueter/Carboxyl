@@ -27,7 +27,8 @@ ComboBox {
 
         width: ListView.view.width
         text: model[control.textRole]
-        Material.foreground: control.currentIndex === index ? ListView.view.contentItem.Material.accent : ListView.view.contentItem.Material.foreground
+        Material.foreground: control.currentIndex
+                             === index ? control.palette.accent : control.palette.buttonText
         highlighted: control.highlightedIndex === index
         hoverEnabled: control.hoverEnabled
     }
