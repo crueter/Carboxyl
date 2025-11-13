@@ -1,4 +1,3 @@
-
 // SPDX-FileCopyrightText: Copyright 2025 crueter
 // SPDX-License-Identifier: GPL-3.0-or-later
 import QtQuick
@@ -63,6 +62,8 @@ Item {
 
             color: content.textColor
 
+            verticalAlignment: Text.AlignVCenter
+
             anchors {
                 left: inlineIcon ? img.right : undefined
                 leftMargin: 5
@@ -71,6 +72,7 @@ Item {
                 topMargin: 5
 
                 horizontalCenter: inlineIcon ? undefined : parent.horizontalCenter
+                verticalCenter: inlineIcon ? img.verticalCenter : undefined
             }
         }
     }

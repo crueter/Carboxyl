@@ -26,7 +26,7 @@ TabButton {
     implicitWidth: content.implicitWidth + 10
 
     Component.onCompleted: {
-        if (!inlineIcon) {
+        if (TabBar.tabBar.vertical) {
             width = TabBar.tabBar.contentWidth
         }
     }

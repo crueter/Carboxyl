@@ -1,6 +1,5 @@
 // SPDX-FileCopyrightText: Copyright 2025 crueter
 // SPDX-License-Identifier: GPL-3.0-or-later
-
 import QtQuick
 import QtQuick.Effects
 import QtQuick.Controls.Universal 6.4
@@ -29,7 +28,7 @@ TabButton {
     implicitWidth: content.implicitWidth + 10
 
     Component.onCompleted: {
-        if (!inlineIcon) {
+        if (TabBar.tabBar.vertical) {
             width = TabBar.tabBar.contentWidth
         }
     }

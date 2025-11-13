@@ -264,11 +264,11 @@ ApplicationWindow {
 
         position: TabBar.Footer
 
-        contentHeight: 60
-        contentWidth: 100
+        contentHeight: 55
+        contentWidth: 120
 
         height: contentHeight * count + 20
-        width: 100
+        width: 120
 
         // TODO(crueter): Handle native controls(?)
         CarboxylTabButton {
@@ -276,7 +276,7 @@ ApplicationWindow {
             icon.height: 20
             icon.width: 20
             icon.source: "qrc:/Demo/icons/crit.svg"
-            inlineIcon: false
+            inlineIcon: true
         }
         CarboxylTabButton {
             text: "V - Settings"
@@ -299,7 +299,7 @@ ApplicationWindow {
             icon.height: 20
             icon.width: 20
             icon.source: "qrc:/Demo/icons/info.svg"
-            inlineIcon: false
+            inlineIcon: true
         }
     }
 
@@ -320,7 +320,7 @@ ApplicationWindow {
             icon.source: "qrc:/Demo/icons/crit.svg"
             icon.height: 20
             icon.width: 20
-            inlineIcon: true
+            inlineIcon: false
         }
         CarboxylTabButton {
             text: "Settings"
@@ -343,7 +343,7 @@ ApplicationWindow {
             icon.source: "qrc:/Demo/icons/info.svg"
             icon.height: 20
             icon.width: 20
-            inlineIcon: true
+            inlineIcon: false
         }
     }
 }
