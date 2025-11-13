@@ -27,8 +27,8 @@ class CarboxylApplication : public QObject
 public:
     CarboxylApplication(QGuiApplication &app,
                         QQmlApplicationEngine *engine,
-                        const QString &style = "",
-                        const QString &defaultStyle = "Trioxide");
+                        const QString &style = QString(),
+                        const QString &defaultStyle = QStringLiteral("Trioxide"));
 
     QString styleName();
     void setStyleName(const QString &style);
@@ -46,3 +46,4 @@ signals:
 };
 
 #endif // CARBOXYLAPPLICATION_H
+
