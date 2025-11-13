@@ -8,6 +8,9 @@ import QtQuick
 /**
   Singleton holding palette info.
   */
+
+// TODO(crueter): Define light, dark, midnight for colors
+// then, generate Disabled and Inactive from those.
 Item {
     id: root
 
@@ -78,7 +81,7 @@ Item {
         id: forest
 
         name: "Forest"
-        active: "DarkGreen"
+        active: Qt.lighter("DarkGreen", 1.4)
         inactive: "ForestGreen"
         disabled: Qt.lighter(inactive, 1.2)
     }
@@ -87,7 +90,7 @@ Item {
         id: violet
 
         name: "Violet"
-        active: "DarkViolet"
+        active: Qt.darker("#a274bd", 1.1)
         inactive: Qt.darker(disabled, 1.4)
         disabled: "Violet"
     }
@@ -96,7 +99,7 @@ Item {
         id: pink
 
         name: "Pink"
-        active: "#FF0080"
+        active: "#FF00B0"
         inactive: "#E6006B"
         disabled: Qt.darker(inactive, 1.2)
     }
