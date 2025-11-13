@@ -7,7 +7,7 @@
 CarboxylConfig::CarboxylConfig(QObject *parent)
     : QObject{parent}
 {
-    for (const std::string &str : Carboxyl::g_styles) {
-        m_styles << QString::fromStdString(str);
+    for (const std::string_view &str : Carboxyl::g_styles) {
+        m_styles << QString::fromStdString(std::string{str});
     }
 }

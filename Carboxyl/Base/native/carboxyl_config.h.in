@@ -8,7 +8,7 @@
 
 namespace Carboxyl {
 
-static const constexpr std::array<std::string, @CARBOXYL_STYLES_LENGTH@> g_styles = {
+static const constexpr std::array<std::string_view, @CARBOXYL_STYLES_LENGTH@> g_styles = {
 @CARBOXYL_STYLES_LIST@
 };
 
