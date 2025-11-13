@@ -15,22 +15,25 @@ Item {
 
     property alias item: itm
 
-    implicitHeight: itm.height
-    implicitWidth: itm.width
+    implicitHeight: itm.realHeight
+    implicitWidth: itm.realWidth
 
     Item {
         id: itm
 
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenter: parent.verticalCenter
+        property int realHeight: 0
+        property int realWidth: 0
+
+        // TODO: alignment
+        anchors.fill: parent
 
         Component.onCompleted: {
             if (inlineIcon) {
-                width = img.width + txt.width + 5
-                height = Math.max(img.height, txt.height) + 5
+                realWidth = img.width + txt.width + 5
+                realHeight = Math.max(img.height, txt.height) + 5
             } else {
-                height = img.height + txt.height + 5
-                width = Math.max(img.width, txt.width) + 5
+                realWidth = Math.max(img.width, txt.width) + 5
+                realHeight = img.height + txt.height + 5
             }
         }
 
@@ -52,6 +55,7 @@ Item {
 
             anchors {
                 horizontalCenter: inlineIcon ? undefined : parent.horizontalCenter
+                verticalCenter: inlineIcon ? txt.verticalCenter : undefined
             }
         }
 
@@ -73,7 +77,7 @@ Item {
                 topMargin: 5
 
                 horizontalCenter: inlineIcon ? undefined : img.horizontalCenter
-                verticalCenter: inlineIcon ? img.verticalCenter : parent.verticalCenter
+                verticalCenter: parent.verticalCenter
             }
         }
     }
