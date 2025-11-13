@@ -9,6 +9,7 @@ Item {
 
     required property Item control
     required property color textColor
+
     property bool coloredIcon: false
     property bool inlineIcon: true
 
@@ -71,8 +72,8 @@ Item {
                 top: inlineIcon ? undefined : img.bottom
                 topMargin: 5
 
-                horizontalCenter: inlineIcon ? undefined : parent.horizontalCenter
-                verticalCenter: inlineIcon ? img.verticalCenter : undefined
+                horizontalCenter: inlineIcon ? undefined : img.horizontalCenter
+                verticalCenter: inlineIcon ? img.verticalCenter : parent.verticalCenter
             }
         }
     }
