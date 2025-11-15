@@ -17,6 +17,9 @@ Switch {
 
     // implicitWidth: 20
     // implicitHeight: 20
+    padding: 2
+    spacing: 2
+
     indicator: SwitchIndicator {
         x: control.text ? (control.mirrored ? control.width - width - control.rightPadding : control.leftPadding) : control.leftPadding
                           + (control.availableWidth - width) / 2

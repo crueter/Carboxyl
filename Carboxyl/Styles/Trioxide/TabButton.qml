@@ -10,6 +10,8 @@ import Carboxyl.Base
 TabButton {
     id: control
 
+    property bool vertical: TabBar.tabBar.vertical
+
     background: Rectangle {
         implicitHeight: 40
         height: control.height - 4
@@ -50,18 +52,8 @@ TabButton {
     implicitWidth: content.implicitWidth + 10
 
     Component.onCompleted: {
-        if (TabBar.tabBar.vertical) {
+        if (vertical) {
             width = TabBar.tabBar.contentWidth
         }
     }
-
-    TabButtonContent {
-        id: content
-        control: control
-        textColor: control.textColor
-        coloredIcon: control.coloredIcon
-        inlineIcon: control.inlineIcon
-    }
-
-    contentItem: content
 }

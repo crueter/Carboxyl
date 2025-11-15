@@ -6,7 +6,12 @@ set_source_files_properties(Palettes.qml
     QT_QML_SINGLETON_TYPE true
 )
 
-find_package(Qt6 REQUIRED COMPONENTS Core)
+configure_file(native/carboxyl_config.h.in native/carboxyl_config.h @ONLY)
+
+set(HEADERS
+    ${CMAKE_CURRENT_SOURCE_DIR}/native/CarboxylApplication.h
+    ${CMAKE_CURRENT_BINARY_DIR}/native/carboxyl_config.h
+)
 
 CarboxylModule(
     NAME Base
@@ -22,13 +27,11 @@ CarboxylModule(
         CarboxylTabButton.qml
         CarboxylTabBar.qml
         Ripple.qml
-)
-
-configure_file(native/carboxyl_config.h.in native/carboxyl_config.h @ONLY)
-
-set(HEADERS
-    ${CMAKE_CURRENT_SOURCE_DIR}/native/CarboxylApplication.h
-    ${CMAKE_CURRENT_BINARY_DIR}/native/carboxyl_config.h
+        NativeDialog.qml
+    SOURCES
+        ${HEADERS}
+        native/CarboxylConfig.h native/CarboxylConfig.cpp
+        native/CarboxylApplication.cpp
 )
 
 target_include_directories(CarboxylBase PUBLIC
@@ -39,12 +42,6 @@ target_include_directories(CarboxylBase PUBLIC
     $<INSTALL_INTERFACE:include>
 )
 
-target_sources(CarboxylBase PRIVATE
-    ${HEADERS}
-    native/CarboxylConfig.h native/CarboxylConfig.cpp
-    native/CarboxylApplication.cpp
-)
-
 set_target_properties(CarboxylBase PROPERTIES
     PUBLIC_HEADER "${HEADERS}"
 )
@@ -53,6 +50,5 @@ target_link_libraries(CarboxylBase
     PRIVATE
         Qt6::Gui
         Qt6::QuickControls2
+        Qt6::Core
 )
-target_link_libraries(CarboxylBase PRIVATE Qt6::Core)
-

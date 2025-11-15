@@ -3,6 +3,14 @@
 import QtQuick.Controls as C
 
 C.TabButton {
+    id: control
     property bool coloredIcon: false
     property bool inlineIcon: false
+
+    property alias content: content
+
+    contentItem: TabButtonContent {
+        id: content
+        control: control
+    }
 }

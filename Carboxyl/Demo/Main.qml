@@ -146,15 +146,31 @@ ApplicationWindow {
         }
 
         Dialog {
-            popupType: Popup.Native
             title: "Dialog"
             id: dialog
 
             anchors.centerIn: Overlay.overlay
 
             Label {
-                text: "This is a native dialog"
+                text: "This is a dialog"
+            }
+            standardButtons: Dialog.Ok | Dialog.Cancel | Dialog.Apply
+        }
+
+        NativeDialog {
+            title: "Dialog"
+            id: nativeDialog
+
+            width: 400
+            height: 500
+
+            // anchors.centerIn: Overlay.overlay
+            Label {
+                text: "This is a dialog"
                 anchors.fill: parent
+
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
             }
             standardButtons: Dialog.Ok | Dialog.Cancel | Dialog.Apply
         }
@@ -163,6 +179,12 @@ ApplicationWindow {
             text: "Dialog"
             enabled: swt.checked
             onClicked: dialog.open()
+        }
+
+        RoundButton {
+            text: "Native Dialog"
+            enabled: swt.checked
+            onClicked: nativeDialog.show()
         }
 
         ToolButton {
@@ -265,16 +287,16 @@ ApplicationWindow {
         position: TabBar.Footer
 
         contentHeight: 55
-        contentWidth: 120
+        contentWidth: 130
 
-        height: contentHeight * count + 20
-        width: 120
+        height: contentHeight * count + 15
+        width: contentWidth
 
         // TODO(crueter): Handle native controls(?)
         CarboxylTabButton {
             text: "V - Errors"
-            icon.height: 20
-            icon.width: 20
+            icon.height: 30
+            icon.width: 30
             icon.source: "qrc:/Demo/icons/crit.svg"
             inlineIcon: true
         }
@@ -296,8 +318,8 @@ ApplicationWindow {
         }
         CarboxylTabButton {
             text: "V - Information"
-            icon.height: 20
-            icon.width: 20
+            icon.height: 30
+            icon.width: 30
             icon.source: "qrc:/Demo/icons/info.svg"
             inlineIcon: true
         }
@@ -313,6 +335,9 @@ ApplicationWindow {
             leftMargin: 15
         }
 
+        contentHeight: 60
+        contentWidth: 100
+
         position: TabBar.Footer
 
         CarboxylTabButton {
@@ -325,16 +350,16 @@ ApplicationWindow {
         CarboxylTabButton {
             text: "Settings"
             icon.source: "qrc:/Demo/icons/Miscellaneous.svg"
-            icon.height: 20
-            icon.width: 20
+            icon.height: 30
+            icon.width: 30
             coloredIcon: true
             inlineIcon: true
         }
         CarboxylTabButton {
             text: "Verification"
             icon.source: "qrc:/Demo/icons/valid.svg"
-            icon.height: 20
-            icon.width: 20
+            icon.height: 30
+            icon.width: 30
             coloredIcon: true
             inlineIcon: true
         }

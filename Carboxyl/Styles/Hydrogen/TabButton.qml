@@ -10,10 +10,14 @@ import Carboxyl.Base
 TabButton {
     id: control
 
+    property bool vertical: TabBar.tabBar.vertical
+
     Universal.foreground: enabled ? palette.buttonText : Palettes.theme.disabledText
     Universal.background: palette.button
     Universal.accent: palette.accent
     Universal.theme: Palettes.theme === Palettes.light ? Universal.Light : Universal.Dark
+
+    padding: 4
 
     background: Rectangle {
         color: palette.button
@@ -28,7 +32,7 @@ TabButton {
     implicitWidth: content.implicitWidth + 10
 
     Component.onCompleted: {
-        if (TabBar.tabBar.vertical) {
+        if (vertical) {
             width = TabBar.tabBar.contentWidth
         }
     }
@@ -38,14 +42,4 @@ TabButton {
             duration: 150
         }
     }
-
-    TabButtonContent {
-        id: content
-        control: control
-        textColor: control.textColor
-        coloredIcon: control.coloredIcon
-        inlineIcon: control.inlineIcon
-    }
-
-    contentItem: content
 }

@@ -14,6 +14,10 @@ RadioButton {
     Material.accent: palette.accent
     Material.theme: Palettes.theme === Palettes.light ? Material.Light : Material.Dark
 
+    spacing: 2
+    padding: 2
+    verticalPadding: padding + 4
+
     indicator: RadioIndicator {
         x: control.text ? (control.mirrored ? control.width - width - control.rightPadding : control.leftPadding) : control.leftPadding
                           + (control.availableWidth - width) / 2

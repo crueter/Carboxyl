@@ -8,77 +8,133 @@ Item {
     id: content
 
     required property Item control
-    required property color textColor
 
-    property bool coloredIcon: false
-    property bool inlineIcon: true
+    property color textColor: control.textColor
+    property bool coloredIcon: control.coloredIcon
+    property bool inlineIcon: control.inlineIcon
+    property bool vertical: control.vertical
 
-    property alias item: itm
+    property Item item: inlineIcon ? inline : outOfLine
 
-    implicitHeight: itm.realHeight
-    implicitWidth: itm.realWidth
+    implicitHeight: item.height
+    implicitWidth: item.width
 
+    component Icon: Image {
+        id: img
+
+        source: control.icon.source
+        sourceSize: Qt.size(control.icon.width, control.icon.height)
+
+        fillMode: Image.PreserveAspectFit
+
+        mipmap: true
+
+        layer.enabled: true
+        layer.effect: MultiEffect {
+            colorization: content.coloredIcon ? 1 : 0
+            colorizationColor: content.textColor
+        }
+    }
+
+    component ButtonLabel: Text {
+        id: txt
+
+        font: control.font
+        text: control.text
+
+        color: content.textColor
+
+        verticalAlignment: Text.AlignVCenter
+    }
+
+    // TODO: left/right alignment
     Item {
-        id: itm
+        id: inline
+        visible: inlineIcon
 
-        property int realHeight: 0
-        property int realWidth: 0
-
-        // TODO: alignment
         anchors.fill: parent
 
-        Component.onCompleted: {
-            if (inlineIcon) {
-                realWidth = img.width + txt.width + 5
-                realHeight = Math.max(img.height, txt.height) + 5
-            } else {
-                realWidth = Math.max(img.width, txt.width) + 5
-                realHeight = img.height + txt.height + 5
-            }
-        }
-
-        Image {
-            id: img
-
-            source: control.icon.source
-            sourceSize: Qt.size(control.icon.width, control.icon.height)
-
-            fillMode: Image.PreserveAspectFit
-
-            mipmap: true
-
-            layer.enabled: content.coloredIcon
-            layer.effect: MultiEffect {
-                colorization: content.coloredIcon ? 1 : 0
-                colorizationColor: content.textColor
-            }
-
+        Icon {
+            id: inlineIconComponent
             anchors {
-                horizontalCenter: inlineIcon ? undefined : parent.horizontalCenter
-                verticalCenter: inlineIcon ? txt.verticalCenter : undefined
-            }
-        }
-
-        Text {
-            id: txt
-
-            font: control.font
-            text: control.text
-
-            color: content.textColor
-
-            verticalAlignment: Text.AlignVCenter
-
-            anchors {
-                left: inlineIcon ? img.right : undefined
-                leftMargin: 5
-
-                top: inlineIcon ? undefined : img.bottom
-                topMargin: 5
-
-                horizontalCenter: inlineIcon ? undefined : img.horizontalCenter
+                left: parent.left
                 verticalCenter: parent.verticalCenter
             }
         }
+
+        ButtonLabel {
+            anchors {
+                left: inlineIconComponent.right
+                leftMargin: 5
+                verticalCenter: inlineIconComponent.verticalCenter
+            }
+        }
     }
+
+    // TODO: Top/bottom alignment
+    Item {
+        id: outOfLine
+        visible: !inlineIcon
+
+        anchors.fill: parent
+
+        Icon {
+            id: outlineIconComponent
+            anchors {
+                top: parent.top
+                horizontalCenter: parent.horizontalCenter
+            }
+        }
+
+        ButtonLabel {
+            anchors {
+                top: outlineIconComponent.bottom
+                topMargin: 5
+                horizontalCenter: outlineIconComponent.horizontalCenter
+            }
+        }
+    }
+
+    // Item {
+    //     id: itm
+
+    //     property int realHeight: 0
+    //     property int realWidth: 0
+
+    //     // TODO: alignment
+    //     anchors.fill: parent
+
+    //     Component.onCompleted: {
+    //         if (inlineIcon) {
+    //             realWidth = loader.width + 5
+    //             realHeight = loader.height + 5
+    //         } else {
+    //             realWidth = loader.width + 5
+    //             realHeight = loader.height + 5
+    //         }
+    //     }
+
+    //     Loader {
+    //         id: loader
+    //         sourceComponent: inlineIcon ? new InlineItem() : new OutlineItem()
+    //     }
+    // }
+    // img
+    // anchors {
+    //     horizontalCenter: inlineIcon ? undefined : parent.horizontalCenter
+    //     verticalCenter: inlineIcon ? txt.verticalCenter : undefined
+    // }
+
+    // txt
+    // TODO: vertical detection
+    // anchors {
+    //     left: inlineIcon ? img.right : undefined
+    //     leftMargin: 5
+
+    //     top: inlineIcon ? undefined : img.bottom
+    //     topMargin: 5
+
+    //     horizontalCenter: inlineIcon ? undefined : img.horizontalCenter
+    //     verticalCenter: parent.verticalCenter
+    // }
 }

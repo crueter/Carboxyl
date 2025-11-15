@@ -1,10 +1,11 @@
 // SPDX-FileCopyrightText: Copyright 2025 crueter
 // SPDX-License-Identifier: GPL-3.0-or-later
-
 import QtQuick
 
 import Carboxyl.Base
 
+// This is a dramatically improved version of the Material/Helios Ripple.
+// That thing sucks, don't use it.
 Rectangle {
     required property var control
 

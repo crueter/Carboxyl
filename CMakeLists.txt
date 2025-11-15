@@ -4,7 +4,6 @@
 # proj setup
 cmake_minimum_required(VERSION 3.16)
 
-
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules")
 
 if(DEFINED PROJECT_NAME)
@@ -37,7 +36,7 @@ endif()
 set(CARBOXYL_STYLES "Basalt;Helios;Hydrogen;Trioxide;Graphide" CACHE STRING "Styles to build")
 set_property(CACHE CARBOXYL_STYLES PROPERTY STRINGS Basalt Helios Hydrogen Trioxide Graphide)
 
-option(CARBOXYL_DEMO "Build the Carboxyl demo" ${subproject})
+option(CARBOXYL_DEMO "Build the Carboxyl demo" ${CARBOXYL_INSTALL_DEFAULT})
 option(CARBOXYL_INSTALL "Install Carboxyl QML and libraries" ${CARBOXYL_INSTALL_DEFAULT})
 
 include(CarboxylModule)

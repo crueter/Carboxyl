@@ -3,6 +3,13 @@
 
 #include "CarboxylApplication.h"
 
+// Some OSes lack good hwaccel support
+#if !defined(__linux__) && !defined(__APPLE__) && !defined(_WIN32) && !defined(__FreeBSD__)
+#define NEED_SWRAST
+#include <QQuickWindow>
+#include <QSGRendererInterface>
+#endif
+
 CarboxylApplication::CarboxylApplication(QGuiApplication &app,
                                          QQmlApplicationEngine *engine,
                                          const QString &style,
@@ -12,6 +19,9 @@ CarboxylApplication::CarboxylApplication(QGuiApplication &app,
     , m_config(new CarboxylConfig(this))
     , m_defaultStyle(defaultStyle)
 {
+#ifdef NEED_SWRAST
+    QQuickWindow::setGraphicsApi(QSGRendererInterface::Software);
+#endif
     // system dark mode check
     m_systemDarkMode = [&app]() -> bool {
 #if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)

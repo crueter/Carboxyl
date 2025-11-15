@@ -50,5 +50,8 @@ ComboBox {
 
         cursorDelegate: CursorDelegate {}
         background: Item {}
+
+        topPadding: 0
+        bottomPadding: 0
     }
 }
