@@ -32,14 +32,12 @@ CarboxylModule(
         FloatingPlaceholderText.qml
         CarboxylLabeledTextField.qml
         CarboxylLabeledComboBox.qml
+        CarboxylLabeledDoubleSpinBox.qml
+        DoubleSpinBox.qml
     SOURCES
         ${HEADERS}
         native/CarboxylConfig.h native/CarboxylConfig.cpp
         native/CarboxylApplication.cpp
-)
-
-target_sources(CarboxylBase
-  PRIVATE
 )
 
 target_include_directories(CarboxylBase PUBLIC

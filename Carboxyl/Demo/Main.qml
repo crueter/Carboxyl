@@ -291,6 +291,18 @@ ApplicationWindow {
                 label: "Spin Box"
             }
 
+            CarboxylLabeledDoubleSpinBox {
+                enabled: swt.checked
+
+                from: -100
+                to: 100000000
+
+                Layout.preferredWidth: 300
+                editable: true
+                stepSize: 0.1
+                label: "Double Spin Box"
+            }
+
             CarboxylLabeledTextField {
                 Layout.fillWidth: true
                 height: 40
