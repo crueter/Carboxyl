@@ -26,6 +26,9 @@ CarboxylModule(
         CheckBox.qml
         RadioButton.qml
         AccentedFooter.qml
+        LabelTextField.qml
+        LabelSpinBox.qml
+        LabelComboBox.qml
 
 )
 

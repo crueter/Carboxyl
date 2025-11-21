@@ -101,13 +101,15 @@ ApplicationWindow {
             font.pixelSize: 20
         }
 
-        ComboBox {
+        CarboxylLabeledComboBox {
             id: style
 
             model: CarboxylConfig.styles
 
             Layout.fillWidth: true
             enabled: swt.checked
+
+            label: "Style"
 
             Component.onCompleted: {
                 currentIndex = model.indexOf(CarboxylApplication.styleName)
@@ -116,11 +118,13 @@ ApplicationWindow {
             onCurrentIndexChanged: Settings.set("style", model[currentIndex])
         }
 
-        ComboBox {
+        CarboxylLabeledComboBox {
             id: paletteBox
 
             model: Palettes.accents
             textRole: "name"
+
+            label: "Accent"
 
             Layout.fillWidth: true
             enabled: swt.checked
@@ -204,16 +208,20 @@ ApplicationWindow {
 
         id: left
 
+        color: Palettes.theme.base
+
         ColumnLayout {
             anchors.fill: parent
             height: 400
 
-            ComboBox {
+            CarboxylLabeledComboBox {
                 id: theme
 
                 model: Palettes.themes
                 textRole: "name"
                 enabled: swt.checked
+
+                label: "Theme"
 
                 // TODO settings for accent and theme
                 Component.onCompleted: {
@@ -270,6 +278,24 @@ ApplicationWindow {
 
                 Layout.preferredWidth: 300
                 editable: true
+            }
+
+            CarboxylLabeledSpinBox {
+                enabled: swt.checked
+
+                from: -100
+                to: 100000000
+
+                Layout.preferredWidth: 300
+                editable: true
+                label: "Spin Box"
+            }
+
+            CarboxylLabeledTextField {
+                Layout.fillWidth: true
+                height: 40
+                enabled: swt.checked
+                label: "Placeholder"
             }
         }
     }

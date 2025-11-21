@@ -28,10 +28,18 @@ CarboxylModule(
         CarboxylTabBar.qml
         Ripple.qml
         NativeDialog.qml
+        CarboxylLabeledSpinBox.qml
+        FloatingPlaceholderText.qml
+        CarboxylLabeledTextField.qml
+        CarboxylLabeledComboBox.qml
     SOURCES
         ${HEADERS}
         native/CarboxylConfig.h native/CarboxylConfig.cpp
         native/CarboxylApplication.cpp
+)
+
+target_sources(CarboxylBase
+  PRIVATE
 )
 
 target_include_directories(CarboxylBase PUBLIC

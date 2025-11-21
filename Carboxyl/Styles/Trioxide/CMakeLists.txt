@@ -26,6 +26,9 @@ CarboxylModule(
         CheckBox.qml
         Switch.qml
         RadioButton.qml
+        LabelTextField.qml
+        LabelSpinBox.qml
+        LabelComboBox.qml
 
     RESOURCES
         images/check.svg

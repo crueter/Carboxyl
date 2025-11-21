@@ -31,12 +31,12 @@ int main(int argc, char *argv[])
     carboxylApp->setParent(&app);
     QDirIterator iter(QDir(":/"), QDirIterator::Subdirectories);
 
-    while (iter.hasNext()) {
-        QString next = iter.next();
-        if (!next.contains("k") && !next.contains("breeze")) {
-            qDebug() << next;
-        }
-    }
+    // while (iter.hasNext()) {
+    //     QString next = iter.next();
+    //     if (!next.contains("k") && !next.contains("breeze")) {
+    //         qDebug() << next;
+    //     }
+    // }
 
     QObject::connect(
         engine,
