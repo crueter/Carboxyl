@@ -6,6 +6,7 @@ import Carboxyl.Base
 
 SpinBox {
     id: control
+    editable: true
 
     topInset: 4
 

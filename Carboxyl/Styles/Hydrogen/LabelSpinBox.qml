@@ -6,11 +6,11 @@ import Carboxyl.Base
 
 SpinBox {
     id: control
-
+    editable: true
     topInset: 4
 
     FloatingPlaceholderText {
-        
+
         label: control.label
         hasText: control.contentItem.length > 0
         backgroundColor: control.backgroundColor
