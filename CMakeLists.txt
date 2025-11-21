@@ -36,12 +36,6 @@ endif()
 set(CARBOXYL_STYLES "Basalt;Helios;Hydrogen;Trioxide;Graphide" CACHE STRING "Styles to build")
 set_property(CACHE CARBOXYL_STYLES PROPERTY STRINGS Basalt Helios Hydrogen Trioxide Graphide)
 
-list(JOIN CARBOXYL_STYLES "\",\"" CARBOXYL_STYLES_DIRTY)
-set(CARBOXYL_STYLES_LIST "\"${CARBOXYL_STYLES_DIRTY}\"")
-
-# TODO: add this to CarboxylConfig
-add_compile_definitions(CARBOXYL_STYLES="${CARBOXYL_STYLES_LIST}")
-
 option(CARBOXYL_DEMO "Build the Carboxyl demo" ${CARBOXYL_INSTALL_DEFAULT})
 option(CARBOXYL_INSTALL "Install Carboxyl QML and libraries" ${CARBOXYL_INSTALL_DEFAULT})
 
