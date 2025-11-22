@@ -7,10 +7,8 @@ cmake_minimum_required(VERSION 3.16)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules")
 
 if(DEFINED PROJECT_NAME)
-    set(subproject ON)
     set(CARBOXYL_INSTALL_DEFAULT OFF)
 else()
-    set(subproject OFF)
     set(CARBOXYL_INSTALL_DEFAULT ON)
     set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 endif()
@@ -24,6 +22,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # qt
 set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOMOC ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Core Quick QuickControls2 Gui)
 qt_standard_project_setup(REQUIRES 6.4)
@@ -31,6 +30,10 @@ qt_standard_project_setup(REQUIRES 6.4)
 if(QT_KNOWN_POLICY_QTP0001)
     qt_policy(SET QTP0001 NEW)
 endif()
+
+# meta lib to link to everything
+add_library(Carboxyl INTERFACE)
+add_library(Carboxyl::Carboxyl ALIAS Carboxyl)
 
 # options
 set(CARBOXYL_STYLES "Basalt;Helios;Hydrogen;Trioxide;Graphide" CACHE STRING "Styles to build")

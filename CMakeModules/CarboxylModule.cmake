@@ -6,10 +6,13 @@ cmake_minimum_required(VERSION 3.16)
 function(CarboxylModule)
     set(oneValueArgs
         NAME
-        URI
-    )
+        URI)
 
-    cmake_parse_arguments(MODULE "" "${oneValueArgs}" ""
+    set(multiValueArgs
+        QML_FILES
+        SOURCES)
+
+    cmake_parse_arguments(MODULE "" "${oneValueArgs}" "${multiValueArgs}"
                           "${ARGN}")
 
     if (BUILD_SHARED_LIBS)
@@ -24,33 +27,36 @@ function(CarboxylModule)
 
     qt_add_qml_module(${LIB_NAME}
         URI ${MODULE_URI}
-        NO_PLUGIN
         VERSION ${CARBOXYL_QML_VERSION}
         OUTPUT_TARGETS TARGETS
+        ${extra_args}
 
-        ${MODULE_UNPARSED_ARGUMENTS}
-    )
+        QML_FILES ${MODULE_QML_FILES}
+        SOURCES ${MODULE_SOURCES})
 
     add_library(Carboxyl::${MODULE_NAME} ALIAS ${LIB_NAME})
+    target_link_libraries(${LIB_NAME} PUBLIC ${LIB_NAME}plugin)
+    target_link_libraries(Carboxyl INTERFACE ${LIB_NAME} ${LIB_NAME}plugin)
 
     if (CARBOXYL_INSTALL)
         set_target_properties(${LIB_NAME} PROPERTIES
             EXPORT_NAME "${MODULE_NAME}")
 
+        set_target_properties(${LIB_NAME}plugin PROPERTIES
+            EXPORT_NAME "${MODULE_NAME}Plugin")
+
         include(GNUInstallDirs)
 
-        install(TARGETS ${LIB_NAME} ${TARGETS}
+        install(TARGETS ${LIB_NAME} ${LIB_NAME}plugin ${TARGETS}
             EXPORT ${MODULE_NAME}Targets
             BUNDLE DESTINATION .
             LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
             RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-            PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-        )
+            PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
         install(EXPORT ${MODULE_NAME}Targets
             FILE Carboxyl${MODULE_NAME}Targets.cmake
             NAMESPACE Carboxyl::
-            DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Carboxyl
-        )
+            DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Carboxyl)
     endif()
 endfunction()

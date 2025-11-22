@@ -7,7 +7,9 @@ set(CARBOXYL_STYLES_LIST "\t\"${STYLES_DIRTY}\"")
 list(LENGTH CARBOXYL_STYLES CARBOXYL_STYLES_LENGTH)
 
 add_subdirectory(Base)
-add_subdirectory(Styles)
+add_subdirectory(Clover)
+add_subdirectory(Contour)
+add_subdirectory(Chroma)
 
 if (CARBOXYL_DEMO)
     add_subdirectory(Demo)
@@ -15,6 +17,20 @@ endif()
 
 if (CARBOXYL_INSTALL)
     include(GNUInstallDirs)
+
+    install(TARGETS Carboxyl
+        EXPORT CarboxylTargets
+        BUNDLE DESTINATION .
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+    )
+
+    install(EXPORT CarboxylTargets
+        FILE CarboxylTargets.cmake
+        NAMESPACE Carboxyl::
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Carboxyl
+    )
 
     # you don't need to install the qml files because qrc is AWESOME
     include(CMakePackageConfigHelpers)

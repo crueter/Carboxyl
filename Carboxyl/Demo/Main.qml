@@ -5,7 +5,8 @@ import QtQuick.Controls
 import QtQuick.Shapes
 import QtQuick.Layouts
 
-import Carboxyl.Base
+import Carboxyl.Clover
+import Carboxyl.Contour
 
 ApplicationWindow {
     width: 640
@@ -254,11 +255,21 @@ ApplicationWindow {
             }
 
             Dial {
+                id: dial
                 enabled: swt.checked
+                from: -100
+                to: 100
+
+                value: slider.value
             }
 
             Slider {
+                id: slider
                 enabled: swt.checked
+                from: -100
+                to: 100
+
+                value: dial.value
             }
 
             RangeSlider {

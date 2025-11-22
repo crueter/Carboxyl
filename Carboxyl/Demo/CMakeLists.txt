@@ -48,8 +48,7 @@ set_target_properties(Demo PROPERTIES
 
 target_link_libraries(Demo
     PRIVATE
-    Carboxyl::Base
-    Carboxyl::Styles
+    Carboxyl::Carboxyl
     Qt6::Gui
     Qt6::QuickControls2
 )

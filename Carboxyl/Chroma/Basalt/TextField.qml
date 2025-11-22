@@ -1,0 +1,13 @@
+// SPDX-FileCopyrightText: Copyright 2025 crueter
+// SPDX-License-Identifier: GPL-3.0-or-later
+import QtQuick
+import QtQuick.Controls.Basic 6.4
+import QtQuick.Controls.impl 6.4
+
+import Carboxyl.Clover
+import Carboxyl.Contour
+
+// TODO(crueter): Floating placeholder text
+TextField {
+    id: control
+}

@@ -1,11 +1,13 @@
 @PACKAGE_INIT@
 
-find_package(Qt6 REQUIRED COMPONENTS Gui QuickControls2 Quick Core)
+find_dependency(Qt6 REQUIRED COMPONENTS Gui QuickControls2 Quick Core)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}")
 
+include(CarboxylChromaTargets)
+include(CarboxylCloverTargets)
+include(CarboxylBaseTargets)
 include(CarboxylHeliosTargets)
 include(CarboxylHydrogenTargets)
 include(CarboxylTrioxideTargets)
 include(CarboxylBasaltTargets)
-include(CarboxylBaseTargets)

@@ -1,0 +1,12 @@
+// SPDX-FileCopyrightText: Copyright 2025 crueter
+// SPDX-License-Identifier: GPL-3.0-or-later
+import QtQuick
+import QtQuick.Controls.Basic
+
+import Carboxyl.Clover
+import Carboxyl.Contour
+import Carboxyl.Chroma.Graphide as G
+
+MenuSeparator {
+    id: control
+}
