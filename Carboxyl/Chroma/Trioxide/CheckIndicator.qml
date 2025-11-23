@@ -38,7 +38,7 @@ Rectangle {
         y: (parent.height - height) / 2
 
         visible: indicator.control.checked
-        color: control.enabled ? palette.buttonText : Palettes.theme.disabledText
+        color: palette.buttonText
         source: "qrc:/qt/qml/Carboxyl/Chroma/Trioxide/images/check.svg"
     }
 }

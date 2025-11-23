@@ -9,9 +9,8 @@ import Carboxyl.Contour
 import Carboxyl.Chroma.Graphide as T
 
 Menu {
-
     palette {
-        window: Palettes.theme.midlight
+        window: Clover.theme.midlight
     }
 
     id: control

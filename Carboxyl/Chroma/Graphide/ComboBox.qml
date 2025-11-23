@@ -25,16 +25,30 @@ ComboBox {
     }
 
     delegate: ItemDelegate {
+        id: itemDelegate
+
         required property var model
         required property int index
 
         width: ListView.view.width
         text: model[control.textRole]
-        palette.text: control.palette.text
-        palette.highlightedText: control.palette.accent
+
         font.weight: control.currentIndex === index ? Font.DemiBold : Font.Normal
         highlighted: control.highlightedIndex === index
         hoverEnabled: control.hoverEnabled
+
+        background: Rectangle {
+            implicitWidth: 100
+            implicitHeight: 30
+
+            radius: width / 20
+            visible: itemDelegate.down || itemDelegate.highlighted
+                     || itemDelegate.visualFocus
+            color: Color.blend(
+                       itemDelegate.down ? control.palette.midlight : control.palette.light,
+                       control.palette.highlight,
+                       control.visualFocus ? 0.15 : 0.0)
+        }
     }
 
     popup: T.Popup {
@@ -51,7 +65,7 @@ ComboBox {
             implicitHeight: contentHeight
             model: control.delegateModel
             currentIndex: control.highlightedIndex
-            highlightMoveDuration: 0
+            highlightMoveDuration: 100
 
             Rectangle {
                 z: 10
@@ -59,6 +73,7 @@ ComboBox {
                 height: parent.height
                 color: "transparent"
                 border.color: control.palette.mid
+                radius: width / 20
             }
 
             T.ScrollIndicator.vertical: ScrollIndicator {}
@@ -75,12 +90,24 @@ ComboBox {
         }
 
         background: Rectangle {
-            color: control.palette.window
+            implicitWidth: 200
+            implicitHeight: 30
+            color: control.palette.alternateBase
+            border.color: control.palette.dark
+
+            radius: width / 20
         }
     }
 
-    background {
+    background: Rectangle {
         implicitWidth: 140
-        implicitHeight: 35
+        implicitHeight: 30
+
+        radius: 10
+
+        color: control.down ? control.palette.mid : control.palette.button
+        border.color: control.palette.highlight
+        border.width: !control.editable && control.visualFocus ? 2 : 0
+        visible: !control.flat || control.down
     }
 }

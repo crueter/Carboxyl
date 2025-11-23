@@ -17,7 +17,7 @@ Rectangle {
 
     radius: width / 2
 
-    color: Qt.alpha(Palettes.theme.accent, 0.25)
+    color: Qt.alpha(Clover.theme.currentAccent, 0.25)
 
     opacity: control.hovered || control.pressed
 

@@ -10,10 +10,10 @@ import Carboxyl.Contour
 Slider {
     id: control
 
-    Material.foreground: Palettes.theme.buttonText
-    Material.background: Palettes.theme.buttonLight
-    Material.accent: Palettes.theme.accent
-    Material.theme: Palettes.theme === Palettes.light ? Material.Light : Material.Dark
+    Material.foreground: Clover.theme.buttonText
+    Material.background: Clover.theme.buttonLight
+    Material.accent: Clover.theme.currentAccent
+    Material.theme: Clover.theme === Clover.light ? Material.Light : Material.Dark
 
     verticalPadding: 5
 
@@ -37,8 +37,8 @@ Slider {
             scale: control.horizontal && control.mirrored ? -1 : 1
             radius: Math.min(width, height) / 2
             color: control.enabled ? Color.transparent(
-                                         Palettes.theme.text,
-                                         0.65) : control.Material.sliderDisabledColor
+                                         Clover.theme.text,
+                                         0.45) : control.Material.sliderDisabledColor
 
             Rectangle {
                 x: control.horizontal ? 0 : (parent.width - width) / 2
@@ -81,7 +81,7 @@ Slider {
         implicitWidth: 14
         implicitHeight: 14
 
-        color: control.palette.accent
+        color: Clover.theme.currentAccent
 
         radius: width / 2
 

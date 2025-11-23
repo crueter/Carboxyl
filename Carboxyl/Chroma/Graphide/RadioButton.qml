@@ -21,10 +21,10 @@ RadioButton {
         y: control.topPadding + (control.availableHeight - height) / 2
 
         radius: width / 2
-        color: control.checked ? control.palette.highlight : (control.down ? control.palette.light : control.palette.base)
+        color: control.checked ? Clover.theme.currentAccent : (control.down ? control.palette.light : control.palette.base)
         border.width: control.visualFocus ? 2 : 1
         border.color: (control.visualFocus
-                       || control.hovered) ? control.palette.highlight : control.palette.mid
+                       || control.hovered) ? Clover.theme.currentAccent : control.palette.mid
 
         Rectangle {
             property int size: control.hovered ? parent.width / 2 + 1 : parent.width / 2 - 1

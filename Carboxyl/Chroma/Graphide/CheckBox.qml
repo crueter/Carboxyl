@@ -18,9 +18,9 @@ CheckBox {
                           + (control.availableWidth - width) / 2
         y: control.topPadding + (control.availableHeight - height) / 2
 
-        color: control.down ? control.palette.mid : (control.checked ? control.palette.accent : control.palette.mid)
+        color: control.down ? control.palette.mid : (control.checked ? Clover.theme.currentAccent : control.palette.mid)
         border.width: control.visualFocus ? 2 : 1
-        border.color: control.down ? control.palette.accent : control.palette.dark
+        border.color: control.down ? Clover.theme.currentAccent : control.palette.dark
 
         radius: 2
 

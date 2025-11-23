@@ -24,7 +24,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOMOC ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Core Quick QuickControls2 Gui)
+set(QT_NO_PRIVATE_MODULE_WARNING ON)
+
+find_package(Qt6 REQUIRED COMPONENTS Core Quick QuickControls2 Gui OPTIONAL_COMPONENTS QuickPrivate)
+
 qt_standard_project_setup(REQUIRES 6.4)
 
 if(QT_KNOWN_POLICY_QTP0001)

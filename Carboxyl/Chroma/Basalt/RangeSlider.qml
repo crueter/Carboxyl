@@ -21,8 +21,8 @@ RangeSlider {
         implicitWidth: 24
         implicitHeight: 24
         radius: width / 2
-        border.width: activeFocus ? 2 : 1
-        border.color: activeFocus ? control.palette.highlight : control.enabled ? control.palette.mid : control.palette.midlight
+        border.width: 1
+        border.color: activeFocus ? Clover.theme.currentAccent : control.enabled ? control.palette.mid : control.palette.midlight
         color: control.first.pressed ? control.palette.light : control.palette.button
     }
 
@@ -38,8 +38,8 @@ RangeSlider {
         implicitWidth: 24
         implicitHeight: 24
         radius: width / 2
-        border.width: activeFocus ? 2 : 1
-        border.color: activeFocus ? control.palette.highlight : control.enabled ? control.palette.mid : control.palette.midlight
+        border.width: 1
+        border.color: activeFocus ? Clover.theme.currentAccent : control.enabled ? control.palette.mid : control.palette.midlight
         color: control.second.pressed ? control.palette.light : control.palette.button
     }
 
@@ -62,7 +62,7 @@ RangeSlider {
             height: control.horizontal ? 6 : control.second.position * parent.height
                                          - control.first.position * parent.height - 6
 
-            color: control.palette.accent
+            color: Clover.theme.currentAccent
         }
     }
 }

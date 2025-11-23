@@ -14,7 +14,7 @@ ApplicationWindow {
     visible: true
     title: qsTr("Carboxyl Demo")
 
-    palette: Palettes.theme
+    palette: Clover.theme
 
     menuBar: MenuBar {
         Menu {
@@ -98,7 +98,7 @@ ApplicationWindow {
 
         Text {
             text: CarboxylApplication.styleName
-            color: Palettes.theme.text
+            color: Clover.theme.text
             font.pixelSize: 20
         }
 
@@ -120,9 +120,9 @@ ApplicationWindow {
         }
 
         CarboxylLabeledComboBox {
-            id: paletteBox
+            id: accent
 
-            model: Palettes.accents
+            model: Clover.accents
             textRole: "name"
 
             label: "Accent"
@@ -130,7 +130,12 @@ ApplicationWindow {
             Layout.fillWidth: true
             enabled: swt.checked
 
-            onCurrentIndexChanged: Palettes.accent = Palettes.accents[currentIndex]
+            // TODO settings for accent and theme
+            Component.onCompleted: {
+                currentIndex = Clover.accents.indexOf(Clover.accent)
+                currentIndexChanged.connect(
+                            () => Clover.accent = Clover.accents[accent.currentIndex])
+            }
         }
 
         Switch {
@@ -209,7 +214,7 @@ ApplicationWindow {
 
         id: left
 
-        color: Palettes.theme.base
+        color: Clover.theme.base
 
         ColumnLayout {
             anchors.fill: parent
@@ -218,7 +223,7 @@ ApplicationWindow {
             CarboxylLabeledComboBox {
                 id: theme
 
-                model: Palettes.themes
+                model: Clover.themes
                 textRole: "name"
                 enabled: swt.checked
 
@@ -226,9 +231,9 @@ ApplicationWindow {
 
                 // TODO settings for accent and theme
                 Component.onCompleted: {
-                    currentIndex = Palettes.themes.indexOf(Palettes.theme)
+                    currentIndex = Clover.themes.indexOf(Clover.theme)
                     currentIndexChanged.connect(
-                                () => Palettes.theme = Palettes.themes[theme.currentIndex])
+                                () => Clover.theme = Clover.themes[theme.currentIndex])
                 }
             }
 

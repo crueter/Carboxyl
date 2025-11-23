@@ -8,125 +8,72 @@ import QtQuick
 /**
   Singleton holding palette info.
   */
-
-// TODO(crueter): Define light, dark, midnight for colors
-// then, generate Disabled and Inactive from those.
 Item {
     id: root
 
     property alias light: light
 
-    SystemPalette {
-        id: systemActive
-        colorGroup: SystemPalette.Active
-    }
-
-    SystemPalette {
-        id: systemInactive
-        colorGroup: SystemPalette.Inactive
-    }
-
-    SystemPalette {
-        id: systemDisabled
-        colorGroup: SystemPalette.Disabled
-    }
-
-    Accent {
-        id: systemAccent
-
-        name: "System"
-        active: systemActive.accent
-        inactive: systemInactive.accent
-        disabled: systemDisabled.accent
-    }
-
-    // TODO(crueter): Rework these to properly represent active, inactive, disabled
-    Accent {
+    CloverAccent {
         id: red
-
         name: "Red"
-        active: Qt.darker("Crimson", 1.1)
-        inactive: "Firebrick"
-        disabled: Qt.darker(inactive, 1.2)
+        light: "Crimson"
     }
 
-    Accent {
+    CloverAccent {
         id: blue
-
         name: "Blue"
-        active: "Blue"
-        inactive: "DodgerBlue"
-        disabled: "DeepSkyBlue"
+        light: "Blue"
+        midnight: this.dark
     }
 
-    Accent {
+    CloverAccent {
         id: orange
-
         name: "Orange"
-        active: "Orange"
-        inactive: Qt.darker(active, 1.2)
-        disabled: Qt.darker(inactive, 1.2)
+        light: "#da8e00"
     }
 
-    Accent {
+    CloverAccent {
         id: gold
-
         name: "Gold"
-        active: "#FFD700"
-        inactive: "Goldenrod"
-        disabled: Qt.darker(inactive, 1.2)
+        // light: "#FFD700"
+        light: "#ccac00"
     }
 
-    Accent {
+    CloverAccent {
         id: forest
-
         name: "Forest"
-        active: Qt.lighter("DarkGreen", 1.4)
-        inactive: "ForestGreen"
-        disabled: Qt.lighter(inactive, 1.2)
+        light: "#00c500"
     }
 
-    Accent {
+    CloverAccent {
         id: violet
-
         name: "Violet"
-        active: Qt.darker("#a274bd", 1.1)
-        inactive: Qt.darker(disabled, 1.4)
-        disabled: "Violet"
+        light: "#9663b5"
     }
 
-    Accent {
+    CloverAccent {
         id: pink
-
         name: "Pink"
-        active: "#FF00B0"
-        inactive: "#E6006B"
-        disabled: Qt.darker(inactive, 1.2)
+        light: "#FF00B0"
     }
 
-    Accent {
+    CloverAccent {
         id: cyan
-
         name: "Cyan"
-        active: "#60D1F6"
-        inactive: "#00E6E6"
-        disabled: Qt.darker(inactive, 1.2)
+        light: "#00b4b4"
     }
 
-    Accent {
+    CloverAccent {
         id: steel
-
         name: "Steel"
-        active: "#99a3a3"
-        inactive: "#a8b0b2"
-        disabled: "#c0c6c7"
+        light: "#788585"
     }
 
-    readonly property list<Accent> accents: [systemAccent, red, blue, orange, gold, forest, violet, pink, cyan, steel]
-    readonly property list<BasePalette> themes: [systemPalette, light, dark, midnight]
+    readonly property list<CloverAccent> accents: [red, blue, orange, gold, forest, violet, pink, cyan, steel]
+    readonly property list<CloverPalette> themes: [systemPalette, light, dark, midnight]
 
-    property Accent accent: systemAccent
-    property BasePalette theme: systemPalette
+    property CloverAccent accent: blue
+    property CloverPalette theme: systemPalette
 
     Component.onCompleted: {
         let palette = CarboxylApplication.systemDarkMode ? dark : light
@@ -135,33 +82,21 @@ Item {
         systemPalette.disabled = palette.disabled
     }
 
-    // this is really annoying
-    onAccentChanged: {
-        systemPalette.active.highlight = accent.active
-        systemPalette.active.accent = accent.active
-
-        systemPalette.inactive.highlight = accent.inactive
-        systemPalette.inactive.accent = accent.inactive
-
-        systemPalette.disabled.highlight = accent.disabled
-        systemPalette.disabled.accent = accent.disabled
-    }
-
-    BasePalette {
+    CloverPalette {
         id: systemPalette
 
         name: "System"
+        currentAccent: (CarboxylApplication.systemDarkMode ? dark : light).currentAccent
     }
 
-    BasePalette {
+    // TODO: autogen inactive, disabled?
+    CloverPalette {
         id: light
 
         name: "Light"
+        currentAccent: root.accent.light
 
         active {
-            accent: root.accent.active
-            highlight: root.accent.active
-
             // used for alternating rows
             alternateBase: "#e4e4e4"
             base: "#ffffff"
@@ -208,9 +143,6 @@ Item {
 
         // inactive is between active and disabled
         inactive {
-            highlight: root.accent.inactive
-            accent: root.accent.inactive
-
             // used for alternating rows
             alternateBase: "#d9d9d9"
             base: "#ffffff"
@@ -256,9 +188,6 @@ Item {
         }
 
         disabled {
-            accent: root.accent.disabled
-            highlight: root.accent.disabled
-
             // used for alternating rows
             alternateBase: "#d5d5d5"
             base: "#f0f0f0"
@@ -304,15 +233,13 @@ Item {
         }
     }
 
-    BasePalette {
+    CloverPalette {
         id: dark
 
         name: "Dark"
+        currentAccent: root.accent.dark
 
         active {
-            accent: root.accent.active
-            highlight: root.accent.active
-
             // used for alternating rows
             alternateBase: "#303030"
             base: "#1e1e1e"
@@ -359,9 +286,6 @@ Item {
 
         // inactive is between active and disabled
         inactive {
-            highlight: root.accent.inactive
-            accent: root.accent.inactive
-
             // used for alternating rows
             alternateBase: "#303030"
             base: "#1f1f1f"
@@ -407,9 +331,6 @@ Item {
         }
 
         disabled {
-            accent: root.accent.disabled
-            highlight: root.accent.disabled
-
             // used for alternating rows
             alternateBase: "#303030"
             base: "#202020"
@@ -456,15 +377,13 @@ Item {
     }
 
     // NB: Midnight has to break a few rules due to it being way too dark otherwise
-    BasePalette {
+    CloverPalette {
         id: midnight
 
         name: "Midnight"
+        currentAccent: root.accent.midnight
 
         active {
-            accent: root.accent.active
-            highlight: root.accent.active
-
             // used for alternating rows
             alternateBase: "#1e1e1e"
             base: "#000000"
@@ -511,9 +430,6 @@ Item {
 
         // inactive is between active and disabled
         inactive {
-            highlight: root.accent.inactive
-            accent: root.accent.inactive
-
             // used for alternating rows
             alternateBase: "#202020"
             base: "#040404"
@@ -559,9 +475,6 @@ Item {
         }
 
         disabled {
-            accent: root.accent.disabled
-            highlight: root.accent.disabled
-
             // used for alternating rows
             alternateBase: "#242424"
             base: "#080808"

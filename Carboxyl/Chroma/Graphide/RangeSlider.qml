@@ -10,10 +10,10 @@ import Carboxyl.Contour
 RangeSlider {
     id: control
 
-    Material.foreground: Palettes.theme.buttonText
-    Material.background: Palettes.theme.buttonLight
-    Material.accent: Palettes.theme.accent
-    Material.theme: Palettes.theme === Palettes.light ? Material.Light : Material.Dark
+    Material.foreground: Clover.theme.buttonText
+    Material.background: Clover.theme.buttonLight
+    Material.accent: Clover.theme.currentAccent
+    Material.theme: Clover.theme === Clover.light ? Material.Light : Material.Dark
 
     verticalPadding: 5
 
@@ -21,7 +21,7 @@ RangeSlider {
         implicitWidth: 14
         implicitHeight: 14
 
-        color: control.palette.accent
+        color: Clover.theme.currentAccent
 
         radius: width / 2
 
@@ -43,7 +43,7 @@ RangeSlider {
         implicitWidth: 14
         implicitHeight: 14
 
-        color: control.palette.accent
+        color: Clover.theme.currentAccent
 
         radius: width / 2
 
@@ -81,8 +81,8 @@ RangeSlider {
             scale: control.horizontal && control.mirrored ? -1 : 1
             radius: Math.min(width, height) / 2
             color: control.enabled ? Color.transparent(
-                                         Palettes.theme.text,
-                                         0.65) : control.Material.sliderDisabledColor
+                                         Clover.theme.text,
+                                         0.45) : control.Material.sliderDisabledColor
 
             Rectangle {
                 x: control.horizontal ? control.first.position * parent.width : 0

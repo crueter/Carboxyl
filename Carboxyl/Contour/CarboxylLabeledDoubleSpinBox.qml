@@ -9,7 +9,7 @@ DoubleSpinBox {
     id: dsb
 
     property string label: ""
-    property color backgroundColor: Palettes.theme.window
+    property color backgroundColor: Clover.theme.window
 
     contentItem: LabelSpinBox {
         editable: dsb.editable

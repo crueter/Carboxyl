@@ -11,8 +11,8 @@ Dial {
 
     Material.foreground: palette.buttonText
     Material.background: palette.button
-    Material.accent: palette.accent
-    Material.theme: Palettes.theme === Palettes.light ? Material.Light : Material.Dark
+    Material.accent: Clover.theme.currentAccent
+    Material.theme: Clover.theme === Clover.light ? Material.Light : Material.Dark
 
     verticalPadding: 5
 
@@ -20,7 +20,7 @@ Dial {
         implicitWidth: 100
         implicitHeight: 100
 
-        color: control.palette.accent
+        color: Clover.theme.currentAccent
 
         radius: width / 2
 

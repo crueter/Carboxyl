@@ -5,6 +5,7 @@ import QtQuick.Templates as T
 import QtQuick.Controls.impl 6.4
 
 import Carboxyl.Contour
+import Carboxyl.Clover
 
 T.Switch {
     id: control
@@ -29,7 +30,7 @@ T.Switch {
 
         radius: 8
         padding: 6
-        color: control.checked ? control.palette.highlight : control.palette.midlight
+        color: control.checked ? Clover.theme.currentAccent : control.palette.midlight
 
         Rectangle {
             id: handle
@@ -44,7 +45,7 @@ T.Switch {
             radius: 16
             color: control.down ? control.palette.light : control.palette.button
             border.width: control.visualFocus ? 2 : 1
-            border.color: control.visualFocus ? control.palette.highlight : control.enabled ? control.palette.mid : control.palette.midlight
+            border.color: control.visualFocus ? Clover.theme.currentAccent : control.enabled ? control.palette.mid : control.palette.midlight
         }
     }
 

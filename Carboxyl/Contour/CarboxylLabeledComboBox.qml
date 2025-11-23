@@ -9,5 +9,5 @@ LabelComboBox {
     topInset: 4
 
     property string label: ""
-    property color backgroundColor: Palettes.theme.window
+    property color backgroundColor: Clover.theme.window
 }

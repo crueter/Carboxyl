@@ -11,7 +11,7 @@ Dial {
     id: control
 
     palette {
-        dark: Palettes.theme.text
+        dark: Clover.theme.currentAccent
     }
 
     background.implicitHeight: 120

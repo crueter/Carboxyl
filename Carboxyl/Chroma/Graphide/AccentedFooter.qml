@@ -10,7 +10,7 @@ import Carboxyl.Contour
 Rectangle {
     required property var control
 
-    color: control.activeFocus ? palette.accent : palette.text
+    color: control.activeFocus ? Clover.theme.currentAccent : palette.text
 
     Behavior on color {
         ColorAnimation {

@@ -1,38 +1,25 @@
 # SPDX-FileCopyrightText: Copyright 2025 crueter
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-set_source_files_properties(Palettes.qml
+set_source_files_properties(Clover.qml
     PROPERTIES
     QT_QML_SINGLETON_TYPE true
 )
-
-# set(HEADERS
-#     ${CMAKE_CURRENT_SOURCE_DIR}/native/CarboxylApplication.h
-#     ${CMAKE_CURRENT_BINARY_DIR}/native/carboxyl_config.h
-# )
 
 CarboxylModule(
     NAME Clover
     URI Carboxyl.Clover
     QML_FILES
-        Accent.qml
-        BasePalette.qml
-        Palettes.qml
+        CloverPalette.qml
+        Clover.qml
+        CloverAccent.qml
 )
 
-# target_include_directories(CarboxylClover PUBLIC
-#     $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
-#     $<INSTALL_INTERFACE:include>
-
-#     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/native>
-#     $<INSTALL_INTERFACE:include>
-# )
-
-# set_target_properties(CarboxylClover PROPERTIES
-#     PUBLIC_HEADER "${HEADERS}"
-# )
-
-target_link_libraries(CarboxylClover
-    PRIVATE
-        Qt6::QuickControls2
+target_link_libraries(CarboxylClover PRIVATE Qt6::Quick
 )
+
+if (DEFINED Qt6Quick_PRIVATE_INCLUDE_DIRS)
+    target_include_directories(CarboxylClover PUBLIC ${Qt6Quick_PRIVATE_INCLUDE_DIRS})
+else()
+    target_link_libraries(CarboxylClover PUBLIC Qt6::QuickPrivate)
+endif()

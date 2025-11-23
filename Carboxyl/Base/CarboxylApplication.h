@@ -41,7 +41,7 @@ private:
     const QString &m_defaultStyle;
     bool m_systemDarkMode;
 
-signals:
+Q_SIGNALS:
     void styleChanged();
 };
 

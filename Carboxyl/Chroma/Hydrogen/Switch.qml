@@ -12,8 +12,8 @@ Switch {
 
     Universal.foreground: palette.buttonText
     Universal.background: palette.button
-    Universal.accent: palette.accent
-    Universal.theme: Palettes.theme === Palettes.light ? Universal.Light : Universal.Dark
+    Universal.accent: Clover.theme.currentAccent
+    Universal.theme: Clover.theme === Clover.light ? Universal.Light : Universal.Dark
 
     spacing: 4
 }

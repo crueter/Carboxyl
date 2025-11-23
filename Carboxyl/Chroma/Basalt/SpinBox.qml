@@ -89,7 +89,7 @@ SpinBox {
             y: control.topInset
             visible: control.activeFocus
             color: "transparent"
-            border.color: control.palette.highlight
+            border.color: Clover.theme.currentAccent
             border.width: 2
         }
     }

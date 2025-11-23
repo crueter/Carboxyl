@@ -43,7 +43,7 @@ TabBar {
                         bottomMargin: list.isFooter ? -height : height * 2
                     }
 
-                    color: control.palette.accent
+                    color: Clover.theme.currentAccent
                 }
             }
         }
@@ -56,7 +56,7 @@ TabBar {
                 Rectangle {
                     height: parent.height / 2
                     width: 3
-                    color: control.palette.accent
+                    color: Clover.theme.currentAccent
 
                     anchors {
                         verticalCenter: parent.verticalCenter

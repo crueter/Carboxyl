@@ -19,7 +19,7 @@ TextField {
         radius: 2
         color: control.palette.button
         border {
-            color: control.activeFocus ? palette.accent : Fusion.outline(
+            color: control.activeFocus ? Clover.theme.currentAccent : Fusion.outline(
                                              control.palette)
             width: !borderless + control.activeFocus
 

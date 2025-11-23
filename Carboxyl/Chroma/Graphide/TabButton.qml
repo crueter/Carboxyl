@@ -13,20 +13,19 @@ TabButton {
 
     property bool vertical: TabBar.tabBar.vertical
 
-    Universal.foreground: enabled ? palette.buttonText : Palettes.theme.disabledText
+    Universal.foreground: palette.buttonText
     Universal.background: palette.button
-    Universal.accent: palette.accent
-    Universal.theme: Palettes.theme === Palettes.light ? Universal.Light : Universal.Dark
+    Universal.accent: Clover.theme.currentAccent
+    Universal.theme: Clover.theme === Clover.light ? Universal.Light : Universal.Dark
 
     background: Item {}
 
     padding: 6
 
-    property color textColor: Color.transparent(
-                                  enabled
-                                  && hovered ? Universal.baseMediumHighColor : Universal.foreground,
-                                  checked || down || (enabled
-                                                      && hovered) ? 1.0 : 0.2)
+    property color textColor: Color.transparent(Universal.baseMediumHighColor,
+                                                checked || down
+                                                || (enabled
+                                                    && hovered) ? 1.0 : 0.42)
 
     implicitWidth: content.implicitWidth + 10
 

@@ -11,9 +11,8 @@ SpinBox {
     topInset: 4
 
     FloatingPlaceholderText {
-
         label: control.label
-        hasText: control.contentItem.length > 0
+        hasText: true
         backgroundColor: control.backgroundColor
         needsBlocker: false
 

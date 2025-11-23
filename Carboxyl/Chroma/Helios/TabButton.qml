@@ -13,14 +13,14 @@ TabButton {
 
     Material.foreground: palette.buttonText
     Material.background: palette.button
-    Material.accent: palette.accent
-    Material.theme: Palettes.theme === Palettes.light ? Material.Light : Material.Dark
+    Material.accent: Clover.theme.currentAccent
+    Material.theme: Clover.theme === Clover.light ? Material.Light : Material.Dark
 
     verticalPadding: 5
     padding: 6
 
     property color textColor: !enabled ? Material.hintTextColor : down
-                                         || checked ? palette.accent : palette.buttonText
+                                         || checked ? Clover.theme.currentAccent : palette.buttonText
 
     implicitWidth: content.implicitWidth + 10
 

@@ -26,51 +26,6 @@ Dial {
 
         Shape {
             anchors.fill: parent
-            id: shadow
-
-            implicitWidth: 100
-            implicitHeight: 100
-
-            ShapePath {
-                startX: 0
-                startY: bg.height / 2
-                strokeWidth: 1
-                strokeColor: "transparent"
-
-                fillGradient: RadialGradient {
-                    centerX: bg.width / 2
-                    centerY: bg.height / 2
-                    focalX: centerX
-                    focalY: centerY
-                    centerRadius: bg.radius
-
-                    GradientStop {
-                        position: 0.75
-                        color: Qt.alpha(control.palette.buttonText,
-                                        0.2) //"#28FFFFFF"
-                    }
-
-                    GradientStop {
-                        position: 1.0
-                        color: "transparent"
-                    }
-                }
-
-                PathAngleArc {
-                    radiusX: bg.width / 2
-                    radiusY: bg.height / 2
-
-                    centerX: bg.width / 2
-                    centerY: bg.height / 2
-
-                    startAngle: 0
-                    sweepAngle: 360
-                }
-            }
-        }
-
-        Shape {
-            anchors.fill: parent
             id: dial
 
             implicitWidth: 100
@@ -91,16 +46,16 @@ Dial {
 
                     GradientStop {
                         position: 0
-                        color: control.palette.button
+                        color: control.palette.alternateBase
                     }
 
                     GradientStop {
                         position: 0.91
-                        color: control.palette.base
+                        color: "transparent"
                     }
 
                     GradientStop {
-                        position: 0.911
+                        position: 0.99
                         color: "transparent"
                     }
                 }
@@ -123,7 +78,7 @@ Dial {
         implicitWidth: 100
         implicitHeight: 100
 
-        color: control.palette.accent
+        color: Clover.theme.currentAccent
 
         radius: width / 2
 

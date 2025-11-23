@@ -20,7 +20,7 @@ Button {
                    control.checked
                    || control.highlighted ? control.palette.dark : control.palette.button,
                    control.palette.mid, control.down ? 0.5 : 0.0)
-        border.color: control.palette.highlight
+        border.color: Clover.theme.currentAccent
         border.width: control.visualFocus ? 2 : 0
 
         radius: 6

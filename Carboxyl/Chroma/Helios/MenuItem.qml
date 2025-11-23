@@ -12,8 +12,8 @@ MenuItem {
 
     Material.foreground: palette.buttonText
     Material.background: palette.button
-    Material.accent: palette.accent
-    Material.theme: Palettes.theme === Palettes.light ? Material.Light : Material.Dark
+    Material.accent: Clover.theme.currentAccent
+    Material.theme: Clover.theme === Clover.light ? Material.Light : Material.Dark
 
     verticalPadding: 5
     spacing: 5
@@ -55,7 +55,7 @@ MenuItem {
                                            && typeof control.action.shortcut !== 'undefined')
                                        text = control.action.shortcut
 
-            color: !control.enabled ? Palettes.theme.disabledText : palette.buttonText
+            color: palette.buttonText
             font: control.font
         }
     }

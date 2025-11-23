@@ -12,8 +12,8 @@ TextField {
 
     Universal.foreground: palette.buttonText
     Universal.background: palette.button
-    Universal.accent: palette.accent
-    Universal.theme: Palettes.theme === Palettes.light ? Universal.Light : Universal.Dark
+    Universal.accent: Clover.theme.currentAccent
+    Universal.theme: Clover.theme === Clover.light ? Universal.Light : Universal.Dark
 
     background: Rectangle {
         implicitWidth: 60
@@ -21,7 +21,7 @@ TextField {
 
         border {
             width: 2
-            color: !control.enabled ? control.Universal.baseLowColor : control.activeFocus ? palette.accent : control.hovered ? control.Universal.baseMediumColor : control.Universal.chromeDisabledLowColor
+            color: !control.enabled ? control.Universal.baseLowColor : control.activeFocus ? Clover.theme.currentAccent : control.hovered ? control.Universal.baseMediumColor : control.Universal.chromeDisabledLowColor
         }
 
         color: control.enabled ? palette.button : control.Universal.baseLowColor

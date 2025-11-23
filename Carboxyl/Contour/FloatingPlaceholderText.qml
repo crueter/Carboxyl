@@ -13,8 +13,8 @@ Rectangle {
 
     property Item control: parent
 
-    property color backgroundColor: Palettes.theme.base
-    property color textColor: focused ? Palettes.theme.accent : Palettes.theme.placeholderText
+    property color backgroundColor: Clover.theme.base
+    property color textColor: focused ? Clover.theme.currentAccent : Clover.theme.placeholderText
     property bool focused: control.activeFocus
     property bool hasText: false
     property bool needsBlocker: y < 0
@@ -48,24 +48,23 @@ Rectangle {
     x: {
         switch (horizontalAlignment) {
         case Text.AlignLeft:
-            10
+            2
             break
         case Text.AlignHCenter:
             control.width / 2 - width / 2 - horizontalOffset
             break
         case Text.AlignRight:
         case Text.AlignJustify:
-            control.width - width - 10
+            control.width - width - 2
             break
         default:
             break
         }
     }
 
-    y: focused
-       || hasText ? (-height / 2 + 2 - verticalOffset) : (control.height / 2 - height / 2)
+    y: hasText ? (-height / 2 + 2 - verticalOffset) : (control.height / 2 - height / 2 + 2)
 
-    scale: focused || hasText ? 0.8 : 1.0
+    scale: hasText ? 0.8 : 1.0
 
     Behavior on scale {
         SmoothedAnimation {

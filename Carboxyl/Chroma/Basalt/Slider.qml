@@ -19,7 +19,7 @@ Slider {
         radius: width / 2
         color: control.pressed ? control.palette.light : control.palette.button
         border.width: control.visualFocus ? 2 : 1
-        border.color: control.visualFocus ? control.palette.highlight : control.enabled ? control.palette.mid : control.palette.midlight
+        border.color: control.activeFocus ? Clover.theme.currentAccent : control.enabled ? control.palette.mid : control.palette.midlight
     }
 
     background: Rectangle {
@@ -39,7 +39,7 @@ Slider {
             height: control.horizontal ? 6 : control.position * parent.height
 
             radius: 3
-            color: control.palette.accent
+            color: Clover.theme.currentAccent
         }
     }
 }

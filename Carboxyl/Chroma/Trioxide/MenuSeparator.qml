@@ -8,11 +8,6 @@ import Carboxyl.Clover
 import Carboxyl.Contour
 
 MenuSeparator {
-    palette {
-        buttonText: enabled ? Palettes.theme.buttonText : Palettes.theme.disabledText
-        button: Palettes.theme.button
-    }
-
     id: control
 
     contentItem: Rectangle {
