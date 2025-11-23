@@ -10,6 +10,8 @@ import Carboxyl.Contour
 TabBar {
     id: control
 
+    spacing: 0
+
     contentItem: ListView {
         id: list
         model: control.contentModel
@@ -19,7 +21,6 @@ TabBar {
         orientation: vertical ? ListView.Vertical : ListView.Horizontal
         boundsBehavior: Flickable.StopAtBounds
         flickableDirection: Flickable.AutoFlickIfNeeded
-        snapMode: ListView.SnapToItem
 
         highlightMoveDuration: 0
         highlightRangeMode: ListView.ApplyRange

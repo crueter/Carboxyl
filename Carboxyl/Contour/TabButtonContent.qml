@@ -88,8 +88,8 @@ Item {
 
         ButtonLabel {
             anchors {
-                top: outlineIconComponent.bottom
-                topMargin: 5
+                top: control.icon.source != "" ? outlineIconComponent.bottom : parent.top
+                topMargin: (control.icon.source != "") * 5
                 horizontalCenter: outlineIconComponent.horizontalCenter
             }
         }

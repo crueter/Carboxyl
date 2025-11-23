@@ -15,11 +15,12 @@ TabBar {
         model: control.contentModel
         currentIndex: control.currentIndex
 
+        height: parent.height
+
         spacing: control.spacing
         orientation: vertical ? ListView.Vertical : ListView.Horizontal
         boundsBehavior: Flickable.StopAtBounds
         flickableDirection: Flickable.AutoFlickIfNeeded
-        snapMode: ListView.SnapToItem
 
         highlightMoveDuration: 0
         highlightRangeMode: ListView.ApplyRange

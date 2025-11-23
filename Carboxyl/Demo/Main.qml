@@ -343,7 +343,7 @@ ApplicationWindow {
         contentHeight: 55
         contentWidth: 130
 
-        height: contentHeight * count + 15
+        height: contentItem.contentHeight + 20
         width: contentWidth
 
         // TODO(crueter): Handle native controls(?)

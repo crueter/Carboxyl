@@ -15,11 +15,4 @@ CarboxylModule(
         CloverAccent.qml
 )
 
-target_link_libraries(CarboxylClover PRIVATE Qt6::Quick
-)
-
-if (DEFINED Qt6Quick_PRIVATE_INCLUDE_DIRS)
-    target_include_directories(CarboxylClover PUBLIC ${Qt6Quick_PRIVATE_INCLUDE_DIRS})
-else()
-    target_link_libraries(CarboxylClover PUBLIC Qt6::QuickPrivate)
-endif()
+target_link_libraries(CarboxylClover PRIVATE Qt6::Quick)

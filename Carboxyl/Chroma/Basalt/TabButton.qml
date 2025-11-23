@@ -50,8 +50,6 @@ TabButton {
 
     verticalPadding: 6
 
-    implicitWidth: content.implicitWidth + 10
-
     Component.onCompleted: {
         if (vertical) {
             width = TabBar.tabBar.contentWidth

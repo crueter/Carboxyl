@@ -27,7 +27,6 @@ TabBar {
         orientation: vertical ? ListView.Vertical : ListView.Horizontal
         boundsBehavior: Flickable.StopAtBounds
         flickableDirection: Flickable.AutoFlickIfNeeded
-        snapMode: ListView.SnapToItem
 
         highlightMoveDuration: 250
         highlightResizeDuration: 0
