@@ -1,0 +1,55 @@
+// SPDX-FileCopyrightText: Copyright 2025 crueter
+// SPDX-License-Identifier: GPL-3.0-or-later
+
+#pragma once
+
+#include <QObject>
+#include <QQmlEngine>
+
+#include <qpa/qplatformdialoghelper.h>
+#include <private/qquickabstractbutton_p.h>
+#include <private/qquickdialogbuttonbox_p.h>
+#include <private/qquickdialogbuttonbox_p_p.h>
+
+namespace CarboxylEnums {
+    Q_NAMESPACE
+
+enum Icon {
+    // keep this in sync with QMessageDialogOptions::StandardIcon
+    NoIcon = 0,
+    Information = 1,
+    Warning = 2,
+    Critical = 3,
+    Question = 4
+};
+
+Q_ENUM_NS(Icon)
+
+}
+
+class CarboxylQuickInterface : public QObject {
+    Q_OBJECT
+
+public:
+    CarboxylQuickInterface(QObject* parent = nullptr);
+
+    // Qt does not expose an API within QQuickDialogButtonBox that lets us query the StandardButton
+    // pressed during a click. To get around this, we have to do this horrible hack.
+    inline QPlatformDialogHelper::StandardButton standardButton(QQuickAbstractButton *button) const {
+        QQuickDialogButtonBoxAttached *attached = qobject_cast<QQuickDialogButtonBoxAttached *>(qmlAttachedPropertiesObject<QQuickDialogButtonBox>(button, false));
+        if (attached)
+            return QQuickDialogButtonBoxAttachedPrivate::get(attached)->standardButton;
+        else
+            return QPlatformDialogHelper::NoButton;
+    }
+
+    Q_INVOKABLE QPlatformDialogHelper::StandardButton showMessageBox(
+        CarboxylEnums::Icon icon, const QString& title, const QString& text,
+        QPlatformDialogHelper::StandardButtons buttons, QObject* parent = nullptr);
+
+public slots:
+    void onButtonClicked(QQuickItem* button);
+
+private:
+    std::function<void(QQuickItem* )> callback;
+};

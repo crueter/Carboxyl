@@ -11,15 +11,24 @@ ApplicationWindow {
 
     signal accepted
     signal applied
+    signal buttonClicked(Item button)
     signal rejected
     signal reset
 
     onAccepted: close()
     onRejected: close()
 
+    function accept() {
+        accepted()
+    }
+
+    function reject() {
+        rejected()
+    }
+
     property alias standardButtons: buttonBox.standardButtons
 
-    palette: transientParent.palette
+    palette: Clover.theme
 
     background: Rectangle {
         color: palette.window
@@ -32,5 +41,8 @@ ApplicationWindow {
         onApplied: window.applied()
         onRejected: window.rejected()
         onReset: window.reset()
+        onClicked: button => {
+                       window.buttonClicked(button)
+                   }
     }
 }

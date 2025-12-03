@@ -2,6 +2,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #include "CarboxylApplication.h"
+#include "CarboxylConfig.h"
+#include "CarboxylQuickInterface.h"
+
+CarboxylApplication* g_carboxylApp = nullptr;
 
 // Some OSes lack good hwaccel support
 #if !defined(__linux__) && !defined(__APPLE__) && !defined(_WIN32) && !defined(__FreeBSD__)
@@ -17,6 +21,7 @@ CarboxylApplication::CarboxylApplication(QGuiApplication &app,
     : QObject(&app)
     , m_engine(engine)
     , m_config(new CarboxylConfig(this))
+    , m_interface(new CarboxylQuickInterface(engine))
     , m_defaultStyle(defaultStyle)
 {
 #ifdef NEED_SWRAST
@@ -43,11 +48,24 @@ CarboxylApplication::CarboxylApplication(QGuiApplication &app,
     setStyleName(style);
 
     // init dependents
-    CarboxylConfig *config = new CarboxylConfig(this);
+    m_config = new CarboxylConfig(this);
 
     // ctx setup
     engine->rootContext()->setContextProperty("CarboxylApplication", this);
-    engine->rootContext()->setContextProperty("CarboxylConfig", config);
+    engine->rootContext()->setContextProperty("CarboxylConfig", m_config);
+    engine->rootContext()->setContextProperty("CarboxylQuickInterface", m_interface);
+
+    // enum setup
+    qmlRegisterUncreatableMetaObject(
+        CarboxylEnums::staticMetaObject,
+        "Carboxyl.Contour",
+        0, 1,
+        "CarboxylEnums",
+        "Error: attempted to instantiate namespace CarboxylEnums"
+        );
+
+
+    g_carboxylApp = this;
 }
 
 QString CarboxylApplication::styleName()
@@ -58,4 +76,12 @@ QString CarboxylApplication::styleName()
 void CarboxylApplication::setStyleName(const QString &style)
 {
     m_styleName = style;
+}
+
+QQmlApplicationEngine* CarboxylApplication::engine() const {
+    return m_engine;
+}
+
+CarboxylQuickInterface* CarboxylApplication::interface() const {
+    return m_interface;
 }

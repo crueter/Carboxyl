@@ -17,10 +17,13 @@ endif()
 
 set(LIB_NAME CarboxylBase)
 
+find_package(Qt6 REQUIRED COMPONENTS Core)
+
 add_library(CarboxylBase ${LIB_TYPE}
     ${HEADERS}
     CarboxylConfig.cpp
-    CarboxylApplication.cpp)
+    CarboxylApplication.cpp
+    CarboxylQuickInterface.h CarboxylQuickInterface.cpp)
 
 target_include_directories(CarboxylBase PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
@@ -53,11 +56,22 @@ if (CARBOXYL_INSTALL)
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Carboxyl)
 endif()
 
+if (DEFINED Qt6Gui_PRIVATE_INCLUDE_DIRS)
+    target_include_directories(CarboxylBase PUBLIC
+        ${Qt6Gui_PRIVATE_INCLUDE_DIRS}
+        ${Qt6QuickTemplates2_PRIVATE_INCLUDE_DIRS})
+else()
+    target_link_libraries(CarboxylBase PUBLIC Qt6::GuiPrivate Qt6::QuickTemplates2Private)
+endif()
+
 target_link_libraries(CarboxylBase
     PRIVATE
         Qt6::Gui
         Qt6::QuickControls2
         Qt6::Core
+        Qt6::QuickTemplates2
+        Carboxyl::Contour
 )
+target_link_libraries(CarboxylBase PRIVATE Qt6::Core)
 
 target_link_libraries(Carboxyl INTERFACE CarboxylBase)

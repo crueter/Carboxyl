@@ -13,12 +13,18 @@ CarboxylModule(
         CarboxylTabBar.qml
         Ripple.qml
         NativeDialog.qml
+        MessageDialog.qml
         CarboxylLabeledSpinBox.qml
         FloatingPlaceholderText.qml
         CarboxylLabeledTextField.qml
         CarboxylLabeledComboBox.qml
         CarboxylLabeledDoubleSpinBox.qml
         DoubleSpinBox.qml
+    RESOURCES
+        icons/critical.svg
+        icons/information.svg
+        icons/question.svg
+        icons/warning.svg
 )
 
 target_link_libraries(CarboxylContour

@@ -185,16 +185,32 @@ ApplicationWindow {
             standardButtons: Dialog.Ok | Dialog.Cancel | Dialog.Apply
         }
 
-        RoundButton {
-            text: "Dialog"
-            enabled: swt.checked
-            onClicked: dialog.open()
-        }
+        RowLayout {
+            RoundButton {
+                text: "Dialog"
+                enabled: swt.checked
+                onClicked: dialog.open()
+            }
 
-        RoundButton {
-            text: "Native Dialog"
-            enabled: swt.checked
-            onClicked: nativeDialog.show()
+            RoundButton {
+                text: "Native Dialog"
+                enabled: swt.checked
+                onClicked: nativeDialog.show()
+            }
+
+            RoundButton {
+                text: "Message Box (C++)"
+                enabled: swt.checked
+                onClicked: CarboxylQuickInterface.showMessageBox(
+                               CarboxylEnums.Warning,
+                               qsTr("C++ Message Dialog"), qsTr(
+                                   "This is a message box created from C++.\n"
+                                   + "Multiline text support, blah blah blah word wrapping "
+                                   + "and such yay! This is created via a series of horrible hacks."
+                                   + " Plus, if the text is too long, the dialog"
+                                   + "\nwill\nautomatically\nexpand\nitself\nto\nfit\nany text!\n\n\n\n\n\n\n\n\nwoo"),
+                               DialogButtonBox.Ok)
+            }
         }
 
         ToolButton {
@@ -351,7 +367,7 @@ ApplicationWindow {
             text: "V - Errors"
             icon.height: 30
             icon.width: 30
-            icon.source: "qrc:/Demo/icons/crit.svg"
+            icon.source: "qrc:/qt/qml/Carboxyl/Contour/icons/critical.svg"
             inlineIcon: true
         }
         CarboxylTabButton {
@@ -374,7 +390,7 @@ ApplicationWindow {
             text: "V - Information"
             icon.height: 30
             icon.width: 30
-            icon.source: "qrc:/Demo/icons/info.svg"
+            icon.source: "qrc:/qt/qml/Carboxyl/Contour/icons/information.svg"
             inlineIcon: true
         }
     }
@@ -396,7 +412,7 @@ ApplicationWindow {
 
         CarboxylTabButton {
             text: "Errors"
-            icon.source: "qrc:/Demo/icons/crit.svg"
+            icon.source: "qrc:/qt/qml/Carboxyl/Contour/icons/critical.svg"
             icon.height: 20
             icon.width: 20
             inlineIcon: false
@@ -419,7 +435,7 @@ ApplicationWindow {
         }
         CarboxylTabButton {
             text: "Information"
-            icon.source: "qrc:/Demo/icons/info.svg"
+            icon.source: "qrc:/qt/qml/Carboxyl/Contour/icons/information.svg"
             icon.height: 20
             icon.width: 20
             inlineIcon: false

@@ -11,13 +11,14 @@
 #include <QQmlContext>
 #include <QQuickStyle>
 
-#include "CarboxylConfig.h"
-
 #if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
 #include <QStyleHints>
 #else
 #include <QPalette>
 #endif
+
+class CarboxylQuickInterface;
+class CarboxylConfig;
 
 class CarboxylApplication : public QObject
 {
@@ -33,9 +34,14 @@ public:
     QString styleName();
     void setStyleName(const QString &style);
 
+    QQmlApplicationEngine* engine() const;
+
+    CarboxylQuickInterface* interface() const;
+
 private:
     QQmlApplicationEngine *m_engine;
     CarboxylConfig *m_config;
+    CarboxylQuickInterface* m_interface;
 
     QString m_styleName;
     const QString &m_defaultStyle;
@@ -44,6 +50,8 @@ private:
 Q_SIGNALS:
     void styleChanged();
 };
+
+extern CarboxylApplication *g_carboxylApp;
 
 #endif // CARBOXYLAPPLICATION_H
 

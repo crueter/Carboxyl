@@ -7,6 +7,7 @@
 #include <QQmlContext>
 #include <QQuickStyle>
 #include <QSettings>
+#include "qpa/qplatformdialoghelper.h"
 #include "settingsmanager.h"
 
 #include "CarboxylApplication.h"
@@ -31,12 +32,12 @@ int main(int argc, char *argv[])
     carboxylApp->setParent(&app);
     QDirIterator iter(QDir(":/"), QDirIterator::Subdirectories);
 
-    // while (iter.hasNext()) {
-    //     QString next = iter.next();
-    //     if (!next.contains("k") && !next.contains("breeze")) {
-    //         qDebug() << next;
-    //     }
-    // }
+    while (iter.hasNext()) {
+        QString next = iter.next();
+        if (!next.contains("k") && !next.contains("breeze")) {
+            qDebug() << next;
+        }
+    }
 
     QObject::connect(
         engine,
@@ -46,7 +47,6 @@ int main(int argc, char *argv[])
         Qt::QueuedConnection);
 
     engine->loadFromModule("Demo", "Main");
-
 
     return app.exec();
 }

@@ -21,17 +21,6 @@ F.Dialog {
         border.width: 2
 
         radius: control.radius
-
-        // a bit of depth
-        MultiEffect {
-            source: bg
-            anchors.fill: bg
-            shadowBlur: 0.8
-            shadowEnabled: true
-            shadowColor: control.palette.shadow
-            shadowVerticalOffset: 10
-            shadowHorizontalOffset: 8
-        }
     }
 
     header: Rectangle {

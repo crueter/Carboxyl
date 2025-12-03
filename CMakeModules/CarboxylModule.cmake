@@ -10,7 +10,8 @@ function(CarboxylModule)
 
     set(multiValueArgs
         QML_FILES
-        SOURCES)
+        SOURCES
+        RESOURCES)
 
     cmake_parse_arguments(MODULE "" "${oneValueArgs}" "${multiValueArgs}"
                           "${ARGN}")
@@ -32,7 +33,8 @@ function(CarboxylModule)
         ${extra_args}
 
         QML_FILES ${MODULE_QML_FILES}
-        SOURCES ${MODULE_SOURCES})
+        SOURCES ${MODULE_SOURCES}
+        RESOURCES ${MODULE_RESOURCES})
 
     add_library(Carboxyl::${MODULE_NAME} ALIAS ${LIB_NAME})
     target_link_libraries(${LIB_NAME} PUBLIC ${LIB_NAME}plugin)

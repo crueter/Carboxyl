@@ -15,6 +15,8 @@ Currently, Carboxyl is in a WIP state with no ETA for release.
 
 TODO: docs for this
 
+**NOTE:** Carboxyl's Base library uses private Qt APIs, and is thus inherently tied to the specific Qt version it is built against. Do not attempt to rebuild Qt without also rebuilding Carboxyl.
+
 ## Clover
 
 > "*The pink theme makes me as happy as a pig in clover.*"
