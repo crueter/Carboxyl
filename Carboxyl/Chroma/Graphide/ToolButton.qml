@@ -31,6 +31,11 @@ ToolButton {
             color: control.down ? control.Universal.listMediumColor : control.Universal.listLowColor
 
             radius: 6
+            Behavior on color {
+                ColorAnimation {
+                    duration: 150
+                }
+            }
         }
     }
 }

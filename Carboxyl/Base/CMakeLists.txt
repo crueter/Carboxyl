@@ -17,8 +17,6 @@ endif()
 
 set(LIB_NAME CarboxylBase)
 
-find_package(Qt6 REQUIRED COMPONENTS Core)
-
 add_library(CarboxylBase ${LIB_TYPE}
     ${HEADERS}
     CarboxylConfig.cpp
@@ -70,8 +68,6 @@ target_link_libraries(CarboxylBase
         Qt6::QuickControls2
         Qt6::Core
         Qt6::QuickTemplates2
-        Carboxyl::Contour
 )
-target_link_libraries(CarboxylBase PRIVATE Qt6::Core)
 
 target_link_libraries(Carboxyl INTERFACE CarboxylBase)

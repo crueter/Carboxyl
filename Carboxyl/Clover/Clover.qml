@@ -74,6 +74,9 @@ Item {
 
     property CloverAccent accent: blue
     property CloverPalette theme: systemPalette
+    property bool isDarkMode: (theme === systemPalette
+                               && CarboxylApplication.systemDarkMode)
+                              && theme !== light
 
     Component.onCompleted: {
         let palette = CarboxylApplication.systemDarkMode ? dark : light

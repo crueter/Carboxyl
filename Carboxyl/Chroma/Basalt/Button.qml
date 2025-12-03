@@ -10,8 +10,23 @@ import Carboxyl.Contour
 Button {
     id: control
 
-    background {
+    function getColor(color, intensity) {
+        if (Clover.isDarkMode)
+            return Qt.lighter(color, intensity)
+
+        return Qt.darker(color, intensity)
+    }
+
+    background: Rectangle {
         implicitWidth: 75
-        implicitHeight: 30
+        implicitHeight: 35
+        visible: !control.flat || control.down || control.checked
+                 || control.highlighted
+        color: getColor(
+                   control.palette.button,
+                   control.down ? 1.4 : (control.hovered || control.checked
+                                         || control.highlighted ? 1.2 : 1.0))
+
+        radius: 6
     }
 }
