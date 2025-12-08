@@ -9,6 +9,7 @@ CarboxylModule(
         Switch.qml
         Button.qml
         RoundButton.qml
+ProgressBar.qml
         MenuBarItem.qml
         MenuSeparator.qml
         MenuItem.qml

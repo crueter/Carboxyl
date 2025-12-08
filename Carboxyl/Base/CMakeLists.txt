@@ -17,16 +17,38 @@ endif()
 
 set(LIB_NAME CarboxylBase)
 
+find_package(Qt6 REQUIRED COMPONENTS Core)
+
 add_library(CarboxylBase ${LIB_TYPE}
     ${HEADERS}
     CarboxylConfig.cpp
     CarboxylApplication.cpp
-    CarboxylQuickInterface.h CarboxylQuickInterface.cpp)
+    CarboxylQuickInterface.h CarboxylQuickInterface.cpp
+    CarboxylProgressDialog.h CarboxylProgressDialog.cpp)
 
 target_include_directories(CarboxylBase PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
     $<INSTALL_INTERFACE:include>
+)
+
+target_compile_definitions(CarboxylBase PRIVATE
+    # Use QStringBuilder for string concatenation to reduce
+    # the overall number of temporary strings created.
+    QT_USE_QSTRINGBUILDER
+
+    # Disable implicit conversions from/to C strings
+    QT_NO_CAST_FROM_ASCII
+    QT_NO_CAST_TO_ASCII
+
+    # Disable implicit type narrowing in signal/slot connect() calls.
+    QT_NO_NARROWING_CONVERSIONS_IN_CONNECT
+
+    # Disable unsafe overloads of QProcess' start() function.
+    QT_NO_PROCESS_COMBINED_ARGUMENT_START
+
+    # Disable implicit QString->QUrl conversions to enforce use of proper resolving functions.
+    QT_NO_URL_CAST_FROM_STRING
 )
 
 set_target_properties(CarboxylBase PROPERTIES
@@ -69,5 +91,6 @@ target_link_libraries(CarboxylBase
         Qt6::Core
         Qt6::QuickTemplates2
 )
+target_link_libraries(CarboxylBase PRIVATE Qt6::Core)
 
 target_link_libraries(Carboxyl INTERFACE CarboxylBase)

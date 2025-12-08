@@ -12,8 +12,11 @@ CarboxylModule(
         CarboxylTabButton.qml
         CarboxylTabBar.qml
         Ripple.qml
+
         NativeDialog.qml
         MessageDialog.qml
+        ProgressDialog.qml
+
         CarboxylLabeledSpinBox.qml
         FloatingPlaceholderText.qml
         CarboxylLabeledTextField.qml

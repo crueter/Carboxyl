@@ -144,15 +144,17 @@ ApplicationWindow {
             text: "Switch"
         }
 
-        RadioButton {
-            checked: true
-            enabled: swt.checked
-            text: "Option 1"
-        }
+        RowLayout {
+            RadioButton {
+                checked: true
+                enabled: swt.checked
+                text: "Option 1"
+            }
 
-        RadioButton {
-            enabled: swt.checked
-            text: "Option 2"
+            RadioButton {
+                enabled: swt.checked
+                text: "Option 2"
+            }
         }
 
         Dialog {
@@ -185,6 +187,17 @@ ApplicationWindow {
             standardButtons: Dialog.Ok | Dialog.Cancel | Dialog.Apply
         }
 
+        ProgressDialog {
+            title: "Progress"
+            id: progress
+
+            labelText: "Progress Bar :)"
+
+            value: slider.value
+            minimum: 0
+            maximum: 100
+        }
+
         RowLayout {
             RoundButton {
                 text: "Dialog"
@@ -197,9 +210,17 @@ ApplicationWindow {
                 enabled: swt.checked
                 onClicked: nativeDialog.show()
             }
+        }
+
+        RowLayout {
+            RoundButton {
+                text: "Progress"
+                enabled: swt.checked
+                onClicked: progress.show()
+            }
 
             RoundButton {
-                text: "Message Box (C++)"
+                text: "From C++"
                 enabled: swt.checked
                 onClicked: CarboxylQuickInterface.showMessageBox(
                                CarboxylEnums.Warning,
@@ -211,11 +232,10 @@ ApplicationWindow {
                                    + "\nwill\nautomatically\nexpand\nitself\nto\nfit\nany text!\n\n\n\n\n\n\n\n\nwoo"),
                                DialogButtonBox.Ok)
             }
-        }
-
-        ToolButton {
-            text: "ToolButton"
-            enabled: swt.checked
+            ToolButton {
+                text: "ToolButton"
+                enabled: swt.checked
+            }
         }
     }
 

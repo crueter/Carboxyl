@@ -8,6 +8,7 @@ CarboxylModule(
     QML_FILES
         Button.qml
         RoundButton.qml
+ProgressBar.qml
         MenuBarItem.qml
         MenuSeparator.qml
         MenuItem.qml

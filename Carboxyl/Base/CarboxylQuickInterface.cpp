@@ -14,7 +14,7 @@ QPlatformDialogHelper::StandardButton CarboxylQuickInterface::showMessageBox(
     QPlatformDialogHelper::StandardButtons buttons, QObject* _) {
     const auto engine = g_carboxylApp->engine();
 
-    QQmlComponent dialogComponent(engine, QUrl("qrc:/qt/qml/Carboxyl/Contour/MessageDialog.qml"),
+    QQmlComponent dialogComponent(engine, QUrl(QStringLiteral("qrc:/qt/qml/Carboxyl/Contour/MessageDialog.qml")),
                                   this);
 
     if (dialogComponent.isError()) {

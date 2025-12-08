@@ -42,18 +42,18 @@ CarboxylApplication::CarboxylApplication(QGuiApplication &app,
 
     //  style
     QString use_style = style;
-    if (use_style == "")
+    if (use_style == QString())
         use_style = m_defaultStyle;
-    QQuickStyle::setStyle(QString("Carboxyl.Chroma.%1").arg(use_style));
+    QQuickStyle::setStyle(QStringLiteral("Carboxyl.Chroma.%1").arg(use_style));
     setStyleName(style);
 
     // init dependents
     m_config = new CarboxylConfig(this);
 
     // ctx setup
-    engine->rootContext()->setContextProperty("CarboxylApplication", this);
-    engine->rootContext()->setContextProperty("CarboxylConfig", m_config);
-    engine->rootContext()->setContextProperty("CarboxylQuickInterface", m_interface);
+    engine->rootContext()->setContextProperty(QStringLiteral("CarboxylApplication"), this);
+    engine->rootContext()->setContextProperty(QStringLiteral("CarboxylConfig"), m_config);
+    engine->rootContext()->setContextProperty(QStringLiteral("CarboxylQuickInterface"), m_interface);
 
     // enum setup
     qmlRegisterUncreatableMetaObject(
@@ -61,9 +61,8 @@ CarboxylApplication::CarboxylApplication(QGuiApplication &app,
         "Carboxyl.Contour",
         0, 1,
         "CarboxylEnums",
-        "Error: attempted to instantiate namespace CarboxylEnums"
-        );
-
+        tr("Error: attempted to instantiate namespace CarboxylEnums")
+    );
 
     g_carboxylApp = this;
 }
