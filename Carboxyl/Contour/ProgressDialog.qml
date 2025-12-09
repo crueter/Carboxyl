@@ -20,7 +20,7 @@ NativeDialog {
     property bool autoClose: false
     property bool autoReset: false
     property bool wasCanceled: false
-    property int minimumDuration: 0
+    property int minimumDuration: 100
 
     Label {
         id: label

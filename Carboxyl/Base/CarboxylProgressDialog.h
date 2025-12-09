@@ -62,6 +62,7 @@ public:
 
 public Q_SLOTS:
     void show();
+    void close();
 
 Q_SIGNALS:
     void minimumChanged();

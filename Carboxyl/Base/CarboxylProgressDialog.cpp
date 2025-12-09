@@ -60,6 +60,10 @@ void CarboxylProgressDialog::show() {
     QMetaObject::invokeMethod(m_dialog, "show");
 }
 
+void CarboxylProgressDialog::close() {
+    QMetaObject::invokeMethod(m_dialog, "close");
+}
+
 int CarboxylProgressDialog::minimum() const {
     return m_dialog->property("minimum").toInt();
 }
