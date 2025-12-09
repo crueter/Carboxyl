@@ -78,7 +78,10 @@ Q_SIGNALS:
     void widthChanged();
     void heightChanged();
 
+    void closed();
+
 private:
     QObject* m_dialog;
     void init();
 };
+

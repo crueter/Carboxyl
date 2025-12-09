@@ -14,9 +14,20 @@ ApplicationWindow {
     signal buttonClicked(Item button)
     signal rejected
     signal reset
+    signal closed
 
-    onAccepted: close()
-    onRejected: close()
+    onAccepted: {
+        closed()
+        close()
+    }
+    onRejected: {
+        closed()
+        close()
+    }
+
+    onClosing: {
+        closed()
+    }
 
     function accept() {
         accepted()

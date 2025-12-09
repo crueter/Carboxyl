@@ -44,7 +44,10 @@ void CarboxylProgressDialog::init() {
     FORWARD_SIGNAL(autoResetChanged());
     FORWARD_SIGNAL(wasCanceledChanged());
     FORWARD_SIGNAL(minimumDurationChanged());
+    FORWARD_SIGNAL(closed());
 #undef FORWARD_SIGNAL
+
+    connect(this, &CarboxylProgressDialog::closed, this, &CarboxylProgressDialog::close);
 }
 
 QString CarboxylProgressDialog::labelText() const {
