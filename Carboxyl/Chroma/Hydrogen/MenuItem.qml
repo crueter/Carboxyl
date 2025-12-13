@@ -37,7 +37,7 @@ MenuItem {
 
             anchors {
                 left: parent.left
-                leftMargin: 5 + (control.checkable ? control.indicator.width : 0)
+                leftMargin: 5
                 verticalCenter: parent.verticalCenter
             }
         }
@@ -81,6 +81,8 @@ MenuItem {
             visible: control.checked
             color: !control.enabled ? control.Universal.baseLowColor : control.down ? control.Universal.baseHighColor : control.Universal.baseMediumHighColor
             source: !control.checkable ? "" : "qrc:/qt-project.org/imports/QtQuick/Controls/Universal/images/checkmark.png"
+
+            height: 20
         }
     }
 }

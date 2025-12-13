@@ -15,7 +15,7 @@ MenuItem {
     Material.accent: Clover.theme.currentAccent
     Material.theme: Clover.theme === Clover.light ? Material.Light : Material.Dark
 
-    verticalPadding: 5
+    verticalPadding: 0
     spacing: 5
 
     contentItem: Item {
@@ -62,7 +62,7 @@ MenuItem {
 
     background: Rectangle {
         implicitWidth: 200
-        implicitHeight: control.Material.menuItemHeight
+        implicitHeight: 36
         color: control.highlighted ? control.Material.listHighlightColor : "transparent"
 
         Behavior on color {
