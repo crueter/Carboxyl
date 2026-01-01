@@ -395,7 +395,6 @@ ApplicationWindow {
             icon.source: "qrc:/Demo/icons/Miscellaneous.svg"
             icon.height: 20
             icon.width: 20
-            coloredIcon: true
             inlineIcon: false
         }
         CarboxylTabButton {
@@ -403,7 +402,6 @@ ApplicationWindow {
             icon.source: "qrc:/Demo/icons/valid.svg"
             icon.height: 20
             icon.width: 20
-            coloredIcon: true
             inlineIcon: false
         }
         CarboxylTabButton {
@@ -442,7 +440,6 @@ ApplicationWindow {
             icon.source: "qrc:/Demo/icons/Miscellaneous.svg"
             icon.height: 30
             icon.width: 30
-            coloredIcon: true
             inlineIcon: true
         }
         CarboxylTabButton {
@@ -450,7 +447,6 @@ ApplicationWindow {
             icon.source: "qrc:/Demo/icons/valid.svg"
             icon.height: 30
             icon.width: 30
-            coloredIcon: true
             inlineIcon: true
         }
         CarboxylTabButton {

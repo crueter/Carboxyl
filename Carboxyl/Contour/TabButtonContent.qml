@@ -10,7 +10,6 @@ Item {
     required property Item control
 
     property color textColor: control.textColor
-    property bool coloredIcon: control.coloredIcon
     property bool inlineIcon: control.inlineIcon
     property bool vertical: control.vertical
 
@@ -31,8 +30,14 @@ Item {
 
         layer.enabled: true
         layer.effect: MultiEffect {
-            colorization: content.coloredIcon ? 1 : 0
-            colorizationColor: content.textColor
+            colorization: 1
+            colorizationColor: control.icon.color
+
+            Behavior on colorizationColor {
+                ColorAnimation {
+                    duration: 250
+                }
+            }
         }
     }
 
@@ -94,47 +99,4 @@ Item {
             }
         }
     }
-
-    // Item {
-    //     id: itm
-
-    //     property int realHeight: 0
-    //     property int realWidth: 0
-
-    //     // TODO: alignment
-    //     anchors.fill: parent
-
-    //     Component.onCompleted: {
-    //         if (inlineIcon) {
-    //             realWidth = loader.width + 5
-    //             realHeight = loader.height + 5
-    //         } else {
-    //             realWidth = loader.width + 5
-    //             realHeight = loader.height + 5
-    //         }
-    //     }
-
-    //     Loader {
-    //         id: loader
-    //         sourceComponent: inlineIcon ? new InlineItem() : new OutlineItem()
-    //     }
-    // }
-    // img
-    // anchors {
-    //     horizontalCenter: inlineIcon ? undefined : parent.horizontalCenter
-    //     verticalCenter: inlineIcon ? txt.verticalCenter : undefined
-    // }
-
-    // txt
-    // TODO: vertical detection
-    // anchors {
-    //     left: inlineIcon ? img.right : undefined
-    //     leftMargin: 5
-
-    //     top: inlineIcon ? undefined : img.bottom
-    //     topMargin: 5
-
-    //     horizontalCenter: inlineIcon ? undefined : img.horizontalCenter
-    //     verticalCenter: parent.verticalCenter
-    // }
 }
