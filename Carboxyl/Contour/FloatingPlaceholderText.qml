@@ -64,7 +64,7 @@ Rectangle {
 
     y: hasText ? (-height / 2 + 2 - verticalOffset) : (control.height / 2 - height / 2 + 2)
 
-    scale: hasText ? 0.8 : 1.0
+    scale: hasText ? 0.75 : 1.0
 
     Behavior on scale {
         SmoothedAnimation {
@@ -87,6 +87,6 @@ Rectangle {
 
         text: rect.label
 
-        font.pixelSize: 12
+        font: control.font
     }
 }
