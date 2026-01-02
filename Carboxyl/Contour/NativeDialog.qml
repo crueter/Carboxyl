@@ -14,14 +14,21 @@ ApplicationWindow {
     signal buttonClicked(Item button)
     signal rejected
     signal reset
+
+    signal opened
     signal closed
 
+    onVisibilityChanged: {
+        if (visible)
+            opened()
+        else
+            closed()
+    }
+
     onAccepted: {
-        closed()
         close()
     }
     onRejected: {
-        closed()
         close()
     }
 
@@ -35,6 +42,10 @@ ApplicationWindow {
 
     function reject() {
         rejected()
+    }
+
+    function open() {
+        show()
     }
 
     property alias standardButtons: buttonBox.standardButtons
