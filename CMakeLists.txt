@@ -1,5 +1,5 @@
-# SPDX-FileCopyrightText: Copyright 2025 crueter
-# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: Copyright 2026 crueter
+# SPDX-License-Identifier: LGPL-3.0-or-later
 
 # proj setup
 cmake_minimum_required(VERSION 3.16)
@@ -27,7 +27,8 @@ set(CMAKE_AUTOMOC ON)
 set(QT_NO_PRIVATE_MODULE_WARNING ON)
 
 find_package(Qt6 REQUIRED
-    COMPONENTS Core Quick QuickControls2 Gui QuickTemplates2
+    COMPONENTS Core Quick QuickControls2 Gui QuickTemplates2 QmlCore QuickLayouts QuickEffects
+        QuickControls2Basic QuickControls2Material QuickControls2Fusion QuickControls2Universal
     OPTIONAL_COMPONENTS GuiPrivate QuickPrivate QuickTemplates2Private)
 
 qt_standard_project_setup(REQUIRES 6.4)
@@ -39,6 +40,17 @@ endif()
 # meta lib to link to everything
 add_library(Carboxyl INTERFACE)
 add_library(Carboxyl::Carboxyl ALIAS Carboxyl)
+
+# static linkage
+target_link_libraries(Carboxyl INTERFACE
+    Qt6::QmlCore
+    Qt6::QuickLayouts
+    Qt6::QuickEffects
+    Qt6::QuickControls2
+    Qt6::QuickControls2Basic
+    Qt6::QuickControls2Material
+    Qt6::QuickControls2Fusion
+    Qt6::QuickControls2Universal)
 
 # options
 set(CARBOXYL_STYLES "Basalt;Helios;Hydrogen;Trioxide;Graphide" CACHE STRING "Styles to build")

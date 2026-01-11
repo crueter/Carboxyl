@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: Copyright 2026 crueter
+// SPDX-License-Identifier: LGPL-3.0-or-later
 import QtQuick
 
 import Carboxyl.Clover
@@ -33,7 +35,7 @@ Rectangle {
             left: parent.left
             right: parent.right
             bottom: parent.verticalCenter
-            bottomMargin: -4
+            bottomMargin: -(control.font.pixelSize / 2)
             top: parent.top
         }
     }
@@ -47,15 +49,15 @@ Rectangle {
 
     x: {
         switch (horizontalAlignment) {
+        case Text.AlignJustify:
         case Text.AlignLeft:
-            2
+            control.leftPadding
             break
         case Text.AlignHCenter:
             control.width / 2 - width / 2 - horizontalOffset
             break
         case Text.AlignRight:
-        case Text.AlignJustify:
-            control.width - width - 2
+            control.width - width - control.rightPadding
             break
         default:
             break

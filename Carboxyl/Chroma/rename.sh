@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# SPDX-FileCopyrightText: Copyright 2025 crueter
-# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: Copyright 2026 crueter
+# SPDX-License-Identifier: LGPL-3.0-or-later
 
 SRC=$1
 DEST=$2

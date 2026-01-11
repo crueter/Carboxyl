@@ -1,5 +1,5 @@
-// SPDX-FileCopyrightText: Copyright 2025 crueter
-// SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-FileCopyrightText: Copyright 2026 crueter
+// SPDX-License-Identifier: LGPL-3.0-or-later
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Shapes
@@ -9,8 +9,8 @@ import Carboxyl.Clover
 import Carboxyl.Contour
 
 ApplicationWindow {
-    width: 640
-    height: 640
+    width: 900
+    height: 700
     visible: true
     title: qsTr("Carboxyl Demo")
 
@@ -356,7 +356,7 @@ ApplicationWindow {
             }
 
             CarboxylLabeledTextField {
-                Layout.fillWidth: true
+                Layout.preferredWidth: 300
                 height: 40
                 enabled: swt.checked
                 label: "Placeholder"
@@ -382,30 +382,31 @@ ApplicationWindow {
         height: contentItem.contentHeight + 20
         width: contentWidth
 
-        // TODO(crueter): Handle native controls(?)
         CarboxylTabButton {
-            text: "V - Errors"
+            text: "Errors"
             icon.height: 30
             icon.width: 30
             icon.source: "qrc:/qt/qml/Carboxyl/Contour/icons/critical.svg"
             inlineIcon: true
         }
         CarboxylTabButton {
-            text: "V - Settings"
+            text: "Settings"
             icon.source: "qrc:/Demo/icons/Miscellaneous.svg"
             icon.height: 20
             icon.width: 20
             inlineIcon: false
+            coloredIcon: true
         }
         CarboxylTabButton {
-            text: "V - Verification"
+            text: "Verification"
             icon.source: "qrc:/Demo/icons/valid.svg"
             icon.height: 20
             icon.width: 20
             inlineIcon: false
+            coloredIcon: true
         }
         CarboxylTabButton {
-            text: "V - Information"
+            text: "Information"
             icon.height: 30
             icon.width: 30
             icon.source: "qrc:/qt/qml/Carboxyl/Contour/icons/information.svg"
@@ -415,12 +416,13 @@ ApplicationWindow {
 
     CarboxylTabBar {
         id: tab
+
         anchors {
             left: vertTab.right
-            right: parent.right
+            right: vertTabRight.left
             bottom: parent.bottom
 
-            leftMargin: 15
+            margins: 15
         }
 
         contentHeight: 60
@@ -455,6 +457,57 @@ ApplicationWindow {
             icon.height: 20
             icon.width: 20
             inlineIcon: false
+        }
+    }
+
+    CarboxylTabBar {
+        id: vertTabRight
+        vertical: true
+
+        anchors {
+            right: parent.right
+            bottom: parent.bottom
+            rightMargin: 5
+        }
+
+        position: TabBar.Header
+
+        contentHeight: 55
+        contentWidth: 130
+
+        height: contentItem.contentHeight + 20
+        width: contentWidth
+
+        CarboxylTabButton {
+            text: "Errors"
+            icon.height: 30
+            icon.width: 30
+            icon.source: "qrc:/qt/qml/Carboxyl/Contour/icons/critical.svg"
+            inlineIcon: true
+        }
+
+        CarboxylTabButton {
+            text: "Settings"
+            icon.source: "qrc:/Demo/icons/Miscellaneous.svg"
+            icon.height: 30
+            icon.width: 30
+            inlineIcon: true
+            coloredIcon: true
+        }
+        CarboxylTabButton {
+            text: "Verification"
+            icon.source: "qrc:/Demo/icons/valid.svg"
+            icon.height: 30
+            icon.width: 30
+            inlineIcon: true
+            coloredIcon: true
+        }
+        CarboxylTabButton {
+            text: "Information"
+            icon.height: 30
+            icon.width: 30
+            icon.source: "qrc:/qt/qml/Carboxyl/Contour/icons/information.svg"
+            inlineIcon: true
         }
     }
 }

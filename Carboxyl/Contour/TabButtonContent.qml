@@ -1,5 +1,5 @@
-// SPDX-FileCopyrightText: Copyright 2025 crueter
-// SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-FileCopyrightText: Copyright 2026 crueter
+// SPDX-License-Identifier: LGPL-3.0-or-later
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Effects
@@ -28,7 +28,7 @@ Item {
 
         mipmap: true
 
-        layer.enabled: true
+        layer.enabled: control.coloredIcon
         layer.effect: MultiEffect {
             colorization: 1
             colorizationColor: control.icon.color
@@ -50,9 +50,16 @@ Item {
         color: content.textColor
 
         verticalAlignment: Text.AlignVCenter
+
+        Behavior on color {
+            ColorAnimation {
+                duration: 250
+            }
+        }
     }
 
     // TODO: left/right alignment
+    // TODO: Horizontal inlines should center the entire thing
     Item {
         id: inline
         visible: inlineIcon
@@ -64,6 +71,7 @@ Item {
             anchors {
                 left: parent.left
                 verticalCenter: parent.verticalCenter
+                leftMargin: 5
             }
         }
 
@@ -95,6 +103,7 @@ Item {
             anchors {
                 top: control.icon.source != "" ? outlineIconComponent.bottom : parent.top
                 topMargin: (control.icon.source != "") * 5
+                bottom: parent.bottom
                 horizontalCenter: outlineIconComponent.horizontalCenter
             }
         }

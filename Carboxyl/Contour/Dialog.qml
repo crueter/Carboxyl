@@ -1,7 +1,6 @@
-// SPDX-FileCopyrightText: Copyright 2025 crueter
-// SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-FileCopyrightText: Copyright 2026 crueter
+// SPDX-License-Identifier: LGPL-3.0-or-later
 import QtQuick
-import QtQuick.Effects
 import QtQuick.Controls.Basic as F
 
 import Carboxyl.Clover

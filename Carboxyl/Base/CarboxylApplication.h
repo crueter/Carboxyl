@@ -1,21 +1,13 @@
-// SPDX-FileCopyrightText: Copyright 2025 crueter
-// SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-FileCopyrightText: Copyright 2026 crueter
+// SPDX-License-Identifier: LGPL-3.0-or-later
 
 #ifndef CARBOXYLAPPLICATION_H
 #define CARBOXYLAPPLICATION_H
 
-#include <QColor>
 #include <QGuiApplication>
 #include <QObject>
 #include <QQmlApplicationEngine>
-#include <QQmlContext>
-#include <QQuickStyle>
-
-#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
-#include <QStyleHints>
-#else
-#include <QPalette>
-#endif
+#include <QQuickWindow>
 
 class CarboxylQuickInterface;
 class CarboxylConfig;
@@ -35,17 +27,24 @@ public:
     void setStyleName(const QString &style);
 
     QQmlApplicationEngine* engine() const;
-
     CarboxylQuickInterface* interface() const;
 
+public slots:
+    void setDarkMode(QQuickWindow *window);
+    void setDarkMode(QQuickWindow *window, bool dark);
+    void setDarkMode(bool dark);
+
 private:
+    QQuickWindow *window() const;
+
     QQmlApplicationEngine *m_engine;
     CarboxylConfig *m_config;
-    CarboxylQuickInterface* m_interface;
+    CarboxylQuickInterface *m_interface;
 
     QString m_styleName;
     const QString &m_defaultStyle;
     bool m_systemDarkMode;
+    bool m_darkMode;
 
 Q_SIGNALS:
     void styleChanged();

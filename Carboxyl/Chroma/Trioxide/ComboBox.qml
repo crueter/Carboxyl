@@ -1,14 +1,27 @@
-// SPDX-FileCopyrightText: Copyright 2025 crueter
-// SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-FileCopyrightText: Copyright 2026 crueter
+// SPDX-License-Identifier: LGPL-3.0-or-later
 import QtQuick
 import QtQuick.Controls.Fusion 6.4
 import QtQuick.Controls.impl
 
 import Carboxyl.Clover
 import Carboxyl.Contour
+import Carboxyl.Chroma.Trioxide as T
 
 ComboBox {
     id: control
+    background.implicitHeight: 26
+
+    delegate: T.MenuItem {
+        required property var model
+        required property int index
+
+        width: ListView.view.width
+        text: model[control.textRole]
+        font.pointSize: Math.max(9, control.font.pointSize * 0.8)
+        highlighted: control.highlightedIndex === index
+        hoverEnabled: control.hoverEnabled
+    }
 
     contentItem: TextField {
         topPadding: 4

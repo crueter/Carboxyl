@@ -1,5 +1,5 @@
-// SPDX-FileCopyrightText: Copyright 2025 crueter
-// SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-FileCopyrightText: Copyright 2026 crueter
+// SPDX-License-Identifier: LGPL-3.0-or-later
 pragma Singleton
 
 import QtQuick
@@ -83,7 +83,36 @@ Item {
         systemPalette.active = palette.active
         systemPalette.inactive = palette.inactive
         systemPalette.disabled = palette.disabled
+
+        setDarkMode()
     }
+
+    function setDarkMode() {
+        var darkMode
+        switch (theme) {
+        case systemPalette:
+        {
+            darkMode = CarboxylApplication.systemDarkMode
+            break
+        }
+        case dark:
+        case midnight:
+        {
+            darkMode = true
+            break
+        }
+        case light:
+        default:
+        {
+            darkMode = false
+            break
+        }
+        }
+
+        CarboxylApplication.setDarkMode(darkMode)
+    }
+
+    onThemeChanged: setDarkMode()
 
     CloverPalette {
         id: systemPalette

@@ -1,5 +1,5 @@
-// SPDX-FileCopyrightText: Copyright 2025 crueter
-// SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-FileCopyrightText: Copyright 2026 crueter
+// SPDX-License-Identifier: LGPL-3.0-or-later
 import QtQuick
 import QtQuick.Controls.Basic 6.4
 import QtQuick.Controls.impl 6.4
@@ -22,5 +22,18 @@ ComboBox {
     background {
         implicitWidth: 140
         implicitHeight: 35
+    }
+
+    delegate: ItemDelegate {
+        required property var model
+        required property int index
+
+        width: ListView.view.width
+        text: model[control.textRole]
+        palette.text: control.palette.text
+        palette.highlightedText: control.palette.highlightedText
+        font.pointSize: Math.max(9, control.font.pointSize * 0.8)
+        highlighted: control.highlightedIndex === index
+        hoverEnabled: control.hoverEnabled
     }
 }

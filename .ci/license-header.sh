@@ -1,15 +1,15 @@
 #!/bin/sh -e
 
-# SPDX-FileCopyrightText: Copyright 2025 crueter
-# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: Copyright 2026 crueter
+# SPDX-License-Identifier: LGPL-3.0-or-later
 
 # specify full path if dupes may exist
 EXCLUDE_FILES=""
 
 # license header constants, please change when needed :))))
-YEAR=2025
+YEAR=2026
 HOLDER="crueter"
-LICENSE="GPL-3.0-or-later"
+LICENSE="LGPL-3.0-or-later"
 
 usage() {
 	cat << EOF
@@ -112,10 +112,10 @@ for file in $FILES; do
 	[ "$excluded" = "true" ] && continue
 
 	case "$file" in
-		*.cmake|*.sh|CMakeLists.txt)
+		*.cmake|*.sh|*CMakeLists.txt)
 			begin="#"
 			;;
-		*.kt*|*.cpp|*.h)
+		*.kt*|*.cpp|*.h|*.qml)
 			begin="//"
 			;;
 		*)
@@ -185,7 +185,7 @@ if [ "$UPDATE" = "true" ]; then
 
 	for file in $SRC_FILES $OTHER_FILES; do
 		case $(basename -- "$file") in
-			*.cmake|CMakeLists.txt)
+			*.cmake|*CMakeLists.txt)
 				begin="#"
 				shell="false"
 				;;
@@ -193,7 +193,7 @@ if [ "$UPDATE" = "true" ]; then
 				begin="#"
 				shell=true
 				;;
-			*.kt*|*.cpp|*.h)
+			*.kt*|*.cpp|*.h|*.qml)
 				begin="//"
 				shell="false"
 				;;

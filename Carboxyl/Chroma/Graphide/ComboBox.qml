@@ -1,5 +1,5 @@
-// SPDX-FileCopyrightText: Copyright 2025 crueter
-// SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-FileCopyrightText: Copyright 2026 crueter
+// SPDX-License-Identifier: LGPL-3.0-or-later
 import QtQuick
 
 // for downarrow.png
@@ -33,7 +33,7 @@ ComboBox {
         width: ListView.view.width
         text: model[control.textRole]
 
-        font.weight: control.currentIndex === index ? Font.DemiBold : Font.Normal
+        font.pointSize: Math.max(9, control.font.pointSize * 0.8)
         highlighted: control.highlightedIndex === index
         hoverEnabled: control.hoverEnabled
 

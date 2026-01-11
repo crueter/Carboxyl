@@ -1,5 +1,5 @@
-// SPDX-FileCopyrightText: Copyright 2025 crueter
-// SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-FileCopyrightText: Copyright 2026 crueter
+// SPDX-License-Identifier: LGPL-3.0-or-later
 import QtQuick
 import QtQuick.Controls.Fusion 6.4
 import QtQuick.Templates as T
@@ -41,7 +41,7 @@ TabBar {
                     anchors {
                         horizontalCenter: parent.horizontalCenter
                         bottom: list.isFooter ? parent.top : parent.bottom
-                        bottomMargin: list.isFooter ? -height : height * 2
+                        bottomMargin: list.isFooter ? -height : 0
                     }
 
                     color: Clover.theme.currentAccent

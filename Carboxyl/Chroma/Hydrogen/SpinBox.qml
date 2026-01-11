@@ -1,5 +1,5 @@
-// SPDX-FileCopyrightText: Copyright 2025 crueter
-// SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-FileCopyrightText: Copyright 2026 crueter
+// SPDX-License-Identifier: LGPL-3.0-or-later
 import QtQuick
 import QtQuick.Controls.Universal 6.4
 import QtQuick.Controls.impl
@@ -14,6 +14,15 @@ SpinBox {
     Universal.background: palette.button
     Universal.accent: Clover.theme.currentAccent
     Universal.theme: Clover.theme === Clover.light ? Universal.Light : Universal.Dark
+
+    background: Rectangle {
+        implicitWidth: 60 + 28 // TextControlThemeMinWidth - 4 (border)
+        implicitHeight: 28 // TextControlThemeMinHeight - 4 (border)
+
+        border.width: 2 // TextControlBorderThemeThickness
+        border.color: !control.enabled ? control.Universal.baseLowColor : control.activeFocus ? control.Universal.accent : control.hovered ? control.Universal.baseMediumColor : control.Universal.chromeDisabledLowColor
+        color: !control.enabled ? control.Universal.baseLowColor : control.Universal.altMediumLowColor
+    }
 
     contentItem: TextInput {
         text: control.displayText

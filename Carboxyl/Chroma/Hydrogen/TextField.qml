@@ -1,6 +1,5 @@
-// SPDX-FileCopyrightText: Copyright 2025 crueter
-// SPDX-License-Identifier: GPL-3.0-or-later
-
+// SPDX-FileCopyrightText: Copyright 2026 crueter
+// SPDX-License-Identifier: LGPL-3.0-or-later
 import QtQuick
 import QtQuick.Controls.Universal 6.4
 
@@ -24,6 +23,6 @@ TextField {
             color: !control.enabled ? control.Universal.baseLowColor : control.activeFocus ? Clover.theme.currentAccent : control.hovered ? control.Universal.baseMediumColor : control.Universal.chromeDisabledLowColor
         }
 
-        color: control.enabled ? palette.button : control.Universal.baseLowColor
+        color: !control.enabled ? control.Universal.baseLowColor : control.Universal.altMediumLowColor
     }
 }

@@ -1,5 +1,5 @@
-// SPDX-FileCopyrightText: Copyright 2025 crueter
-// SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-FileCopyrightText: Copyright 2026 crueter
+// SPDX-License-Identifier: LGPL-3.0-or-later
 import QtQuick
 import QtQuick.Controls.Material 6.4
 import QtQuick.Templates as T
@@ -15,7 +15,7 @@ TabBar {
     Material.accent: Clover.theme.currentAccent
     Material.theme: Clover.theme === Clover.light ? Material.Light : Material.Dark
 
-    verticalPadding: 5
+    verticalPadding: 0
 
     background: Item {}
     contentItem: ListView {
@@ -50,7 +50,7 @@ TabBar {
                     anchors {
                         horizontalCenter: parent.horizontalCenter
                         bottom: list.isFooter ? parent.top : parent.bottom
-                        bottomMargin: list.isFooter ? -height : height * 2
+                        bottomMargin: list.isFooter ? -height : 0
                     }
 
                     color: control.Material.accent

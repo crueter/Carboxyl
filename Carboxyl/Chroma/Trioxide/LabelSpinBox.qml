@@ -1,5 +1,5 @@
-// SPDX-FileCopyrightText: Copyright 2025 crueter
-// SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-FileCopyrightText: Copyright 2026 crueter
+// SPDX-License-Identifier: LGPL-3.0-or-later
 import QtQuick
 import QtQuick.Controls
 import Carboxyl.Clover
@@ -9,6 +9,8 @@ SpinBox {
     id: control
     editable: true
     topInset: 4
+
+    up.indicator.y: 3
 
     FloatingPlaceholderText {
         label: control.label
