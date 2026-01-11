@@ -9,6 +9,14 @@ Carboxyl is a set of utility libraries for QML/Qt Quick, designed through years 
 
 Currently, Carboxyl is in a WIP state with no ETA for release.
 
+## Licensing
+
+Carboxyl is licensed under the LGPLv3. *GPL libraries can use this without any issue; however, other libraries can ONLY use Carboxyl if the following terms are accepted:
+
+- You must provide explicit notice that your project is using Carboxyl.
+- You must link to the shared/dynamic version of Carboxyl, OR provide object files such that Carboxyl's libraries can be easily replaced with an equivalent version.
+- You must not modify the source code of Carboxyl in any way.
+
 ## Base
 
 > "*Base? There's nothing basic about this!*"
