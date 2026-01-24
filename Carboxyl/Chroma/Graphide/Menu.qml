@@ -22,7 +22,17 @@ Menu {
             from: control.implicitHeight * 0.33
             to: control.implicitHeight
             easing.type: Easing.OutCubic
-            duration: 250
+            duration: 100
+        }
+    }
+
+    exit: Transition {
+        NumberAnimation {
+            property: "height"
+            from: control.implicitHeight
+            to: 0
+            easing.type: Easing.OutCubic
+            duration: 100
         }
     }
 
