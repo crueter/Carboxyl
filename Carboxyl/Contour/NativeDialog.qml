@@ -32,10 +32,6 @@ ApplicationWindow {
         close()
     }
 
-    onClosing: {
-        closed()
-    }
-
     onOpened: CarboxylApplication.setDarkMode(this)
 
     function accept() {
