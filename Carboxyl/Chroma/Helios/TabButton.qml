@@ -16,8 +16,6 @@ TabButton {
     Material.accent: Clover.theme.currentAccent
     Material.theme: Clover.theme === Clover.light ? Material.Light : Material.Dark
 
-    verticalPadding: 5
-
     property color textColor: !enabled ? Material.hintTextColor : down
                                          || checked ? Clover.theme.currentAccent : palette.buttonText
 

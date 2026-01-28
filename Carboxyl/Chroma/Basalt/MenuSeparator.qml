@@ -10,6 +10,10 @@ import Carboxyl.Contour
 MenuSeparator {
     id: control
 
+    background: Rectangle {
+        color: control.palette.window
+    }
+
     contentItem: Rectangle {
         implicitWidth: 188
         implicitHeight: 1

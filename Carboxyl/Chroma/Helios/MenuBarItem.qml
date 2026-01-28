@@ -1,6 +1,5 @@
 // SPDX-FileCopyrightText: Copyright 2026 crueter
 // SPDX-License-Identifier: LGPL-3.0-or-later
-
 import QtQuick
 import QtQuick.Controls.Material 6.4
 
@@ -15,5 +14,8 @@ MenuBarItem {
     Material.accent: Clover.theme.currentAccent
     Material.theme: Clover.theme === Clover.light ? Material.Light : Material.Dark
 
-    verticalPadding: 5
+    verticalPadding: 4
+    padding: 12
+
+    background.implicitHeight: 35
 }

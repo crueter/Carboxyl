@@ -12,4 +12,5 @@ MenuBar {
     id: control
 
     delegate: T.MenuBarItem {}
+    background.implicitHeight: 35
 }

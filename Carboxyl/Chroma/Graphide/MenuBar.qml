@@ -11,4 +11,5 @@ MenuBar {
     id: control
 
     delegate: G.MenuBarItem {}
+    background.implicitHeight: 35
 }

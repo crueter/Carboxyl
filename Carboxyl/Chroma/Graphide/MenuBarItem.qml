@@ -8,4 +8,6 @@ import Carboxyl.Contour
 
 MenuBarItem {
     id: control
+
+    background.implicitHeight: 35
 }
