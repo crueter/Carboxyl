@@ -80,12 +80,14 @@ if (DEFINED Qt6Gui_PRIVATE_INCLUDE_DIRS)
     target_include_directories(CarboxylBase PUBLIC
         ${Qt6Gui_PRIVATE_INCLUDE_DIRS}
         ${Qt6QuickTemplates2_PRIVATE_INCLUDE_DIRS}
-        ${Qt6Quick_PRIVATE_INCLUDE_DIRS})
+        ${Qt6Quick_PRIVATE_INCLUDE_DIRS}
+        ${Qt6Qml_PRIVATE_INCLUDE_DIRS})
 else()
     target_link_libraries(CarboxylBase PUBLIC
         Qt6::GuiPrivate
         Qt6::QuickPrivate
-        Qt6::QuickTemplates2Private)
+        Qt6::QuickTemplates2Private
+        Qt6::QmlPrivate)
 endif()
 
 target_link_libraries(CarboxylBase

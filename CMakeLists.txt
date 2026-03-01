@@ -29,7 +29,7 @@ set(QT_NO_PRIVATE_MODULE_WARNING ON)
 find_package(Qt6 REQUIRED
     COMPONENTS Core Quick QuickControls2 Gui QuickTemplates2 QmlCore QuickLayouts QuickEffects
         QuickControls2Basic QuickControls2Material QuickControls2Fusion QuickControls2Universal
-    OPTIONAL_COMPONENTS GuiPrivate QuickPrivate QuickTemplates2Private)
+    OPTIONAL_COMPONENTS GuiPrivate QuickPrivate QuickTemplates2Private QmlPrivate)
 
 qt_standard_project_setup(REQUIRES 6.4)
 
