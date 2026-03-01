@@ -76,19 +76,15 @@ if (CARBOXYL_INSTALL)
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Carboxyl)
 endif()
 
-if (DEFINED Qt6Gui_PRIVATE_INCLUDE_DIRS)
-    target_include_directories(CarboxylBase PUBLIC
-        ${Qt6Gui_PRIVATE_INCLUDE_DIRS}
-        ${Qt6QuickTemplates2_PRIVATE_INCLUDE_DIRS}
-        ${Qt6Quick_PRIVATE_INCLUDE_DIRS}
-        ${Qt6Qml_PRIVATE_INCLUDE_DIRS})
-else()
-    target_link_libraries(CarboxylBase PUBLIC
-        Qt6::GuiPrivate
-        Qt6::QuickPrivate
-        Qt6::QuickTemplates2Private
-        Qt6::QmlPrivate)
-endif()
+foreach(priv Gui QuickTemplates2 Quick Qml QmlModels)
+    set(_inc Qt6${priv}_PRIVATE_INCLUDE_DIRS)
+    if (DEFINED ${_inc})
+        target_include_directories(CarboxylBase PUBLIC ${${_inc}})
+    elseif(TARGET Qt6::${priv}Private)
+        target_link_libraries(CarboxylBase PUBLIC Qt6::${priv}Private)
+    endif()
+endforeach()
+
 
 target_link_libraries(CarboxylBase
     PRIVATE
@@ -96,7 +92,8 @@ target_link_libraries(CarboxylBase
         Qt6::QuickControls2
         Qt6::Core
         Qt6::QuickTemplates2
-)
+        Qt6::QmlModels)
+
 target_link_libraries(CarboxylBase PRIVATE Qt6::Core)
 
 target_link_libraries(Carboxyl INTERFACE CarboxylBase)
