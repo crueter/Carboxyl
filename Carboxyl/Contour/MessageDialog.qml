@@ -80,7 +80,7 @@ NativeDialog {
 
         wrapMode: Text.WordWrap
 
-        verticalAlignment: Text.AlignTop
+        verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignLeft
 
         background: Item {}

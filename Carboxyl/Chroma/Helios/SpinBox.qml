@@ -18,8 +18,6 @@ SpinBox {
 
     verticalPadding: 5
 
-    background.implicitHeight: 40
-
     up.indicator: PaddedRectangle {
         x: control.mirrored ? 0 : control.width - width
         implicitWidth: 40
@@ -75,5 +73,16 @@ SpinBox {
             height: 2
             color: enabled ? control.Material.foreground : control.Material.spinBoxDisabledIconColor
         }
+    }
+
+    background: MaterialTextContainer {
+        implicitWidth: 140
+        implicitHeight: 40
+
+        outlineColor: control.palette.button
+        focusedOutlineColor: control.Material.accentColor
+        controlHasActiveFocus: control.activeFocus
+        controlHasText: true
+        horizontalPadding: control.Material.textFieldHorizontalPadding
     }
 }

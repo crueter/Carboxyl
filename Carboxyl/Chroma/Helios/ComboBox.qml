@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: Copyright 2026 crueter
 // SPDX-License-Identifier: LGPL-3.0-or-later
 import QtQuick
+import QtQuick.Templates as T
 import QtQuick.Controls.Material 6.4
 import QtQuick.Controls.Material.impl
 
@@ -20,7 +21,16 @@ ComboBox {
     spacing: 0
     topInset: 0
 
-    background.implicitHeight: 40
+    background: MaterialTextContainer {
+        implicitWidth: 120
+        implicitHeight: 40
+
+        outlineColor: control.palette.button
+        focusedOutlineColor: control.Material.accentColor
+        controlHasActiveFocus: control.activeFocus
+        controlHasText: true
+        horizontalPadding: control.Material.textFieldHorizontalPadding
+    }
 
     delegate: H.MenuItem {
         required property var model
@@ -56,5 +66,73 @@ ComboBox {
 
         topPadding: 0
         bottomPadding: 0
+    }
+
+    popup: T.Popup {
+        y: control.editable ? control.height - 5 : 0
+        width: control.width
+        height: Math.min(contentItem.implicitHeight + verticalPadding * 2,
+                         control.Window.height - topMargin - bottomMargin)
+        transformOrigin: Item.Top
+        topMargin: 12
+        bottomMargin: 12
+        verticalPadding: 8
+
+        Material.theme: control.Material.theme
+        Material.accent: control.Material.accent
+        Material.primary: control.Material.primary
+
+        enter: Transition {
+            // grow_fade_in
+            NumberAnimation {
+                property: "scale"
+                from: 0.9
+                easing.type: Easing.OutQuint
+                duration: 220
+            }
+            NumberAnimation {
+                property: "opacity"
+                from: 0.0
+                easing.type: Easing.OutCubic
+                duration: 150
+            }
+        }
+
+        exit: Transition {
+            // shrink_fade_out
+            NumberAnimation {
+                property: "scale"
+                to: 0.9
+                easing.type: Easing.OutQuint
+                duration: 220
+            }
+            NumberAnimation {
+                property: "opacity"
+                to: 0.0
+                easing.type: Easing.OutCubic
+                duration: 150
+            }
+        }
+
+        contentItem: ListView {
+            clip: true
+            implicitHeight: contentHeight
+            model: control.delegateModel
+            currentIndex: control.highlightedIndex
+            highlightMoveDuration: 0
+
+            T.ScrollIndicator.vertical: ScrollIndicator {}
+        }
+
+        background: Rectangle {
+            radius: 4
+            color: control.palette.button
+
+            layer.enabled: control.enabled
+            layer.effect: RoundedElevationEffect {
+                elevation: 4
+                roundedScale: Material.ExtraSmallScale
+            }
+        }
     }
 }

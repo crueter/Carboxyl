@@ -130,9 +130,9 @@ Item {
 
         active {
             // used for alternating rows
-            alternateBase: "#e4e4e4"
+            alternateBase: "#f0f0f0"
             base: "#ffffff"
-            button: "#dadada"
+            button: "#dfdfdf"
 
             text: "#171717"
             highlightedText: "#171717"
@@ -142,16 +142,16 @@ Item {
             brightText: "#ffffff"
 
             // used for contrast in switches and some buttons
-            dark: "#707070"
+            dark: "#b0b0b0"
 
             // slightly lighter than button
-            light: "#e7e7e7"
+            light: "#f5f5f5"
 
             // between button and dark
-            mid: "#ababab"
+            mid: "#c4c4c4"
 
             // between button and light
-            midlight: "#dfdfdf"
+            midlight: "#dcdcdc"
 
             // these are virtually standard
             link: "#1d99f3"
@@ -166,7 +166,7 @@ Item {
             toolTipText: "#292c30"
 
             // the general window fg/bg stuff
-            window: "#efefef"
+            window: "#f5f5f5"
             windowText: "#1b1b1b"
 
             // 6.2+: color for placeholder TextField text
@@ -176,28 +176,28 @@ Item {
         // inactive is between active and disabled
         inactive {
             // used for alternating rows
-            alternateBase: "#d9d9d9"
+            alternateBase: "#ececec"
             base: "#ffffff"
-            button: "#dddddd"
+            button: "#dbdbdb"
 
-            text: "#707070"
-            highlightedText: "#707070"
-            buttonText: "#707070"
+            text: "#404040"
+            highlightedText: "#404040"
+            buttonText: "#404040"
 
             // high-contrast text e.g. for highlighted buttons
             brightText: "#ffffff"
 
             // used for contrast in switches and some buttons
-            dark: "#707070"
+            dark: "#b0b0b0"
 
             // slightly lighter than button
-            light: "#f0f0f0"
+            light: "#f5f5f5"
 
             // between button and dark
-            mid: "#ababab"
+            mid: "#c4c4c4"
 
             // between button and light
-            midlight: "#e2e2e2"
+            midlight: "#dcdcdc"
 
             // these are virtually standard
             link: "#4abbf3"
@@ -216,33 +216,33 @@ Item {
             windowText: "#707070"
 
             // 6.2+: color for placeholder TextField text
-            placeholderText: "#989898"
+            placeholderText: "#a0a0a0"
         }
 
         disabled {
             // used for alternating rows
-            alternateBase: "#d5d5d5"
+            alternateBase: "#e8e8e8"
             base: "#f0f0f0"
-            button: "#dfdfdf"
+            button: "#d8d8d8"
 
-            text: "#a8a8a8"
-            highlightedText: "#a8a8a8"
-            buttonText: "#aaaaaa"
+            text: "#8c8c8c"
+            highlightedText: "#8c8c8c"
+            buttonText: "#8c8c8c"
 
             // high-contrast text e.g. for highlighted buttons
             brightText: "#ffffff"
 
             // used for contrast in switches and some buttons
-            dark: "#707070"
+            dark: "#d0d0d0"
 
             // slightly lighter than button
-            light: "#efefef"
+            light: "#fafafa"
 
             // between button and dark
-            mid: "#ababab"
+            mid: "#d8d8d8"
 
             // between button and light
-            midlight: "#e8e8e8"
+            midlight: "#f2f2f2"
 
             // these are virtually standard
             link: "#a3cae2"
