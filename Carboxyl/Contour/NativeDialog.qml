@@ -25,21 +25,16 @@ ApplicationWindow {
             closed()
     }
 
-    onAccepted: {
-        close()
-    }
-    onRejected: {
-        close()
-    }
-
     onOpened: CarboxylApplication.setDarkMode(this)
 
     function accept() {
         accepted()
+        visible = false
     }
 
     function reject() {
         rejected()
+        visible = false
     }
 
     function open() {
@@ -57,9 +52,9 @@ ApplicationWindow {
     footer: DialogButtonBox {
         id: buttonBox
 
-        onAccepted: window.accepted()
+        onAccepted: window.accept()
         onApplied: window.applied()
-        onRejected: window.rejected()
+        onRejected: window.reject()
         onReset: window.reset()
         onClicked: button => {
                        window.buttonClicked(button)
