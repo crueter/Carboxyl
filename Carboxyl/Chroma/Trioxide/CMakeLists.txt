@@ -23,11 +23,13 @@ ProgressBar.qml
         Dial.qml
         ToolButton.qml
         TextField.qml
+TextArea.qml
         ComboBox.qml
         CheckBox.qml
         Switch.qml
         RadioButton.qml
         LabelTextField.qml
+TextArea.qml
         LabelSpinBox.qml
         LabelComboBox.qml
 
