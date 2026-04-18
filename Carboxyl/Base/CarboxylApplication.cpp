@@ -35,16 +35,11 @@ CarboxylApplication* g_carboxylApp = nullptr;
 #include <QSGRendererInterface>
 #endif
 
-CarboxylApplication::CarboxylApplication(QGuiApplication &app,
-                                         QQmlApplicationEngine *engine,
-                                         const QString &style,
-                                         const QString &defaultStyle)
-    : QObject(&app)
-    , m_engine(engine)
-    , m_config(new CarboxylConfig(this))
-    , m_interface(new CarboxylQuickInterface(engine))
-    , m_defaultStyle(defaultStyle)
-{
+CarboxylApplication::CarboxylApplication(QGuiApplication& app, QQmlApplicationEngine* engine,
+                                         const QString& style, const QString& defaultStyle,
+                                         const bool alwaysActive)
+    : QObject(&app), m_engine(engine), m_config(new CarboxylConfig(this)),
+      m_interface(new CarboxylQuickInterface(engine)), m_defaultStyle(defaultStyle) {
 #ifdef NEED_SWRAST
     QQuickWindow::setGraphicsApi(QSGRendererInterface::Software);
 #endif
@@ -77,6 +72,7 @@ CarboxylApplication::CarboxylApplication(QGuiApplication &app,
     engine->rootContext()->setContextProperty(QStringLiteral("CarboxylApplication"), this);
     engine->rootContext()->setContextProperty(QStringLiteral("CarboxylConfig"), m_config);
     engine->rootContext()->setContextProperty(QStringLiteral("CarboxylQuickInterface"), m_interface);
+    engine->rootContext()->setContextProperty(QStringLiteral("CarboxylAlwaysActive"), alwaysActive);
 
     // enum setup
     qmlRegisterUncreatableMetaObject(

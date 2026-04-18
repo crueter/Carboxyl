@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
     QString style = manager->get("style", "").toString();
 
     // CarboxylApplication sets up the engine and a few other things
-    CarboxylApplication *carboxylApp = new CarboxylApplication(app, engine, style, "Trioxide");
+    CarboxylApplication *carboxylApp = new CarboxylApplication(app, engine, style, "Trioxide", ALWAYS_ACTIVE);
 
     // this is unnecessary, but gets clazy to shut up
     carboxylApp->setParent(&app);

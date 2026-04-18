@@ -78,12 +78,15 @@ Item {
                                && CarboxylApplication.systemDarkMode)
                               && theme !== light
 
-    Component.onCompleted: {
+    function syncSystemPalette() {
         let palette = CarboxylApplication.systemDarkMode ? dark : light
         systemPalette.active = palette.active
         systemPalette.inactive = palette.inactive
         systemPalette.disabled = palette.disabled
+    }
 
+    Component.onCompleted: {
+        syncSystemPalette()
         setDarkMode()
     }
 
@@ -122,6 +125,7 @@ Item {
     }
 
     // TODO: autogen inactive, disabled?
+    // TODO(crueter): Figure out a better CarboxylAlwaysActive sln
     CloverPalette {
         id: light
 
@@ -176,47 +180,47 @@ Item {
         // inactive is between active and disabled
         inactive {
             // used for alternating rows
-            alternateBase: "#ececec"
-            base: "#ffffff"
-            button: "#dbdbdb"
+            alternateBase: CarboxylAlwaysActive ? active.alternateBase : "#ececec"
+            base: CarboxylAlwaysActive ? active.base : "#ffffff"
+            button: CarboxylAlwaysActive ? active.button : "#dbdbdb"
 
-            text: "#404040"
-            highlightedText: "#404040"
-            buttonText: "#404040"
+            text: CarboxylAlwaysActive ? active.text : "#404040"
+            highlightedText: CarboxylAlwaysActive ? active.highlightedText : "#404040"
+            buttonText: CarboxylAlwaysActive ? active.buttonText : "#404040"
 
             // high-contrast text e.g. for highlighted buttons
-            brightText: "#ffffff"
+            brightText: CarboxylAlwaysActive ? active.brightText : "#ffffff"
 
             // used for contrast in switches and some buttons
-            dark: "#b0b0b0"
+            dark: CarboxylAlwaysActive ? active.dark : "#b0b0b0"
 
             // slightly lighter than button
-            light: "#f5f5f5"
+            light: CarboxylAlwaysActive ? active.light : "#f5f5f5"
 
             // between button and dark
-            mid: "#c4c4c4"
+            mid: CarboxylAlwaysActive ? active.mid : "#c4c4c4"
 
             // between button and light
-            midlight: "#dcdcdc"
+            midlight: CarboxylAlwaysActive ? active.midlight : "#dcdcdc"
 
             // these are virtually standard
-            link: "#4abbf3"
-            linkVisited: "#a983c2"
+            link: CarboxylAlwaysActive ? active.link : "#4abbf3"
+            linkVisited: CarboxylAlwaysActive ? active.linkVisited : "#a983c2"
 
             // VERY DARK color
             // rarely used
-            shadow: "#202020"
+            shadow: CarboxylAlwaysActive ? active.shadow : "#202020"
 
             // tooltips, self explanatory...
-            toolTipBase: "#fcfcfc"
-            toolTipText: "#292c30"
+            toolTipBase: CarboxylAlwaysActive ? active.toolTipBase : "#fcfcfc"
+            toolTipText: CarboxylAlwaysActive ? active.toolTipText : "#292c30"
 
             // the general window fg/bg stuff
-            window: "#ededed"
-            windowText: "#707070"
+            window: CarboxylAlwaysActive ? active.window : "#ededed"
+            windowText: CarboxylAlwaysActive ? active.windowText : "#707070"
 
             // 6.2+: color for placeholder TextField text
-            placeholderText: "#a0a0a0"
+            placeholderText: CarboxylAlwaysActive ? active.placeholderText : "#a0a0a0"
         }
 
         disabled {
@@ -319,47 +323,47 @@ Item {
         // inactive is between active and disabled
         inactive {
             // used for alternating rows
-            alternateBase: "#303030"
-            base: "#1f1f1f"
-            button: "#393939"
+            alternateBase: CarboxylAlwaysActive ? active.alternateBase : "#303030"
+            base: CarboxylAlwaysActive ? active.base : "#1f1f1f"
+            button: CarboxylAlwaysActive ? active.button : "#393939"
 
-            text: "#b0b0b0"
-            highlightedText: "#b0b0b0"
-            buttonText: "#b0b0b0"
+            text: CarboxylAlwaysActive ? active.text : "#b0b0b0"
+            highlightedText: CarboxylAlwaysActive ? active.highlightedText : "#b0b0b0"
+            buttonText: CarboxylAlwaysActive ? active.buttonText : "#b0b0b0"
 
             // high-contrast text e.g. for highlighted buttons
-            brightText: "#ffffff"
+            brightText: CarboxylAlwaysActive ? active.brightText : "#ffffff"
 
             // used for contrast in switches and some buttons
-            dark: "#101010"
+            dark: CarboxylAlwaysActive ? active.dark : "#101010"
 
             // slightly lighter than button
-            light: "#484848"
+            light: CarboxylAlwaysActive ? active.light : "#484848"
 
             // between button and dark
-            mid: "#272727"
+            mid: CarboxylAlwaysActive ? active.mid : "#272727"
 
             // between button and light
-            midlight: "#383838"
+            midlight: CarboxylAlwaysActive ? active.midlight : "#383838"
 
             // these are virtually standard
-            link: "#4abbf3"
-            linkVisited: "#a983c2"
+            link: CarboxylAlwaysActive ? active.link : "#4abbf3"
+            linkVisited: CarboxylAlwaysActive ? active.linkVisited : "#a983c2"
 
             // VERY DARK color
             // rarely used
-            shadow: "#0b0c0d"
+            shadow: CarboxylAlwaysActive ? active.shadow : "#0b0c0d"
 
             // tooltips, self explanatory...
-            toolTipBase: "#292c30"
-            toolTipText: "#fcfcfc"
+            toolTipBase: CarboxylAlwaysActive ? active.toolTipBase : "#292c30"
+            toolTipText: CarboxylAlwaysActive ? active.toolTipText : "#fcfcfc"
 
             // the general window fg/bg stuff
-            window: "#242424"
-            windowText: "#b0b0b0"
+            window: CarboxylAlwaysActive ? active.window : "#242424"
+            windowText: CarboxylAlwaysActive ? active.windowText : "#b0b0b0"
 
             // 6.2+: color for placeholder TextField text
-            placeholderText: "#b2b2b2"
+            placeholderText: CarboxylAlwaysActive ? active.placeholderText : "#b2b2b2"
         }
 
         disabled {
@@ -463,47 +467,47 @@ Item {
         // inactive is between active and disabled
         inactive {
             // used for alternating rows
-            alternateBase: "#202020"
-            base: "#141414"
-            button: "#242424"
+            alternateBase: CarboxylAlwaysActive ? active.alternateBase : "#202020"
+            base: CarboxylAlwaysActive ? active.base : "#141414"
+            button: CarboxylAlwaysActive ? active.button : "#242424"
 
-            text: "#cccccc"
-            highlightedText: "#cccccc"
-            buttonText: "#cccccc"
+            text: CarboxylAlwaysActive ? active.text : "#cccccc"
+            highlightedText: CarboxylAlwaysActive ? active.highlightedText : "#cccccc"
+            buttonText: CarboxylAlwaysActive ? active.buttonText : "#cccccc"
 
             // high-contrast text e.g. for highlighted buttons
-            brightText: "#ffffff"
+            brightText: CarboxylAlwaysActive ? active.brightText : "#ffffff"
 
             // used for contrast in switches and some buttons
-            dark: "#202020"
+            dark: CarboxylAlwaysActive ? active.dark : "#202020"
 
             // slightly lighter than button
-            light: "#343434"
+            light: CarboxylAlwaysActive ? active.light : "#343434"
 
             // between button and dark
-            mid: "#222222"
+            mid: CarboxylAlwaysActive ? active.mid : "#222222"
 
             // between button and light
-            midlight: "#303030"
+            midlight: CarboxylAlwaysActive ? active.midlight : "#303030"
 
             // these are virtually standard
-            link: "#4abbf3"
-            linkVisited: "#a983c2"
+            link: CarboxylAlwaysActive ? active.link : "#4abbf3"
+            linkVisited: CarboxylAlwaysActive ? active.linkVisited : "#a983c2"
 
             // VERY DARK color
             // rarely used
-            shadow: "#0b0c0d"
+            shadow: CarboxylAlwaysActive ? active.shadow : "#0b0c0d"
 
             // tooltips, self explanatory...
-            toolTipBase: "#292c30"
-            toolTipText: "#fcfcfc"
+            toolTipBase: CarboxylAlwaysActive ? active.toolTipBase : "#292c30"
+            toolTipText: CarboxylAlwaysActive ? active.toolTipText : "#fcfcfc"
 
             // the general window fg/bg stuff
-            window: "#040404"
-            windowText: "#cccccc"
+            window: CarboxylAlwaysActive ? active.window : "#040404"
+            windowText: CarboxylAlwaysActive ? active.windowText : "#cccccc"
 
             // 6.2+: color for placeholder TextField text
-            placeholderText: "#b2b2b2"
+            placeholderText: CarboxylAlwaysActive ? active.placeholderText : "#b2b2b2"
         }
 
         disabled {
