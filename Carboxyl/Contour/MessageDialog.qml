@@ -14,7 +14,9 @@ NativeDialog {
     property int icon: CarboxylEnums.NoIcon
     property bool hasIcon: icon !== CarboxylEnums.NoIcon
     property string iconSource
+
     property alias textFormat: label.textFormat
+    property alias font: label.font
 
     onIconChanged: {
         var svgName
