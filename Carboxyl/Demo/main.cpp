@@ -8,7 +8,6 @@
 #include <QQuickStyle>
 #include <QSettings>
 #include "CarboxylProgressDialog.h"
-#include "qpa/qplatformdialoghelper.h"
 #include "settingsmanager.h"
 
 #include "CarboxylApplication.h"
@@ -47,8 +46,9 @@ int main(int argc, char *argv[])
         []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
 
-    engine->loadFromModule("Demo", "Main");
+    engine->loadFromModule("CarboxylDemo", "Main");
 
+    // todo(crueter): move this to a qml func
     CarboxylProgressDialog* dialog = new CarboxylProgressDialog(engine);
     dialog->setLabelText(QObject::tr("Hello. Progress should be ~33%."));
     dialog->setTitle(QObject::tr("C++ Progress Dialog"));

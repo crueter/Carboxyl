@@ -54,8 +54,9 @@ target_link_libraries(Carboxyl INTERFACE
     Qt6::QuickControls2Universal)
 
 # options
-set(CARBOXYL_STYLES "Basalt;Helios;Hydrogen;Trioxide;Graphide" CACHE STRING "Styles to build")
-set_property(CACHE CARBOXYL_STYLES PROPERTY STRINGS Basalt Helios Hydrogen Trioxide Graphide)
+set(valid_styles "Basalt;Helios;Hydrogen;Trioxide;Graphide")
+set(CARBOXYL_STYLES "${valid_styles}" CACHE STRING "Styles to build")
+list(JOIN CARBOXYL_STYLES ", " CARBOXYL_STYLES_STRING)
 
 option(CARBOXYL_DEMO "Build the Carboxyl demo" ${CARBOXYL_INSTALL_DEFAULT})
 option(CARBOXYL_INSTALL "Install Carboxyl QML and libraries" ${CARBOXYL_INSTALL_DEFAULT})

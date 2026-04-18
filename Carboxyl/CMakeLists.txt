@@ -6,6 +6,12 @@ list(JOIN CARBOXYL_STYLES "\",\n\t\"" STYLES_DIRTY)
 set(CARBOXYL_STYLES_LIST "\t\"${STYLES_DIRTY}\"")
 list(LENGTH CARBOXYL_STYLES CARBOXYL_STYLES_LENGTH)
 
+if (BUILD_SHARED_LIBS)
+    set(LIB_TYPE SHARED)
+else()
+    set(LIB_TYPE STATIC)
+endif()
+
 add_subdirectory(Base)
 add_subdirectory(Clover)
 add_subdirectory(Contour)

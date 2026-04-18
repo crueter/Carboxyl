@@ -4,14 +4,11 @@
 # CarboxylChroma is basically just a "utility" library that propagates all other styles
 # to the target
 
-CarboxylModule(
-    NAME Chroma
-    URI Carboxyl.Chroma
-)
+add_library(CarboxylChroma INTERFACE)
+add_library(Carboxyl::Chroma ALIAS CarboxylChroma)
 
 foreach (STYLE ${CARBOXYL_STYLES})
     add_subdirectory(${STYLE})
-    target_link_libraries(CarboxylChroma PRIVATE
-        Carboxyl::${STYLE}
-    )
+    target_link_libraries(CarboxylChroma INTERFACE
+        Carboxyl::${STYLE})
 endforeach()

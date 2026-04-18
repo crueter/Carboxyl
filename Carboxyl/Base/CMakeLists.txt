@@ -6,8 +6,9 @@ configure_file(carboxyl_config.h.in carboxyl_config.h @ONLY)
 set(HEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/CarboxylApplication.h
     ${CMAKE_CURRENT_SOURCE_DIR}/CarboxylConfig.h
-    ${CMAKE_CURRENT_BINARY_DIR}/carboxyl_config.h
-)
+    ${CMAKE_CURRENT_SOURCE_DIR}/CarboxylQuickInterface.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/CarboxylProgressDialog.h
+    ${CMAKE_CURRENT_BINARY_DIR}/carboxyl_config.h)
 
 if (BUILD_SHARED_LIBS)
     set(LIB_TYPE SHARED)
@@ -23,14 +24,13 @@ add_library(CarboxylBase ${LIB_TYPE}
     ${HEADERS}
     CarboxylConfig.cpp
     CarboxylApplication.cpp
-    CarboxylQuickInterface.h CarboxylQuickInterface.cpp
-    CarboxylProgressDialog.h CarboxylProgressDialog.cpp)
+    CarboxylQuickInterface.cpp
+    CarboxylProgressDialog.cpp)
 
 target_include_directories(CarboxylBase PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-    $<INSTALL_INTERFACE:include>
-)
+    $<INSTALL_INTERFACE:include>)
 
 target_compile_definitions(CarboxylBase PRIVATE
     # Use QStringBuilder for string concatenation to reduce
@@ -48,12 +48,10 @@ target_compile_definitions(CarboxylBase PRIVATE
     QT_NO_PROCESS_COMBINED_ARGUMENT_START
 
     # Disable implicit QString->QUrl conversions to enforce use of proper resolving functions.
-    QT_NO_URL_CAST_FROM_STRING
-)
+    QT_NO_URL_CAST_FROM_STRING)
 
 set_target_properties(CarboxylBase PROPERTIES
-    PUBLIC_HEADER "${HEADERS}"
-)
+    PUBLIC_HEADER "${HEADERS}")
 
 add_library(Carboxyl::Base ALIAS CarboxylBase)
 
@@ -85,7 +83,6 @@ foreach(priv Gui QuickTemplates2 Quick Qml QmlModels)
     endif()
 endforeach()
 
-
 target_link_libraries(CarboxylBase
     PRIVATE
         Qt6::Gui
@@ -95,5 +92,5 @@ target_link_libraries(CarboxylBase
         Qt6::QmlModels)
 
 target_link_libraries(CarboxylBase PRIVATE Qt6::Core)
-
 target_link_libraries(Carboxyl INTERFACE CarboxylBase)
+set_target_properties(CarboxylBase PROPERTIES OUTPUT_NAME Carboxyl)
