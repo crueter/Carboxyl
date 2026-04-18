@@ -9,7 +9,7 @@ CarboxylModule(
         Switch.qml
         Button.qml
         RoundButton.qml
-ProgressBar.qml
+        ProgressBar.qml
         MenuBarItem.qml
         MenuSeparator.qml
         MenuItem.qml
@@ -23,18 +23,11 @@ ProgressBar.qml
         Dial.qml
         ToolButton.qml
         TextField.qml
-TextArea.qml
+        TextArea.qml
         ComboBox.qml
         CheckBox.qml
         RadioButton.qml
         AccentedFooter.qml
         LabelTextField.qml
-TextArea.qml
         LabelSpinBox.qml
-        LabelComboBox.qml
-
-)
-
-target_sources(CarboxylGraphide
-  PRIVATE
-)
+        LabelComboBox.qml)

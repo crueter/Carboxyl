@@ -8,7 +8,7 @@ CarboxylModule(
     QML_FILES
         Button.qml
         RoundButton.qml
-ProgressBar.qml
+        ProgressBar.qml
         MenuBarItem.qml
         MenuSeparator.qml
         MenuItem.qml
@@ -23,16 +23,14 @@ ProgressBar.qml
         Dial.qml
         ToolButton.qml
         TextField.qml
-TextArea.qml
+        TextArea.qml
         ComboBox.qml
         CheckBox.qml
         Switch.qml
         RadioButton.qml
         LabelTextField.qml
-TextArea.qml
         LabelSpinBox.qml
         LabelComboBox.qml
 
     RESOURCES
-        images/check.svg
-)
+        images/check.svg)
