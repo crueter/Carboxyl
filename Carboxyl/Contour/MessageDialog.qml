@@ -37,7 +37,7 @@ NativeDialog {
         iconSource = `icons/${svgName}.svg`
     }
 
-    minimumHeight: label.contentHeight + footer.height + 10
+    minimumHeight: Math.max(label.contentHeight, img.height) + footer.height + 10
     minimumWidth: hasIcon ? 325 : 250
 
     Image {
