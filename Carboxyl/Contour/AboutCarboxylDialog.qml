@@ -9,10 +9,10 @@ NativeDialog {
 
     title: qsTr("About Carboxyl")
 
-    minimumHeight: label.contentHeight + 10
+    minimumHeight: label.contentHeight + 10 + footer.height
     minimumWidth: 480
 
-    footer.implicitHeight: 0
+    standardButtons: Dialog.Ok
 
     Image {
         id: img
