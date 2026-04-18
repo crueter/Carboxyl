@@ -17,6 +17,8 @@ CarboxylModule(
         MessageDialog.qml
         ProgressDialog.qml
 
+        AboutCarboxylDialog.qml
+
         CarboxylLabeledSpinBox.qml
         FloatingPlaceholderText.qml
         CarboxylLabeledTextField.qml
@@ -28,10 +30,9 @@ CarboxylModule(
         icons/information.svg
         icons/question.svg
         icons/warning.svg
-)
+        icons/carboxyl.png)
 
 target_link_libraries(CarboxylContour
     PRIVATE
         Qt6::Gui
-        Qt6::QuickControls2
-)
+        Qt6::QuickControls2)

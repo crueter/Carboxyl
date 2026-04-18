@@ -42,6 +42,8 @@ public slots:
     void setDarkMode(QQuickWindow* window, bool dark);
     void setDarkMode(bool dark);
 
+    void aboutCarboxyl();
+
 private:
     QQuickWindow* window() const;
 

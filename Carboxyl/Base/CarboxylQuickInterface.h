@@ -47,6 +47,8 @@ public:
         CarboxylEnums::Icon icon, const QString& title, const QString& text,
         QPlatformDialogHelper::StandardButtons buttons, QObject* parent = nullptr);
 
+    Q_INVOKABLE void aboutCarboxyl();
+
 public slots:
     void onButtonClicked(QQuickItem* button);
 

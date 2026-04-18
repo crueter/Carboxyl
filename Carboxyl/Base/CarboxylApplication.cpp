@@ -111,6 +111,10 @@ void CarboxylApplication::setDarkMode(bool dark) {
     setDarkMode(window(), dark);
 }
 
+void CarboxylApplication::aboutCarboxyl() {
+    m_interface->aboutCarboxyl();
+}
+
 void CarboxylApplication::setDarkMode(QQuickWindow *window)
 {
     setDarkMode(window, m_darkMode);

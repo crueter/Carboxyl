@@ -83,6 +83,16 @@ ApplicationWindow {
                 checkable: true
             }
         }
+
+        Menu {
+            title: qsTr("&About")
+            contentWidth: 260
+
+            Action {
+                text: qsTr("About &Carboxyl")
+                onTriggered: CarboxylApplication.aboutCarboxyl()
+            }
+        }
     }
 
     ColumnLayout {

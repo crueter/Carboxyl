@@ -56,6 +56,29 @@ QPlatformDialogHelper::StandardButton CarboxylQuickInterface::showMessageBox(
     return result;
 }
 
+void CarboxylQuickInterface::aboutCarboxyl() {
+    const auto engine = g_carboxylApp->engine();
+
+    QQmlComponent dialogComponent(engine, QUrl(QStringLiteral("qrc:/qt/qml/Carboxyl/Contour/AboutCarboxylDialog.qml")),
+                                  this);
+
+    if (dialogComponent.isError()) {
+        qWarning() << "Error instantiating AboutCarboxylDialog:" << dialogComponent.errors();
+        return;
+    }
+
+    QObject* dialog = dialogComponent.create();
+    if (!dialog) {
+        qWarning() << "Failed to create AboutCarboxylDialog";
+        return;
+    }
+
+    QEventLoop loop;
+    QPlatformDialogHelper::StandardButton result = QPlatformDialogHelper::NoButton;
+
+    QMetaObject::invokeMethod(dialog, "show");
+}
+
 void CarboxylQuickInterface::onButtonClicked(QQuickItem* button) {
     if (callback)
         callback(button);
