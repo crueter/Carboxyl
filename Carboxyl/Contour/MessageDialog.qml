@@ -16,7 +16,8 @@ NativeDialog {
     property string iconSource
 
     property alias textFormat: label.textFormat
-    property alias font: label.font
+    property alias textFont: label.font
+    property alias textColor: label.color
 
     onIconChanged: {
         var svgName
