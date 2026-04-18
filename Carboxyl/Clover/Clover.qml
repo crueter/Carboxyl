@@ -22,7 +22,7 @@ Item {
     CloverAccent {
         id: blue
         name: "Blue"
-        light: "Blue"
+        light: "#2020ff"
         midnight: this.dark
     }
 
@@ -418,7 +418,7 @@ Item {
         active {
             // used for alternating rows
             alternateBase: "#1e1e1e"
-            base: "#000000"
+            base: "#101010"
             button: "#202020"
 
             text: "#ffffff"
@@ -464,12 +464,12 @@ Item {
         inactive {
             // used for alternating rows
             alternateBase: "#202020"
-            base: "#040404"
+            base: "#141414"
             button: "#242424"
 
-            text: "#dddddd"
-            highlightedText: "#dddddd"
-            buttonText: "#dddddd"
+            text: "#cccccc"
+            highlightedText: "#cccccc"
+            buttonText: "#cccccc"
 
             // high-contrast text e.g. for highlighted buttons
             brightText: "#ffffff"
@@ -500,7 +500,7 @@ Item {
 
             // the general window fg/bg stuff
             window: "#040404"
-            windowText: "#dddddd"
+            windowText: "#cccccc"
 
             // 6.2+: color for placeholder TextField text
             placeholderText: "#b2b2b2"
@@ -509,12 +509,12 @@ Item {
         disabled {
             // used for alternating rows
             alternateBase: "#242424"
-            base: "#080808"
+            base: "#181818"
             button: "#282828"
 
-            text: "#bbbbbb"
-            highlightedText: "#bbbbbb"
-            buttonText: "#bbbbbb"
+            text: "#aaaaaa"
+            highlightedText: "#aaaaaa"
+            buttonText: "#aaaaaa"
 
             // high-contrast text e.g. for highlighted buttons
             brightText: "#ffffff"
@@ -545,7 +545,7 @@ Item {
 
             // the general window fg/bg stuff
             window: "#282828"
-            windowText: "#bbbbbb"
+            windowText: "#aaaaaa"
 
             // 6.2+: color for placeholder TextField text
             placeholderText: "#424242"

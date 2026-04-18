@@ -54,7 +54,7 @@ NativeDialog {
     }
 
     // Text does not support mouse selection (wtf)
-    TextArea {
+    Text {
         id: label
 
         anchors {
@@ -72,17 +72,12 @@ NativeDialog {
 
         onLinkActivated: link => Qt.openUrlExternally(link)
 
-        readOnly: true
-        selectByMouse: true
-
         text: dialog.text
         color: palette.text
 
         wrapMode: Text.WordWrap
 
         verticalAlignment: Text.AlignVCenter
-        horizontalAlignment: Text.AlignLeft
-
-        background: Item {}
+        horizontalAlignment: Text.AlignHCenter
     }
 }

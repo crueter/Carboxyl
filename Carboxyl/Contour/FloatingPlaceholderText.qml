@@ -47,6 +47,12 @@ Rectangle {
         }
     }
 
+    Behavior on textColor {
+        ColorAnimation {
+            duration: 150
+        }
+    }
+
     x: {
         switch (horizontalAlignment) {
         case Text.AlignJustify:
@@ -66,7 +72,14 @@ Rectangle {
 
     y: hasText ? (-height / 2 + 2 - verticalOffset) : (control.height / 2 - height / 2 + 2)
 
-    scale: hasText ? 0.75 : 1.0
+    scale: {
+        if (!hasText)
+            return 1.0
+
+        let baseScale = 0.75
+        let overflow = Math.max(0, control.font.pixelSize - 12)
+        return Math.max(0.3, baseScale - (overflow * 0.0225))
+    }
 
     Behavior on scale {
         SmoothedAnimation {

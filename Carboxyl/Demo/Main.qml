@@ -237,6 +237,46 @@ ApplicationWindow {
                 enabled: swt.checked
             }
         }
+
+        SpinBox {
+            enabled: swt.checked
+
+            from: -100
+            to: 100000000
+
+            Layout.preferredWidth: 300
+            editable: true
+        }
+
+        CarboxylLabeledSpinBox {
+            enabled: swt.checked
+
+            from: -100
+            to: 100000000
+
+            Layout.preferredWidth: 300
+            editable: true
+            label: "Spin Box"
+        }
+
+        CarboxylLabeledDoubleSpinBox {
+            enabled: swt.checked
+
+            from: -100
+            to: 100000000
+
+            Layout.preferredWidth: 300
+            editable: true
+            stepSize: 0.1
+            label: "Double Spin Box"
+        }
+
+        CarboxylLabeledTextField {
+            Layout.preferredWidth: 300
+            height: 40
+            enabled: swt.checked
+            label: "Placeholder"
+        }
     }
 
     Rectangle {
@@ -295,71 +335,80 @@ ApplicationWindow {
                 }
             }
 
-            Dial {
-                id: dial
-                enabled: swt.checked
-                from: -100
-                to: 100
+            RowLayout {
+                Dial {
+                    id: dial
+                    enabled: swt.checked
+                    from: -100
+                    to: 100
 
-                value: slider.value
+                    value: slider.value
+                }
+
+                Column {
+                    Slider {
+                        id: slider
+                        enabled: swt.checked
+                        from: -100
+                        to: 100
+
+                        value: dial.value
+                    }
+                    RangeSlider {
+                        enabled: swt.checked
+
+                        from: 0
+                        to: 100
+                        first.value: 25
+                        second.value: 75
+                    }
+                }
             }
 
-            Slider {
-                id: slider
-                enabled: swt.checked
-                from: -100
-                to: 100
+            Row {
+                Layout.fillWidth: true
+                Label {
+                    text: Math.round(fontSize.value)
+                    height: parent.height
+                    verticalAlignment: Text.AlignVCenter
+                }
 
-                value: dial.value
-            }
-
-            RangeSlider {
-                enabled: swt.checked
-
-                from: 0
-                to: 100
-                first.value: 25
-                second.value: 75
-            }
-
-            SpinBox {
-                enabled: swt.checked
-
-                from: -100
-                to: 100000000
-
-                Layout.preferredWidth: 300
-                editable: true
+                Slider {
+                    id: fontSize
+                    from: 12
+                    to: 80
+                }
             }
 
             CarboxylLabeledSpinBox {
-                enabled: swt.checked
-
                 from: -100
                 to: 100000000
 
-                Layout.preferredWidth: 300
+                Layout.preferredWidth: 425
                 editable: true
                 label: "Spin Box"
+
+                font.pixelSize: fontSize.value
             }
 
             CarboxylLabeledDoubleSpinBox {
-                enabled: swt.checked
-
                 from: -100
                 to: 100000000
 
-                Layout.preferredWidth: 300
+                Layout.preferredWidth: 425
                 editable: true
                 stepSize: 0.1
                 label: "Double Spin Box"
+
+                font.pixelSize: fontSize.value
             }
 
             CarboxylLabeledTextField {
-                Layout.preferredWidth: 300
+                Layout.preferredWidth: 425
                 height: 40
-                enabled: swt.checked
                 label: "Placeholder"
+
+                font.pixelSize: fontSize.value
             }
         }
     }
@@ -419,10 +468,11 @@ ApplicationWindow {
 
         anchors {
             left: vertTab.right
-            right: vertTabRight.left
+            right: parent.right
             bottom: parent.bottom
 
             margins: 15
+            rightMargin: 200
         }
 
         contentHeight: 60
@@ -457,57 +507,6 @@ ApplicationWindow {
             icon.height: 20
             icon.width: 20
             inlineIcon: false
-        }
-    }
-
-    CarboxylTabBar {
-        id: vertTabRight
-        vertical: true
-
-        anchors {
-            right: parent.right
-            bottom: parent.bottom
-            rightMargin: 5
-        }
-
-        position: TabBar.Header
-
-        contentHeight: 55
-        contentWidth: 130
-
-        height: contentItem.contentHeight + 20
-        width: contentWidth
-
-        CarboxylTabButton {
-            text: "Errors"
-            icon.height: 30
-            icon.width: 30
-            icon.source: "qrc:/qt/qml/Carboxyl/Contour/icons/critical.svg"
-            inlineIcon: true
-        }
-
-        CarboxylTabButton {
-            text: "Settings"
-            icon.source: "qrc:/Demo/icons/Miscellaneous.svg"
-            icon.height: 30
-            icon.width: 30
-            inlineIcon: true
-            coloredIcon: true
-        }
-        CarboxylTabButton {
-            text: "Verification"
-            icon.source: "qrc:/Demo/icons/valid.svg"
-            icon.height: 30
-            icon.width: 30
-            inlineIcon: true
-            coloredIcon: true
-        }
-        CarboxylTabButton {
-            text: "Information"
-            icon.height: 30
-            icon.width: 30
-            icon.source: "qrc:/qt/qml/Carboxyl/Contour/icons/information.svg"
-            inlineIcon: true
         }
     }
 }
