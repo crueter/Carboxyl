@@ -91,6 +91,10 @@ target_link_libraries(CarboxylBase
         Qt6::QuickTemplates2
         Qt6::QmlModels)
 
+if(WIN32)
+    target_link_libraries(CarboxylBase PUBLIC dwmapi)
+endif()
+
 target_link_libraries(CarboxylBase PRIVATE Qt6::Core)
 target_link_libraries(Carboxyl INTERFACE CarboxylBase)
 set_target_properties(CarboxylBase PROPERTIES OUTPUT_NAME Carboxyl)
