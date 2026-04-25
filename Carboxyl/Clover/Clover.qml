@@ -69,8 +69,8 @@ Item {
         light: "#788585"
     }
 
-    readonly property list<CloverAccent> accents: [red, blue, orange, gold, forest, violet, pink, cyan, steel]
-    readonly property list<CloverPalette> themes: [systemPalette, light, dark, midnight]
+    property list<CloverAccent> accents: [red, blue, orange, gold, forest, violet, pink, cyan, steel]
+    property list<CloverPalette> themes: [systemPalette, light, dark, midnight]
 
     property CloverAccent accent: blue
     property CloverPalette theme: systemPalette
@@ -83,6 +83,13 @@ Item {
         systemPalette.active = palette.active
         systemPalette.inactive = palette.inactive
         systemPalette.disabled = palette.disabled
+    }
+
+    // TODO(crueter): Allow creation from C++
+    // TODO(crueter): Allow custom override for default theme?
+    // Register a theme to Clover. Use with caution
+    function registerTheme(theme) {
+        Clover.themes.push(theme)
     }
 
     Component.onCompleted: {

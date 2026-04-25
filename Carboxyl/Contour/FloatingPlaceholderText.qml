@@ -15,8 +15,8 @@ Rectangle {
 
     property Item control: parent
 
-    property color backgroundColor: Clover.theme.base
-    property color textColor: focused ? Clover.theme.currentAccent : Clover.theme.placeholderText
+    property color backgroundColor: control.palette.base
+    property color textColor: focused ? Clover.theme.currentAccent : control.palette.placeholderText
     property bool focused: control.activeFocus
     property bool hasText: false
     property bool needsBlocker: y < 0

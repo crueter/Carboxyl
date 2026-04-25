@@ -16,6 +16,8 @@ ApplicationWindow {
 
     palette: Clover.theme
 
+    CustomThemes {}
+
     menuBar: MenuBar {
         Menu {
             title: qsTr("&File")

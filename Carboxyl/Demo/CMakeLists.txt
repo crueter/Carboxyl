@@ -37,7 +37,8 @@ qt_add_qml_module(CarboxylDemo
     NO_PLUGIN
     VERSION 1.0
     QML_FILES
-        Main.qml)
+        Main.qml
+        CustomThemes.qml)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
