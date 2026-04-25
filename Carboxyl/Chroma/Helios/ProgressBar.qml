@@ -27,7 +27,7 @@ ProgressBar {
         scale: control.mirrored ? -1 : 1
         progress: control.position
         indeterminate: control.visible && control.indeterminate
-        color: control.palette.highlight
+        color: Clover.theme.highlight
     }
 
     background: Rectangle {
