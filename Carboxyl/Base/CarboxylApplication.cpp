@@ -164,3 +164,25 @@ QQuickWindow *CarboxylApplication::window() const {
     if (objects.empty()) return nullptr;
     return qobject_cast<QQuickWindow *>(objects.first());
 }
+
+QString CarboxylApplication::customIconDirectory() const {
+    return m_customIconDirectory;
+}
+
+void CarboxylApplication::setCustomIconDirectory(const QString& newCustomIconDirectory) {
+    if (m_customIconDirectory == newCustomIconDirectory)
+        return;
+    m_customIconDirectory = newCustomIconDirectory;
+    emit customIconDirectoryChanged(m_customIconDirectory);
+}
+
+bool CarboxylApplication::useCustomIcons() const {
+    return m_useCustomIcons;
+}
+
+void CarboxylApplication::setUseCustomIcons(bool newUseCustomIcons) {
+    if (m_useCustomIcons == newUseCustomIcons)
+        return;
+    m_useCustomIcons = newUseCustomIcons;
+    emit useCustomIconsChanged(m_useCustomIcons);
+}

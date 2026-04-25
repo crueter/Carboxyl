@@ -30,14 +30,14 @@ int main(int argc, char *argv[])
 
     // this is unnecessary, but gets clazy to shut up
     carboxylApp->setParent(&app);
-    // QDirIterator iter(QDir(":/"), QDirIterator::Subdirectories);
+    QDirIterator iter(QDir(":/"), QDirIterator::Subdirectories);
 
-    // while (iter.hasNext()) {
-    //     QString next = iter.next();
-    //     if (!next.contains("k") && !next.contains("breeze")) {
-    //         qDebug() << next;
-    //     }
-    // }
+    while (iter.hasNext()) {
+        QString next = iter.next();
+        if (!next.contains("k") && !next.contains("breeze")) {
+            qDebug() << next;
+        }
+    }
 
     QObject::connect(
         engine,
@@ -49,13 +49,13 @@ int main(int argc, char *argv[])
     engine->loadFromModule("CarboxylDemo", "Main");
 
     // todo(crueter): move this to a qml func
-    CarboxylProgressDialog* dialog = new CarboxylProgressDialog(engine);
-    dialog->setLabelText(QObject::tr("Hello. Progress should be ~33%."));
-    dialog->setTitle(QObject::tr("C++ Progress Dialog"));
-    dialog->setValue(40);
-    dialog->setMinimum(0);
-    dialog->setMaximum(120);
-    dialog->show();
+    // CarboxylProgressDialog* dialog = new CarboxylProgressDialog(engine);
+    // dialog->setLabelText(QObject::tr("Hello. Progress should be ~33%."));
+    // dialog->setTitle(QObject::tr("C++ Progress Dialog"));
+    // dialog->setValue(40);
+    // dialog->setMinimum(0);
+    // dialog->setMaximum(120);
+    // dialog->show();
 
     return app.exec();
 }

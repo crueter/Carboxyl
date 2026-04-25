@@ -11,5 +11,9 @@
         <file>icons/Color.svg</file>
         <file>icons/Close.svg</file>
         <file>icons/back.svg</file>
+        <file>icons/dialog/critical.svg</file>
+        <file>icons/dialog/information.svg</file>
+        <file>icons/dialog/question.svg</file>
+        <file>icons/dialog/warning.svg</file>
     </qresource>
 </RCC>

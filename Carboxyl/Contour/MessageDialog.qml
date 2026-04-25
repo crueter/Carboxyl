@@ -37,10 +37,15 @@ NativeDialog {
             break
         }
 
-        iconSource = `icons/${svgName}.svg`
+        if (CarboxylApplication.useCustomIcons) {
+            iconSource = `${CarboxylApplication.customIconDirectory}/${svgName}.svg`
+        } else {
+            iconSource = `icons/${svgName}.svg`
+        }
     }
 
-    minimumHeight: Math.max(label.contentHeight, img.height) + footer.height + 10
+    minimumHeight: Math.max(label.contentHeight,
+                            img.height) + footer.height + 10
     minimumWidth: hasIcon ? 325 : 250
 
     Image {

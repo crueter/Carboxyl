@@ -148,10 +148,23 @@ ApplicationWindow {
             }
         }
 
-        Switch {
-            id: swt
-            checked: true
-            text: "Switch"
+        RowLayout {
+            Switch {
+                id: swt
+                checked: true
+                text: "Switch"
+            }
+
+            CheckBox {
+                id: custom
+
+                text: "Use Custom Icons"
+                checked: CarboxylApplication.useCustomIcons
+                Component.onCompleted: CarboxylApplication.customIconDirectory
+                                       = "qrc:/Demo/icons/dialog"
+
+                onCheckedChanged: CarboxylApplication.useCustomIcons = checked
+            }
         }
 
         RowLayout {
