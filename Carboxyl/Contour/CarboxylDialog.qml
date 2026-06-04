@@ -36,11 +36,11 @@ F.Dialog {
         }
     }
 
-    onImplicitHeightChanged: if (!isItem) {
+    onImplicitHeightChanged: if (windowHandle !== null && !isItem) {
                                  windowHandle.minimumHeight = implicitHeight
                              }
 
-    onImplicitWidthChanged: if (!isItem) {
+    onImplicitWidthChanged: if (windowHandle !== null && !isItem) {
                                 windowHandle.minimumWidth = implicitWidth
                             }
 
