@@ -50,6 +50,8 @@ public:
             return QPlatformDialogHelper::NoButton;
     }
 
+    Q_INVOKABLE void aboutQt();
+
     Q_INVOKABLE QPlatformDialogHelper::StandardButton showMessageBox(
         CarboxylEnums::Icon icon, const QString& title, const QString& text,
         QPlatformDialogHelper::StandardButtons buttons, QObject* parent = nullptr);

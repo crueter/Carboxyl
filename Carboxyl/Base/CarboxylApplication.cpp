@@ -110,6 +110,10 @@ void CarboxylApplication::aboutCarboxyl() {
     m_interface->aboutCarboxyl();
 }
 
+void CarboxylApplication::aboutQt() {
+    m_interface->aboutQt();
+}
+
 void CarboxylApplication::setDarkMode(QQuickWindow *window)
 {
     setDarkMode(window, m_darkMode);
@@ -158,6 +162,10 @@ QQuickWindow *CarboxylApplication::window() const {
     auto objects = m_engine->rootObjects();
     if (objects.empty()) return nullptr;
     return qobject_cast<QQuickWindow *>(objects.first());
+}
+
+const QString CarboxylApplication::qtVersion() {
+    return QStringLiteral(QT_VERSION_STR);
 }
 
 QString CarboxylApplication::customIconDirectory() const {

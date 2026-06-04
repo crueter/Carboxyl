@@ -17,6 +17,7 @@ CarboxylModule(
         CarboxylProgressDialog.qml
 
         AboutCarboxylDialog.qml
+        AboutQtDialog.qml
         CarboxylFileDialog.qml
 
         CarboxylLabeledSpinBox.qml
@@ -30,7 +31,8 @@ CarboxylModule(
         icons/information.svg
         icons/question.svg
         icons/warning.svg
-        icons/carboxyl.png)
+        icons/carboxyl.png
+        icons/qt.webp)
 
 target_link_libraries(CarboxylContour
     PRIVATE

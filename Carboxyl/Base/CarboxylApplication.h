@@ -21,6 +21,7 @@ class CarboxylApplication : public QObject {
                    useCustomIconsChanged FINAL)
     Q_PROPERTY(QString customIconDirectory READ customIconDirectory WRITE setCustomIconDirectory
                    NOTIFY customIconDirectoryChanged FINAL)
+    Q_PROPERTY(QString qtVersion READ qtVersion CONSTANT FINAL)
 public:
     /**
      * @brief CarboxylApplication A class that sets up Carboxyl for use in QML land.
@@ -49,12 +50,16 @@ public:
     void setCustomIconDirectory(const QString& newCustomIconDirectory);
 
     QQuickWindow* window() const;
+
+    const QString qtVersion();
+
 public slots:
     void setDarkMode(QQuickWindow* window);
     void setDarkMode(QQuickWindow* window, bool dark);
     void setDarkMode(bool dark);
 
     void aboutCarboxyl();
+    void aboutQt();
 
 private:
     QQmlApplicationEngine* m_engine;

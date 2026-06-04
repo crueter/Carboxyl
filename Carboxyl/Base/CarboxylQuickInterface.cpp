@@ -71,6 +71,33 @@ QPlatformDialogHelper::StandardButton CarboxylQuickInterface::showMessageBox(
     return result;
 }
 
+// TODO: These share a bunch of code.
+void CarboxylQuickInterface::aboutQt() {
+    const auto engine = g_carboxylApp->engine();
+
+    QQmlComponent dialogComponent(engine, QUrl(QStringLiteral("qrc:/qt/qml/Carboxyl/Contour/AboutQtDialog.qml")),
+                                  this);
+
+    if (dialogComponent.isError()) {
+        qWarning() << "Error instantiating AboutQtDialog:" << dialogComponent.errors();
+        return;
+    }
+
+    QObject* dialog = dialogComponent.create();
+    if (!dialog) {
+        qWarning() << "Failed to create AboutQtDialog";
+        return;
+    }
+
+    QQuickItem *rootItem = g_carboxylApp->window()->contentItem();
+    dialog->setProperty("parent", QVariant::fromValue(rootItem));
+
+    QObject::connect(dialog, SIGNAL(aboutToHide()),
+                     dialog, SLOT(deleteLater()));
+
+    QMetaObject::invokeMethod(dialog, "open");
+}
+
 void CarboxylQuickInterface::aboutCarboxyl() {
     const auto engine = g_carboxylApp->engine();
 

@@ -24,6 +24,10 @@ ApplicationWindow {
         id: aboutCarboxyl
     }
 
+    AboutQtDialog {
+        id: aboutQt
+    }
+
     menuBar: MenuBar {
         Menu {
             title: qsTr("&File")
@@ -104,6 +108,16 @@ ApplicationWindow {
             Action {
                 text: qsTr("About &Carboxyl (QML)")
                 onTriggered: aboutCarboxyl.open()
+            }
+
+            Action {
+                text: qsTr("A&bout Qt (C++)")
+                onTriggered: CarboxylApplication.aboutQt()
+            }
+
+            Action {
+                text: qsTr("About &Qt (QML)")
+                onTriggered: aboutQt.open()
             }
         }
     }

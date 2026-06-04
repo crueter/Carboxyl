@@ -58,3 +58,14 @@ Accessible via `CarboxylQuickInterface`. Four methods are implemented:
 - `getOpenFileNames(title, dir, filter)`
 - `getSaveFileName(title, dir, filter)`
 - `getExistingDirectory(caption, dir)`
+
+## About Dialogs
+
+`CarboxylApplication::aboutQt` and `CarboxylApplication::aboutCarboxyl` show dialogs containing information about Qt and Carboxyl, respectively. They can be accessed from QML:
+
+```qml
+CarboxylApplication.aboutQt()
+CarboxylApplication.aboutCarboxyl()
+```
+
+`aboutQt` is equivalent to [`QMessageBox::aboutQt`](https://doc.qt.io/qt-6/qmessagebox.html#aboutQt).
