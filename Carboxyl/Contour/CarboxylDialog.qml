@@ -28,8 +28,21 @@ F.Dialog {
     onAboutToHide: if (!isItem)
                        contentItem.Window.window.hide()
 
-    onAboutToShow: if (!isItem)
-                       CarboxylApplication.setDarkMode(windowHandle)
+    onAboutToShow: {
+        if (!isItem) {
+            CarboxylApplication.setDarkMode(windowHandle)
+            windowHandle.minimumHeight = implicitHeight
+            windowHandle.minimumWidth = implicitWidth
+        }
+    }
+
+    onImplicitHeightChanged: if (!isItem) {
+                                 windowHandle.minimumHeight = implicitHeight
+                             }
+
+    onImplicitWidthChanged: if (!isItem) {
+                                windowHandle.minimumWidth = implicitWidth
+                            }
 
     // TODO: configurable per-style
     property int radius: isItem ? 12 : 0
