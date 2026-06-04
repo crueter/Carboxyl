@@ -14,6 +14,11 @@
 
 int main(int argc, char *argv[])
 {
+    // TODO
+#ifdef __linux__
+    qputenv("QT_QPA_PLATFORMTHEME", "gtk3");
+#endif
+
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine *engine = new QQmlApplicationEngine(&app);
 
@@ -30,6 +35,7 @@ int main(int argc, char *argv[])
 
     // this is unnecessary, but gets clazy to shut up
     carboxylApp->setParent(&app);
+
     // QDirIterator iter(QDir(":/"), QDirIterator::Subdirectories);
 
     // while (iter.hasNext()) {

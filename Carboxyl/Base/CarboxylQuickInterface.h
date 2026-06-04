@@ -33,6 +33,13 @@ class CarboxylQuickInterface : public QObject {
 public:
     CarboxylQuickInterface(QObject* parent = nullptr);
 
+    enum FileMode : int {
+        OpenFile,
+        OpenFiles,
+        SaveFile
+    };
+    Q_ENUM(FileMode)
+
     // Qt does not expose an API within QQuickDialogButtonBox that lets us query the StandardButton
     // pressed during a click. To get around this, we have to do this horrible hack.
     inline QPlatformDialogHelper::StandardButton standardButton(QQuickAbstractButton *button) const {
@@ -49,9 +56,29 @@ public:
 
     Q_INVOKABLE void aboutCarboxyl();
 
+    Q_INVOKABLE const QString getOpenFileName(const QString& title, const QString& dir = QString(), const QString& filter = QString(),
+                                  QString* selectedFilter = nullptr);
+
+    Q_INVOKABLE const QStringList getOpenFileNames(const QString& title, const QString& dir = QString(), const QString& filter = QString(),
+                                       QString* selectedFilter = nullptr);
+
+    Q_INVOKABLE const QString getSaveFileName(const QString& title, const QString& dir = QString(), const QString& filter = QString(),
+                                  QString* selectedFilter = nullptr);
+
+    Q_INVOKABLE const QString getExistingDirectory(const QString& caption = QString(), const QString& dir = QString());
+
 public slots:
     void onButtonClicked(QQuickItem* button);
 
+private slots:
+    void setAccepted();
+
 private:
     std::function<void(QQuickItem* )> callback;
+    QQuickItem* instantiateFileDialog();
+    void execFileDialog(int fileMode, const QString& title, const QString& dir,
+                        const QString& filter,
+                        const std::function<void(QObject*, bool)>& done);
+
+    bool m_accepted = false;
 };

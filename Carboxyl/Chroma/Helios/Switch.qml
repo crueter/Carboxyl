@@ -4,9 +4,9 @@ import Carboxyl.Clover
 import Carboxyl.Contour
 
 import QtQuick
-import QtQuick.Controls.Material 6.4
+import QtQuick.Controls.Material 6.8
 import QtQuick.Controls.Material.impl
-import QtQuick.Controls.impl 6.4
+import QtQuick.Controls.impl 6.8
 
 Switch {
     id: control

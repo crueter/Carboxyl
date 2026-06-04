@@ -3,11 +3,13 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Shapes
+import QtQuick.Dialogs
 import QtQuick.Layouts
 
 import Carboxyl.Clover
 import Carboxyl.Contour
 
+// TODO refactor to use pages
 ApplicationWindow {
     width: 900
     height: 700
@@ -17,6 +19,10 @@ ApplicationWindow {
     palette: Clover.theme
 
     CustomThemes {}
+
+    AboutCarboxylDialog {
+        id: aboutCarboxyl
+    }
 
     menuBar: MenuBar {
         Menu {
@@ -91,8 +97,13 @@ ApplicationWindow {
             contentWidth: 260
 
             Action {
-                text: qsTr("About &Carboxyl")
+                text: qsTr("&About Carboxyl (C++)")
                 onTriggered: CarboxylApplication.aboutCarboxyl()
+            }
+
+            Action {
+                text: qsTr("About &Carboxyl (QML)")
+                onTriggered: aboutCarboxyl.open()
             }
         }
     }
@@ -182,37 +193,35 @@ ApplicationWindow {
             }
         }
 
-        Dialog {
-            title: "Dialog"
+        CarboxylDialog {
             id: dialog
+            title: "Dialog"
 
             anchors.centerIn: Overlay.overlay
 
             Label {
                 text: "This is a dialog"
+                anchors.centerIn: parent
             }
-            standardButtons: Dialog.Ok | Dialog.Cancel | Dialog.Apply
+            standardButtons: CarboxylDialog.Ok | CarboxylDialog.Cancel | CarboxylDialog.Apply
         }
 
-        NativeDialog {
-            title: "Dialog"
+        CarboxylDialog {
             id: nativeDialog
+            title: "Native Dialog"
 
-            width: 400
-            height: 500
+            popupType: Popup.Window
 
-            // anchors.centerIn: Overlay.overlay
+            anchors.centerIn: Overlay.overlay
+
             Label {
                 text: "This is a dialog"
-                anchors.fill: parent
-
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
+                anchors.centerIn: parent
             }
-            standardButtons: Dialog.Ok | Dialog.Cancel | Dialog.Apply
+            standardButtons: CarboxylDialog.Ok | CarboxylDialog.Cancel | CarboxylDialog.Apply
         }
 
-        ProgressDialog {
+        CarboxylProgressDialog {
             title: "Progress"
             id: progress
 
@@ -233,7 +242,7 @@ ApplicationWindow {
             RoundButton {
                 text: "Native Dialog"
                 enabled: swt.checked
-                onClicked: nativeDialog.show()
+                onClicked: nativeDialog.open()
             }
         }
 
@@ -241,7 +250,7 @@ ApplicationWindow {
             RoundButton {
                 text: "Progress"
                 enabled: swt.checked
-                onClicked: progress.show()
+                onClicked: progress.open()
             }
 
             RoundButton {
@@ -258,8 +267,10 @@ ApplicationWindow {
                                DialogButtonBox.Ok)
             }
             ToolButton {
-                text: "ToolButton"
+                text: "File Dialog"
                 enabled: swt.checked
+                onClicked: console.log(CarboxylQuickInterface.getOpenFileName(
+                                           qsTr("Select File")))
             }
         }
 

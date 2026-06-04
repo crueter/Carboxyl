@@ -2,16 +2,19 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 import QtQuick
 import QtQuick.Controls
-import Carboxyl.Clover
 
-NativeDialog {
+import Carboxyl.Clover
+import Carboxyl.Contour
+
+CarboxylDialog {
     id: dialog
+
+    popupType: Popup.Window
 
     title: qsTr("About Carboxyl")
 
-    minimumHeight: label.contentHeight + 10 + footer.height
-    minimumWidth: 480
-
+    implicitHeight: label.contentHeight + 10 + footer.height
+    implicitWidth: 480
     standardButtons: Dialog.Ok
 
     Image {
@@ -28,7 +31,7 @@ NativeDialog {
         }
     }
 
-    Text {
+    Label {
         id: label
 
         anchors {
@@ -54,8 +57,6 @@ NativeDialog {
                    "[GNU Lesser Public License v3 (LGPLv3)](https://www.gnu.org/licenses/lgpl-3.0.html). " + // KEEP
                    `You may, at any time, find a copy of the source code at: <${CarboxylConfig.gitLink}>.\n\n`
                    + "Copyleft 2025-2026 [crueter](https://git.crueter.xyz/crueter)") // KEEP
-
-        color: palette.text
 
         wrapMode: Text.WordWrap
 

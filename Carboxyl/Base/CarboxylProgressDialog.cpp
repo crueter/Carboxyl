@@ -24,7 +24,7 @@ void CarboxylProgressDialog::init() {
     const auto engine = g_carboxylApp->engine();
 
     QQmlComponent dialogComponent(
-        engine, QUrl(QStringLiteral("qrc:/qt/qml/Carboxyl/Contour/ProgressDialog.qml")), this);
+        engine, QUrl(QStringLiteral("qrc:/qt/qml/Carboxyl/Contour/CarboxylProgressDialog.qml")), this);
 
     if (dialogComponent.isError()) {
         qWarning() << "Error instantiating ProgressDialog:" << dialogComponent.errors();
@@ -60,7 +60,7 @@ void CarboxylProgressDialog::setLabelText(const QString& text) {
 }
 
 void CarboxylProgressDialog::show() {
-    QMetaObject::invokeMethod(m_dialog, "show");
+    QMetaObject::invokeMethod(m_dialog, "open");
 }
 
 void CarboxylProgressDialog::close() {
@@ -147,8 +147,6 @@ void CarboxylProgressDialog::setWidth(int newWidth) {
     emit widthChanged();
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// height
 int CarboxylProgressDialog::height() const {
     return m_dialog->property("height").toInt();
 }

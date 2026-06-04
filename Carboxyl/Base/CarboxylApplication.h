@@ -48,6 +48,7 @@ public:
     QString customIconDirectory() const;
     void setCustomIconDirectory(const QString& newCustomIconDirectory);
 
+    QQuickWindow* window() const;
 public slots:
     void setDarkMode(QQuickWindow* window);
     void setDarkMode(QQuickWindow* window, bool dark);
@@ -56,8 +57,6 @@ public slots:
     void aboutCarboxyl();
 
 private:
-    QQuickWindow* window() const;
-
     QQmlApplicationEngine* m_engine;
     CarboxylConfig* m_config;
     CarboxylQuickInterface* m_interface;

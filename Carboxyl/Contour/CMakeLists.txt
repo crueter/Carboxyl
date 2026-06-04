@@ -7,17 +7,17 @@ CarboxylModule(
     QML_FILES
         TabButtonContent.qml
         Label.qml
-        Dialog.qml
+        CarboxylDialog.qml
         DialogButtonBox.qml
         CarboxylTabButton.qml
         CarboxylTabBar.qml
         Ripple.qml
 
-        NativeDialog.qml
-        MessageDialog.qml
-        ProgressDialog.qml
+        CarboxylMessageDialog.qml
+        CarboxylProgressDialog.qml
 
         AboutCarboxylDialog.qml
+        CarboxylFileDialog.qml
 
         CarboxylLabeledSpinBox.qml
         FloatingPlaceholderText.qml

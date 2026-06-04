@@ -2,14 +2,17 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 import QtQuick
 import QtQuick.Controls
+
 import Carboxyl.Clover
 
 /// Reimpl. of QProgressDialog
-NativeDialog {
+CarboxylDialog {
     id: dialog
 
-    width: 350
-    height: 120 + label.contentHeight
+    implicitWidth: 350
+    implicitHeight: 120 + label.contentHeight
+
+    popupType: Popup.Window
 
     property string labelText: ""
     property int minimum: 0

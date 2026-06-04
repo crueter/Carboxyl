@@ -2,10 +2,14 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 import QtQuick
 import QtQuick.Controls
-import Carboxyl.Clover
 
-NativeDialog {
+import Carboxyl.Clover
+import Carboxyl.Contour
+
+CarboxylDialog {
     id: dialog
+
+    popupType: Popup.Window
 
     // TODO: color, alignment?
     // TODO: markdown mode
@@ -44,9 +48,9 @@ NativeDialog {
         }
     }
 
-    minimumHeight: Math.max(label.contentHeight,
-                            img.height) + footer.height + 10
-    minimumWidth: hasIcon ? 325 : 250
+    implicitHeight: Math.max(label.contentHeight,
+                             img.height) + footer.height + 10
+    implicitWidth: hasIcon ? 325 : 250
 
     Image {
         id: img

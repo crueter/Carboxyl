@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: Copyright 2026 crueter
 // SPDX-License-Identifier: LGPL-3.0-or-later
 import QtQuick
-import QtQuick.Controls.Material 6.4
+import QtQuick.Controls.Material 6.8
 import Carboxyl.Chroma.Helios as H
 
 import Carboxyl.Clover

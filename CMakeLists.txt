@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: LGPL-3.0-or-later
 
 # proj setup
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.31)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules")
 
@@ -13,7 +13,7 @@ else()
     set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 endif()
 
-set(CARBOXYL_QML_VERSION "0.1" CACHE STRING "Exported QML version for Carboxyl to reference")
+set(CARBOXYL_QML_VERSION "0.2" CACHE STRING "Exported QML version for Carboxyl to reference")
 
 project(carboxyl VERSION ${CARBOXYL_QML_VERSION} LANGUAGES CXX)
 
@@ -26,13 +26,13 @@ set(CMAKE_AUTOMOC ON)
 
 set(QT_NO_PRIVATE_MODULE_WARNING ON)
 
-find_package(Qt6 REQUIRED
+find_package(Qt6 6.8 REQUIRED
     COMPONENTS Core Quick QuickControls2 Gui QuickTemplates2 QmlCore QuickLayouts QuickEffects
         QuickControls2Basic QuickControls2Material QuickControls2Fusion QuickControls2Universal Qml
         QmlModels
     OPTIONAL_COMPONENTS GuiPrivate QuickPrivate QuickTemplates2Private QmlPrivate QmlModelsPrivate)
 
-qt_standard_project_setup(REQUIRES 6.4)
+qt_standard_project_setup(REQUIRES 6.8)
 
 if(QT_KNOWN_POLICY_QTP0001)
     qt_policy(SET QTP0001 NEW)

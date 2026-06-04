@@ -46,18 +46,13 @@ CarboxylApplication::CarboxylApplication(QGuiApplication& app, QQmlApplicationEn
 
     // system dark mode check
     m_systemDarkMode = [&app]() -> bool {
-#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
-        const auto scheme = app.styleHints()->colorScheme();
-        return scheme == Qt::ColorScheme::Dark;
-#else
         const QPalette defaultPalette;
         const auto text = defaultPalette.color(QPalette::WindowText);
         const auto window = defaultPalette.color(QPalette::Window);
         return text.lightness() > window.lightness();
-#endif // QT_VERSION
     }();
 
-    //  style
+    // style
     QString use_style = style;
     if (use_style == QString())
         use_style = m_defaultStyle;

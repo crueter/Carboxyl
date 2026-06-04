@@ -23,7 +23,7 @@ if (master_project)
     find_package(Carboxyl REQUIRED)
 endif()
 
-qt_standard_project_setup(REQUIRES 6.4)
+qt_standard_project_setup(REQUIRES 6.8)
 
 qt_add_executable(CarboxylDemo
     main.cpp

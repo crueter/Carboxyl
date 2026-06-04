@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 import QtQuick
-import QtQuick.Controls.Fusion 6.4
+import QtQuick.Controls.Fusion 6.8
 import QtQuick.Shapes
 
 import Carboxyl.Clover

@@ -3,10 +3,10 @@
 import QtQuick
 
 // for downarrow.png
-import QtQuick.Controls.Universal 6.4
+import QtQuick.Controls.Universal 6.8
 
-import QtQuick.Controls.Basic 6.4
-import QtQuick.Controls.impl 6.4
+import QtQuick.Controls.Basic 6.8
+import QtQuick.Controls.impl 6.8
 import QtQuick.Templates as T
 
 import Carboxyl.Clover
