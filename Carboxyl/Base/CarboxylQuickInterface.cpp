@@ -91,7 +91,7 @@ void CarboxylQuickInterface::aboutCarboxyl() {
     QQuickItem *rootItem = g_carboxylApp->window()->contentItem();
     dialog->setProperty("parent", QVariant::fromValue(rootItem));
 
-    QObject::connect(dialog, SIGNAL(closing(QQuickCloseEvent*)),
+    QObject::connect(dialog, SIGNAL(aboutToHide()),
                      dialog, SLOT(deleteLater()));
 
     QMetaObject::invokeMethod(dialog, "open");
