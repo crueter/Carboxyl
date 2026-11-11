@@ -39,7 +39,7 @@ CarboxylApplication::CarboxylApplication(QGuiApplication& app, QQmlApplicationEn
                                          const QString& style, const QString& defaultStyle,
                                          const bool alwaysActive)
     : QObject(&app), m_engine(engine), m_config(new CarboxylConfig(this)),
-      m_interface(new CarboxylQuickInterface(engine)), m_defaultStyle(defaultStyle) {
+      m_interface(new CarboxylQuickInterface(m_engine, this)), m_defaultStyle(defaultStyle) {
 #ifdef NEED_SWRAST
     QQuickWindow::setGraphicsApi(QSGRendererInterface::Software);
 #endif
@@ -80,7 +80,9 @@ CarboxylApplication::CarboxylApplication(QGuiApplication& app, QQmlApplicationEn
 
     // objectCreated is only called when the root object is finished
     connect(engine, &QQmlApplicationEngine::objectCreated, this, [this](QObject *object, QUrl url) {
-        setDarkMode(qobject_cast<QQuickWindow *>(object));
+        auto window = qobject_cast<QQuickWindow *>(object);
+        setDarkMode(window);
+        m_interface->setWindow(window);
     });
 
     g_carboxylApp = this;

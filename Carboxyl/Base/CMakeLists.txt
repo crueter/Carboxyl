@@ -27,6 +27,13 @@ add_library(CarboxylBase ${LIB_TYPE}
     CarboxylQuickInterface.cpp
     CarboxylProgressDialog.cpp)
 
+# target_sources(CarboxylBase PUBLIC
+#     FILE_SET carboxylModules TYPE CXX_MODULES FILES
+#     CarboxylConfig.ixx
+#     CarboxylApplication.ixx
+#     CarboxylQuickInterface.ixx
+#     CarboxylProgressDialog.ixx)
+
 target_include_directories(CarboxylBase PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
@@ -66,7 +73,8 @@ if (CARBOXYL_INSTALL)
         BUNDLE DESTINATION .
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+        FILE_SET carboxylModules DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/Carboxyl)
 
     install(EXPORT BaseTargets
         FILE CarboxylBaseTargets.cmake
